@@ -1,0 +1,13 @@
+#product {
+  text-align: center;  /* Căn giữa theo chiều ngang */
+  display: flex;
+  justify-content: center;  /* Căn giữa theo chiều ngang */
+  align-items: center;      /* Căn giữa theo chiều dọc */
+    /* Giữa theo chiều dọc, với 100% chiều cao của viewport */
+}
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* Tạo 4 cột có chiều rộng bằng nhau */
+  grid-template-rows: repeat(2, 1fr);     /* Tạo 2 hàng có chiều cao bằng nhau */
+  gap: 100px;                             /* Khoảng cách giữa các ô (tuỳ chọn) */
+}

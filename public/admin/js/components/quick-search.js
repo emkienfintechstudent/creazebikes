@@ -1,0 +1,1 @@
+(()=>{var o=document.querySelector("#quick-search"),e=tailwind.Modal.getOrCreateInstance(o);document.onkeydown=function(n){(n.ctrlKey||n.metaKey)&&n.key==="k"&&e.show()};$(o).on("shown.tw.modal",function(){$(o).find("input").first()[0].focus()});})();

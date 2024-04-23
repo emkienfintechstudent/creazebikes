@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml" class="opacity-0" lang="en"><!-- BEGIN: Head -->
+    
+    <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="csrf-token" content="GRVf5kgvilQhLe9jnPsUwT66Y3GaMoXiOsEZDrvr">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Rocketman admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
+        <meta name="keywords" content="admin template, Rocketman Admin Template, dashboard template, flat admin template, responsive admin template, web app">
+        <meta name="author" content="LEFT4CODE">
+        <title>Products - Rocketman - Admin Dashboard Template</title>
+        <!-- BEGIN: CSS Assets-->
+        <link rel="stylesheet" href="/admin/css/vendors/tom-select.css">
+        <link rel="stylesheet" href="/admin/css/vendors/tippy.css">
+        <link rel="stylesheet" href="/admin/css/vendors/simplebar.css">
+        <link rel="stylesheet" href="/admin/css/themes/lucent.css">
+        <link rel="stylesheet" href="/admin/css/app.css"> <!-- END: CSS Assets-->
+    </head>
+    <%- body %>
+         
+          
+          
+          <!-- BEGIN: Pages, layouts, components JS Assets-->
+          <!-- END: Pages, layouts, components JS Assets-->
+      </body>
+       <!-- BEGIN: Vendor JS Assets-->
+          <script src="/admin/js/vendors/dom.js"></script>
+          <script src="/admin/js/vendors/tailwind-merge.js"></script>
+          <script src="/admin/js/vendors/lucide.js"></script>
+          <script src="/admin/js/vendors/tom-select.js"></script>
+          <script src="/admin/js/vendors/tippy.js"></script>
+          <script src="/admin/js/vendors/simplebar.js"></script>
+          <script src="/admin/js/vendors/modal.js"></script>
+          <script src="/admin/js/vendors/dropdown.js"></script>
+          <script src="/admin/js/vendors/popper.js"></script>
+          <script src="/admin/js/vendors/transition.js"></script>
+          <script src="/admin/js/components/base/theme-color.js"></script>
+          <script src="/admin/js/components/base/lucide.js"></script>
+          <script src="/admin/js/components/base/tom-select.js"></script>
+          <script src="/admin/js/components/base/tippy.js"></script>
+          <script src="/admin/js/themes/lucent.js"></script>
+          <script src="/admin/js/components/quick-search.js"></script> <!-- END: Vendor JS Assets-->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          
+				<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+          <script type="module" src="/admin/js/admin.js"></script>
+
+          <script>
+              function validateForm() {
+                  var form = document.getElementById("form1");
+                  var inputs = form.querySelectorAll("input, select");
+                  for (var i = 0; i < inputs.length; i++) {
+                      if (!inputs[i].value) {
+                          alert("Vui lòng điền đầy đủ thông tin vào mọi trường!");
+                          return false;
+                      }
+                  }
+                  return true;
+              }
+              
+              $(document).ready(function() {
+                  $("#formButton").click(function() {
+                      $("#form1").fadeIn();
+                      $(".overlay").fadeIn();
+                  });
+          
+          
+                  $("#submit, .overlay").click(function() {
+                      $("#form1").fadeOut();
+                      $(".overlay").fadeOut();
+                  });
+              });
+          </script>
+      <!-- Mirrored from rocketman-html.vercel.app/lucent-products.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Mar 2024 03:29:52 GMT -->
+      </html>

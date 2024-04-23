@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body class="cnt-home" style="background-color: #dee2e6;">
+  <!-- ============================================== HEADER ============================================== -->
+  <header class="header-style-1" style="background-color:  #0d1b2a">
+
+    <!-- ============================================== TOP MENU ============================================== -->
+    <div class="top-bar animate-dropdown">
+      <div class="container">
+        <div class="header-top-inner" >
+          <div class="cnt-account">
+            <ul class="list-unstyled">
+
+              <% if(locals.user) { %>
+                <% if(locals.user.is_admin) { %>
+                  <li><a href="/admin/oveview/1"><i class="icon fa fa-check"></i>Admin</a></li>
+                  <li><a href="/logout"><i class="icon fa fa-check"></i>Log out</a></li>
+                  <% }else { %>
+                    <li><a href="/user/account/profile"></i>Hello, <%= user.name %></a></li>
+                    <li><a href="/logout"><i class="icon fa fa-check"></i>Log out</a></li>
+                    <li><a href="/customer/orders"><i class="icon fa fa-shopping-cart"></i>My order</a></li>
+                    <li><a href="/shopping-cart"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+                    <li><a href="/feedback"><i class="icon fa fa-shopping-cart"></i>Feedback</a></li>
+                    <%} %>
+                      <% }else{ %>
+                        <li><a href="/login"><i class="icon fa fa-lock"></i>Login</a></li>
+                        <li><a href="/shopping-cart"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+                        <li><a href="/customer/orders"><i class="icon fa fa-shopping-cart"></i>My order</a></li>
+                        <% } %>
+
+
+
+
+            </ul>
+          </div>
+          <!-- /.cnt-account -->
+
+
+          <div class="clearfix"></div>
+        </div>
+        <!-- /.header-top-inner -->
+      </div>
+      <!-- /.container -->
+    </div>
+    <!-- /.header-top -->
+    <!-- ============================================== TOP MENU : END ============================================== -->
+    <div class="main-header" >
+      <div class="container" >
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
+            <!-- ============================================================= LOGO ============================================================= -->
+            <div class="logo">
+              <a href="/">
+                <img  src="\image\Logo\_0002_22.png "  alt="logo" style=" display: inline; width: 270px; max-width: 100%; height: 50px">
+              </a>
+            </div> <!-- /.logo -->
+            <!-- ============================================================= LOGO : END ============================================================= -->
+          </div>
+          <!-- /.logo-holder -->
+
+          <div class="col-xs-12 col-sm-12 col-md-7 top-search-holder">
+            <!-- /.contact-row -->
+            <!-- ============================================================= SEARCH AREA ============================================================= -->
+            <div class="search-area" >
+              <form method="post" action="/user/search/products">
+                <div class="control-group">
+                  <input name="productSearch" class="search-field" placeholder="Search product name here...">
+                  <button class="search-button" style="background-color: #acb7c3;"></button>
+                </div>
+              </form>
+            </div>
+            <!-- /.search-area -->
+            <!-- ============================================================= SEARCH AREA : END ============================================================= -->
+          </div>
+          <!-- /.top-search-holder -->
+
+          <div class="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row" >
+            <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
+            <div class="dropdown dropdown-cart" >
+              <a href="/shopping-cart" class="dropdown-toggle lnk-cart" data-toggle="dropdown">
+                  <div class="items-cart-inner" ">
+                      <div class="basket" style="background-color: #415a77;"> 
+                          <i class="glyphicon glyphicon-shopping-cart"></i> 
+                      </div>
+                      <% if(session.cart) {%>
+                      <div class="basket-item-count">
+                          <span id="cartCounter" class="count"><%= session.cart ? session.cart.totalQty : '' %></span>
+                      </div>
+                      <div class="total-price-basket" style="background-color: #415a77;"> 
+                          <span class="lbl">cart -</span> 
+            
+                          <span class="total-price"> 
+                              <span class="sign">$</span>
+                              <span id="cartTotalPrice" class="value"><%= session.cart ? Math.round(session.cart.totalPrice,2) : '' %></span> 
+                          </span> 
+                          <% }else{ %>
+                            <div class="basket-item-count">
+                              <span id="cartCounter" class="count">0</span>
+                          </div>
+                          <div class="total-price-basket"  style="background-color: #415a77;"> 
+                              <span class="lbl">cart -</span> 
+                
+                              <span class="total-price"> 
+                                  <span class="sign">$</span>
+                                  <span id="cartTotalPrice" class="value">0</span> 
+                              </span> 
+                          <% } %>
+
+                      </div>
+                  </div>
+              </a>
+          </div>
+          
+          
+      
+         
+              <!-- /.dropdown-menu-->
+            </div>
+            <!-- /.dropdown-cart -->
+
+            <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= -->
+          </div>
+          <!-- /.top-cart-row -->
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.container -->
+
+    </div>
+    <!-- /.main-header -->
+
+    <!-- ============================================== NAVBAR ============================================== -->
+    <div class="header-nav animate-dropdown" style="background-color: #1B263B;">
+      <div class="container">
+        <div class="yamm navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed"
+              type="button">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          </div>
+          <div class="nav-bg-class">
+            <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
+              <div class="nav-outer">
+                <ul class="nav navbar-nav">
+                  <li class="active dropdown yamm-fw"> <a href="/">
+                  Home </a> </li>
+                    
+                  <% productCategory.forEach(category=> { %>
+                    <li class="dropdown yamm mega-menu">
+                      <a href="/" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">
+                        <%= category %>
+                      </a>
+                      <% if (productSubCategory && productSubCategory[category]) { %>
+                        <ul class="dropdown-menu container">
+                          <li>
+                            <div class="yamm-content ">
+                              <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                                  <ul class="links">
+                                    <% const sub=productSubCategory[category] %>
+                                      <% sub.forEach(subcategory=> { %>
+                                        <li><a
+                                            href="/category/<%= category %>/subcategory/<%= subcategory.subcate_name %>">
+                                            <%= subcategory.subcate_name %>
+                                          </a></li>
+                                        <% }) %>
+                                  </ul>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image">
+                                  <img class="img-responsive" src="images/banners/top-menu-banner.jpg" alt="">
+                                </div>
+                                <!-- /.yamm-content -->
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                        <% } %>
+                    </li>
+                    <% }) %> 
+                      
+                </ul>
+                <!-- /.navbar-nav -->
+                <div class="clearfix"></div>
+              </div>
+              <!-- /.nav-outer -->
+            </div>
+            <!-- /.navbar-collapse -->
+
+          </div>
+          <!-- /.nav-bg-class -->
+        </div>
+        <!-- /.navbar-default -->
+      </div>
+      <!-- /.container-class -->
+
+    </div>
+    <!-- /.header-nav -->
+    <!-- ============================================== NAVBAR : END ============================================== -->
+
+  </header>
+
+</body>
+
+</html>

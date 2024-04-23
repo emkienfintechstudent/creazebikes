@@ -1,0 +1,148 @@
+
+<main>
+    <section class="profile">
+     
+
+
+<div class="body-content outer-top-xs">
+	<div class="container">
+		<div class="row ">
+			<div class="shopping-cart">
+				<div class="shopping-cart-table ">
+					<% if(messages.save_account_success) { %>
+						<div class="w3-panel w3-green">
+							<h3>SUCCESS!</h3>
+							<p><%= messages.save_account_success %></p>
+						  </div>
+						
+	
+						<% }else if( messages.save_account_fail){   %>
+							<div class="w3-panel w3-red">
+								<h3>FAIL!</h3>
+								<p><%= messages.save_account_fail %></p>
+							  </div>
+						<% }else if (messages.change_password){ %>
+							<div class="w3-panel w3-green">
+								<h3>SUCCESS!</h3>
+								<p><%= messages.change_password %></p>
+							  </div>
+							<% }else if (messages.incorect_old_password){ %>
+								<div class="w3-panel w3-red">
+									<h3>FAIL!</h3>
+									<p><%= messages.incorect_old_password%></p>
+								  </div>
+								<% } %>
+	<div class="table-responsive">	
+        <form action="/user/account/profile/save" method="post">
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="cart-qty item">My profile</th>
+					<th class="cart-description item">Manage and protect your account</th>
+
+				</tr>
+			</thead><!-- /thead -->
+			<tfoot>
+				<tr>
+					<td colspan="7">
+						<div class="shopping-cart-btn">
+							<span class="">
+								<a href="/" class="btn btn-upper btn-primary outer-left-xs"><p style="font-weight: bold;">Continue Shopping</p></a>
+								<button type="submit" href="/shopping-cart" class="btn btn-upper btn-primary pull-right outer-right-xs"><P style="font-weight: BOLD;">Save</P></button>
+							</span>
+						</div><!-- /.shopping-cart-btn -->
+					</td>
+				</tr>
+			</tfoot>
+		
+
+				
+		<tbody>
+				<tr>
+					<td class="cart-product-sub-total " ><span class="cart-sub-total-price"> Username: </span></td>
+					<td class="cart-product-sub-total"><span class="cart-product-description" style="text-transform: lowercase;"> <%= user.username %> </span></td>
+				</tr>
+				<tr>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price" > Name: </span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> <input type="text" name="name" value="<%= user.name %>" required>   </span></td>
+				</tr>
+				<tr>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> Birth date: </span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> <p> <input type="text" name="birth_date" value="<%= moment(user.birth_date).format('MM/DD/YYYY') %>" required></p> <p>(Format MM/DD/YYYY)</p>  </span></td>
+				</tr>
+				<tr>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> Gender: </span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> <select name="gender" style="width: 190px;">
+                        <% if (user.gender == 'M') { %>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                        <option value="O">Other</option>
+                        <% }else if(user.gender == 'F') { %>
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                        <option value="O">Other</option>
+                       <% }else{   %>
+                        <option value="O">Other</option>
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                       <%  }  %>
+                      </select> </span></td>
+
+				</tr>
+				<tr>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> Phone Number: </span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> <input type="text" name="phone_number" value="<%= user.phone_number %>" required> </span></td>
+				</tr>
+				<tr>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> Address: </span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> <textarea  name="address"  required><%=user.address %></textarea>
+                    </span></td>
+				</tr>
+            
+                <tr>
+					<td class="cart-product-sub-total " ><span class="cart-sub-total-price"> Password: </span></td>
+					<td class="cart-product-sub-total"><span class="cart-product-description" style="text-transform: lowercase;"> ************   <a href="/user/account/profile/password">change</a></span></td>
+				</tr>
+            </tbody><!-- /tbody -->    
+      
+			
+		</table><!-- /table -->      
+        
+            </form>
+	</div>
+
+
+
+
+    </section>
+
+    <!-- Add more sections for additional content -->
+
+</main>
+
+
+<script>
+ $(document).ready(function() {
+    $('form').submit(function(e) {
+        // Lưu lại tham chiếu của form
+        var form = this;
+
+        // Ngăn chặn việc gửi form một cách thông thường
+        e.preventDefault();
+
+        // Hiển thị thông báo "Profile updated" bằng SweetAlert
+        Swal.fire({
+            icon: 'success',
+            title: 'Profile updated',
+            showConfirmButton: false,
+            timer: 1500, // Thời gian hiển thị thông báo (milliseconds)
+            onClose: function() {
+                // Sau khi thông báo đóng, sử dụng hàm submit() để gửi form
+                form.submit();
+            }
+        });
+    });
+});
+
+</script>
+

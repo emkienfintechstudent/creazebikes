@@ -1,0 +1,69 @@
+
+
+
+<div class="body-content outer-top-xs">
+	<div class="container">
+		<div class="row ">
+			<div class="shopping-cart">
+				<div class="shopping-cart-table ">
+					<% if(messages.success) { %>
+						<div class="w3-panel w3-green">
+							<h3>Success!</h3>
+							<p><%= messages.success %></p>
+						  </div>
+						
+	
+						<% } %>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="cart-qty item">Order ID</th>
+					<th class="cart-description item">Address</th>
+					<th class="cart-product-name item">Date</th>
+					<th class="cart-product-name item">Phone Number</th>
+					<th class="cart-product-name item">Status</th>
+					<th class="cart-product-name item"></th>
+
+				</tr>
+			</thead><!-- /thead -->
+			<tfoot>
+				<tr>
+					<td colspan="7">
+						<div class="shopping-cart-btn">
+							<span class="">
+								<a href="/" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
+								<a href="/shopping-cart" class="btn btn-upper btn-primary pull-right outer-right-xs">Update shopping cart</a>
+							</span>
+						</div><!-- /.shopping-cart-btn -->
+					</td>
+				</tr>
+			</tfoot>
+			<tbody>
+			<% if(locals.orders.length) {%>
+			<%orders.forEach(order=>  { %>
+				
+		
+				<tr>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> <%= order.cart_id %> </span></td>
+
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> <%= order.address %> </span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> <%= moment(order.created_at).format('DD/MM/YYYY') %></span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><%= order.phone_number %> </span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><%= order.status %> </span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><button><a href="/user/order/<%= order.cart_id %>">Detail</a> </button> </span></td>
+
+				</tr>
+				<%	});}else{%>
+					<tr>
+						<td class="p-4"><span>No orders found!</span></td>
+					</tr>
+				<% }  %>
+			</tbody><!-- /tbody -->
+		</table><!-- /table -->
+	</div>
+
+
+</div><!-- /.body-content -->
+
+

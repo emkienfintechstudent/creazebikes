@@ -1,0 +1,138 @@
+﻿
+<div class="breadcrumb">
+
+  </div><!-- /.breadcrumb -->
+  
+  <div class="body-content">
+	<div class="container">
+	  <div class="contact-page">
+		<div class="row">
+		  <div class="col-md-12 contact-map outer-bottom-vs">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d931.3295291478202!2d105.78355552026088!3d20.979881599933506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135aba53c7b18b5%3A0xd3298e40937da161!2sT%C3%B2a%20CT7%20Booyoung%20Vina%20M%E1%BB%97%20Lao!5e0!3m2!1svi!2s!4v1709599945945!5m2!1svi!2s" width="600" height="450" style="border:0"></iframe>
+		  </div>
+		  <div class="col-md-9 contact-form">
+			<% if(messages.feedback_success) { %>
+				<div class="w3-panel w3-green">
+					<h3>SUCCESS!</h3>
+					<p><%= messages.feedback_success%></p>
+				  </div>
+				  <% } %>
+			<form class="register-form" role="form" method="post" action="/feedback">
+				<div class="form-group">
+					<label class="info-title" for="exampleInputTitle">Email <span>*</span></label>
+					<input type="email" class="form-control unicase-form-control text-input" id="exampleInputTitle" placeholder="email" name="email" required>
+				  </div>
+				<div class="form-group">
+				<label class="info-title" for="exampleInputTitle">Title <span>*</span></label>
+				<input type="text" class="form-control unicase-form-control text-input" id="exampleInputTitle" placeholder="Title" name="title" required>
+			  </div>
+  
+			  <div class="form-group">
+				<label class="info-title" for="exampleInputComments">Your Contents <span>*</span></label>
+				<textarea class="form-control unicase-form-control" id="exampleInputComments" name="content" required></textarea>
+			  </div>
+  
+			  <div class="outer-bottom-small m-t-20">
+				<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Send Message</button>
+			  </div>
+			</form>
+		  </div>
+  
+		  <div class="col-md-3 contact-info">
+			<div class="contact-title">
+			  <h4>Information</h4>
+			</div>
+			<div class="clearfix address">
+			  <span class="contact-i"><i class="fa fa-map-marker"></i></span>
+			  <span class="contact-span">P. Vũ Trọng Khánh, P. Mộ Lao, Hà Đông, Hà Nội 100000, Việt Nam</span>
+			</div>
+			<div class="clearfix phone-no">
+			  <span class="contact-i"><i class="fa fa-mobile"></i></span>
+			  <span class="contact-span">0398686399 (Mr.Dũng)<br>0764637526 (Mr.Hiển)</span>
+			</div>
+			<div class="clearfix email">
+			  <span class="contact-i"><i class="fa fa-envelope"></i></span>
+			  <span class="contact-span">crazebikes@gmail.com</span>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
+		<!-- ============================================== BRANDS CAROUSEL ============================================== -->
+<div id="brands-carousel" class="logo-slider wow fadeInUp">
+
+		<div class="logo-slider-inner">	
+			<div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
+				<div class="item m-t-15">
+					<a href="#" class="image">
+						<img data-echo="assets/images/brands/brand1.png" src="assets\images\blank.gif" alt="">
+					</a>	
+				</div><!--/.item-->
+
+				<div class="item m-t-10">
+					<a href="#" class="image">
+						<img data-echo="assets/images/brands/brand2.png" src="assets\images\blank.gif" alt="">
+					</a>	
+				</div><!--/.item-->
+
+				<div class="item">
+					<a href="#" class="image">
+						<img data-echo="assets/images/brands/brand3.png" src="assets\images\blank.gif" alt="">
+					</a>	
+				</div><!--/.item-->
+
+				<div class="item">
+					<a href="#" class="image">
+						<img data-echo="assets/images/brands/brand4.png" src="assets\images\blank.gif" alt="">
+					</a>	
+				</div><!--/.item-->
+
+				<div class="item">
+					<a href="#" class="image">
+						<img data-echo="assets/images/brands/brand5.png" src="assets\images\blank.gif" alt="">
+					</a>	
+				</div><!--/.item-->
+
+				<div class="item">
+					<a href="#" class="image">
+						<img data-echo="assets/images/brands/brand6.png" src="assets\images\blank.gif" alt="">
+					</a>	
+				</div><!--/.item-->
+
+				<div class="item">
+					<a href="#" class="image">
+						<img data-echo="assets/images/brands/brand2.png" src="assets\images\blank.gif" alt="">
+					</a>	
+				</div><!--/.item-->
+
+				<div class="item">
+					<a href="#" class="image">
+						<img data-echo="assets/images/brands/brand4.png" src="assets\images\blank.gif" alt="">
+					</a>	
+				</div><!--/.item-->
+
+				<div class="item">
+					<a href="#" class="image">
+						<img data-echo="assets/images/brands/brand1.png" src="assets\images\blank.gif" alt="">
+					</a>	
+				</div><!--/.item-->
+
+				<div class="item">
+					<a href="#" class="image">
+						<img data-echo="assets/images/brands/brand5.png" src="assets\images\blank.gif" alt="">
+					</a>	
+				</div><!--/.item-->
+		    </div><!-- /.owl-carousel #logo-slider -->
+		</div><!-- /.logo-slider-inner -->
+	
+</div><!-- /.logo-slider -->
+
+	
+	
+
+	
+
+</div></body>
+</html>

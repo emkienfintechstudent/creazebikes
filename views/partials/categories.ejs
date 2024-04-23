@@ -1,0 +1,36 @@
+<div class="side-menu animate-dropdown outer-bottom-xs">
+    <div class="head"><i class="icon fa fa-align-justify fa-fw"></i> Categories</div>
+    <nav class="yamm megamenu-horizontal">
+      <ul class="nav">
+        <% productCategory.forEach(category => { %>
+        <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon fa fa-shopping-bag" aria-hidden="true"></i><%= category %></a>
+          <ul class="dropdown-menu mega-menu">
+            <li class="yamm-content">
+              <div class="row">
+                <div class="col-sm-12 col-md-3">
+                  <ul class="links list-unstyled">
+                    <% if (productSubCategory && productSubCategory[category]) { %>
+                      <% const sub = productSubCategory[category] %>
+                      <% sub.forEach(subcategory => { %>
+                        <li><a href="/category/<%= category %>/subcategory/<%= subcategory.subcate_name %>"><%= subcategory.subcate_name %></a></li>
+                        <% }) %>
+                  </ul>
+                </div>
+             
+            
+              </div>
+              <!-- /.row --> 
+            </li>
+            <!-- /.yamm-content -->
+          </ul>
+          <% } %>
+          <!-- /.dropdown-menu --> </li>
+          <% }) %>
+        <!-- /.menu-item -->
+        
+      </ul>
+      <!-- /.nav --> 
+    </nav>
+    <!-- /.megamenu-horizontal --> 
+  </div>
+  <!-- /.side-menu --> 

@@ -1,0 +1,206 @@
+
+<div class="alert-update-user alert alert-primary" role="alert">
+	Admin status updated successfully!
+</div>
+<div class="alert-update-role-admin alert alert-primary" role="alert">
+	Admin role updated successfully!
+</div>
+   <form id="form1"   action="/admin/admin" method="post" onsubmit="return validateForm() ">
+        <b>Username:</b> <input type="text" name="username" required>
+        <br><br>
+        <b>Password:</b> <input type="password" name="password" required>
+        <br><br>
+        <b>Name:</b> <input type="text" name="name" required>
+        <br><br>
+        <b>Phone number:</b> <input type="text" name="phoneNumber" required>
+        <br><br>
+        <b>Email:</b> <input type="email" name="email" required>
+        <br><br>
+        <b>Address:</b> <input type="text" name="address" required>
+        <br><br>
+        <b>Role:</b>
+        <select name="role_id" required>
+            <option value="1">Quản lý toàn bộ</option>
+            <option value="2">Quản lý sản phẩm</option>
+            <option value="3">Quản lý người dùng</option>
+            <option value="4">Quản lý đơn hàng</option>
+        </select>
+        <br><br>
+        <button type="submit" id="submit">Submit</button>
+    </form>
+      <div class="overlay" style="display: none;"></div>
+    <body>
+
+        <div class="lucent before:content-[''] before:z-[-1] before:h-screen before:w-screen before:bg-lucent before:bg-cover before:top-0 before:fixed after:content-[''] after:z-[-1] after:h-screen after:w-screen after:bg-gradient-to-b after:from-theme-1 after:to-theme-2/50 after:top-0 after:fixed">
+            <div class="h-screen relative loading-page loading-page--before-hide [&.loading-page--before-hide]:before:block [&.loading-page--hide]:before:opacity-0 before:content-[''] before:transition-opacity before:duration-300 before:hidden before:h-screen before:w-screen before:fixed before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:z-[60] [&.loading-page--before-hide]:after:block [&.loading-page--hide]:after:opacity-0 after:content-[''] after:transition-opacity after:duration-300 after:hidden after:h-16 after:w-16 after:animate-pulse after:fixed after:opacity-50 after:inset-0 after:m-auto after:bg-loading-puff after:bg-cover after:z-[61]">
+                <div class="absolute inset-0 xl:inset-5 flex after:absolute after:inset-0 after:rounded-xl after:bg-gradient-to-b after:from-white/10 after:to-white/20 after:backdrop-blur-xl after:content-['']">
+                    <div class="xl:ml-0 shadow-xl transition-[margin] duration-300 xl:shadow-none z-50 absolute inset-y-0 left-0 side-menu group after:content-[''] after:fixed after:inset-0 after:bg-black/80 after:xl:hidden side-menu--collapsed [&.side-menu--mobile-menu-open]:ml-0 [&.side-menu--mobile-menu-open]:after:block -ml-[275px] after:hidden">
+            
+                        <%- include("partials/leftside.ejs") %>
+                       
+                    </div>
+                    <div class="content relative transition-[margin,width] duration-100 w-full after:absolute after:inset-0 after:bg-slate-100 after:content-[''] after:xl:rounded-xl after:z-10 content--compact xl:ml-[275px] [&.content--compact]:xl:ml-[91px]">
+                        <div class="scrollable-ref z-20 h-full w-full overflow-y-auto px-5 pb-5 pt-[90px] [&_.simplebar-content]:p-0 [&_.simplebar-track.simplebar-vertical]:w-[10px] [&_.simplebar-track.simplebar-vertical]:mr-0.5 [&_.simplebar-track.simplebar-vertical_.simplebar-scrollbar]:before:bg-slate-600/30">
+                            <div class="relative z-20">
+                                <div class="intro-y mt-8 flex flex-col items-center sm:flex-row">
+                                    <h2 class="mr-auto text-lg font-medium">Admins</h2>
+                                    <div class="mt-4 flex w-full flex-wrap gap-y-3 sm:mt-0 sm:w-auto">
+                                        <button id="formButton" data-tw-merge="" class="transition duration-200 border inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary mr-2 shadow-md">
+                                            Add New admin</button>
+                                    </div>
+                                </div>
+                                <!-- BEGIN: Filter -->
+                                <div class="intro-y box mt-7 flex flex-col gap-y-3 p-5 xl:flex-row">
+                                    <div data-tw-merge="" class="block sm:flex group form-inline flex-1 flex-col items-start gap-y-2 xl:mr-6 xl:flex-row xl:items-center">
+                                        <label data-tw-merge="" for="crud-form-1" class="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 group-[.form-inline]:sm:mr-5 group-[.form-inline]:sm:text-right">
+                                            Product Name
+                                        </label>
+                                        <input data-tw-merge="" id="crud-form-1" type="text" placeholder="Product name.." class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border file:mr-4 file:py-2 file:px-4 file:rounded-l-md file:border-0 file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10">
+                                    </div>
+                                    
+                                    <div data-tw-merge="" class="block sm:flex group form-inline flex-1 flex-col items-start gap-y-2 xl:mr-6 xl:flex-row xl:items-center">
+                                        <label data-tw-merge="" for="crud-form-1" class="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 group-[.form-inline]:sm:mr-5 group-[.form-inline]:sm:text-right">
+                                            Status
+                                        </label>
+                                        <select data-tw-merge="" aria-label="Default select example" class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md py-2 px-3 pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1">
+                                            <option>Active</option>
+                                            <option>Inactive</option>
+                                        </select>
+                                    </div>
+                                    <button data-tw-merge="" class="transition duration-200 border inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary shadow-md"><i data-tw-merge="" data-lucide="search" class="stroke-[1] mr-2 h-4 w-4"></i>
+                                        Filter</button>
+                                </div>
+                                <!-- END: Filter -->
+                                <!-- BEGIN: Data List -->
+                                <div class="intro-y overflow-auto lg:overflow-visible">
+                                    <table data-tw-merge="" class="w-full text-left border-separate border-spacing-y-[10px]">
+                                        <thead>
+                                            <tr>
+                                                <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    Id
+                                                </th>
+                                                <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    User name
+                                                </th>
+                                                <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    Name
+                                                </th>
+                                                <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    Phone number
+                                                </th>
+                                                <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    Role
+                                                </th>
+                                                <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    Status
+                                                </th>             
+                                                <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    address
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                         <% if(locals.admins){admins.forEach(admin =>  { %>
+                        
+                                   
+                                            <tr data-tw-merge="" class="intro-x">
+                                                <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    <%= admin.id %>
+                                                </td>
+                                                <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    <%= admin.username %>
+                                                </td>
+                                                <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    <%= admin.name %>
+                                                </td>
+                                                <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    <%= admin.phone_number %>
+                                                </td>
+                                                <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    <form >
+                                                        <!-- action="/admin/order/status" method="post" -->
+                                                        <input type="hidden" value="<% admin.id %>">
+                                                        <!-- onchange="this.form.submit()" -->
+                                                        <select  class="user-role-select"  data-admin-id="<%= admin.id %>"   > 
+                                                        <option value="1" <%= admin.role_id === 1 ? 'selected' : '' %>> All manager  </option> 
+                                                        <option value="2" <%= admin.role_id === 2 ? 'selected' : '' %>> Products manager  </option>
+                                                        <option value="3" <%= admin.role_id === 3 ? 'selected' : '' %>> Users manager   </option> 
+                                                        <option value="4" <%= admin.role_id === 4 ? 'selected' : '' %>> Orders manager     </option> 
+                                                    </select></form>
+
+                                                </td>
+                                                <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                
+                                                    <form >
+                                                        <!-- action="/admin/order/status" method="post" -->
+                                                        <input type="hidden" value="<% admin.id %>">
+                                                        <!-- onchange="this.form.submit()" -->
+                                                        <select name="plan" class="user-status-select"  data-user-id="<%= admin.id %>"   > 
+                                                        <option value="0" <%= admin.status_id === 0 ? 'selected' : '' %>> Locked  </option> 
+                                                        <option value="1" <%= admin.status_id === 1 ? 'selected' : '' %>> Active </option> 
+                                            
+                                                    </select></form>
+                                                </td>
+                                              
+                                                <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    <%= admin.address %>
+                                                </td>
+                                                <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    <button>edit</button>
+                                                </td>
+                                              
+                                            </tr>
+                                               <% });} %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END: Data List -->
+                                <!-- BEGIN: Pagination -->
+                                <div class="intro-y mb-12 mt-5 flex flex-wrap items-center sm:flex-row sm:flex-nowrap">
+                                    <nav class="w-full sm:mr-auto sm:w-auto">
+                                        <ul class="flex w-full mr-0 sm:mr-auto sm:w-auto">
+                                            <li class="flex-1 sm:flex-initial">
+                                                <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevrons-left" class="stroke-[1] h-4 w-4"></i></a>
+                                            </li>
+                                            <li class="flex-1 sm:flex-initial">
+                                                <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevron-left" class="stroke-[1] h-4 w-4"></i></a>
+                                            </li>
+                                            <li class="flex-1 sm:flex-initial">
+                                                <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">...</a>
+                                            </li>
+                                            <li class="flex-1 sm:flex-initial">
+                                                <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">1</a>
+                                            </li>
+                                            <li class="flex-1 sm:flex-initial">
+                                                <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3 !box dark:bg-darkmode-400">2</a>
+                                            </li>
+                                            <li class="flex-1 sm:flex-initial">
+                                                <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">3</a>
+                                            </li>
+                                            <li class="flex-1 sm:flex-initial">
+                                                <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">...</a>
+                                            </li>
+                                            <li class="flex-1 sm:flex-initial">
+                                                <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevron-right" class="stroke-[1] h-4 w-4"></i></a>
+                                            </li>
+                                            <li class="flex-1 sm:flex-initial">
+                                                <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevrons-right" class="stroke-[1] h-4 w-4"></i></a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    <select data-tw-merge="" class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out text-sm border-slate-200 shadow-sm rounded-md py-2 px-3 pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1 !box mt-3 w-20 sm:mt-0">
+                                        <option>10</option>
+                                        <option>25</option>
+                                        <option>35</option>
+                                        <option>50</option>
+                                    </select>
+                                </div>
+                                <!-- END: Pagination -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+  
