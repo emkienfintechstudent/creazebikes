@@ -7,10 +7,11 @@ import router from "./routes/web.js";
 import session from "express-session";
 import GoogleStrategy from "passport-google-oauth2"
 import connectPgSimple from 'connect-pg-simple'; // Hoặc bạn có thể sử dụng một package khác để lưu trữ session
+import env from "dotenv"
 const pgSession = connectPgSimple(session);
 const app = express();
 const port = 3000;
-
+env.config();
  app.use(expressLayouts)
 app.use(
   session({
@@ -18,7 +19,7 @@ app.use(
       pool: db,
       tableName: 'session'
     }),
-    secret: "secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -41,8 +42,8 @@ app.use(router)
 // connect db
 db.connect();
 passport.use("google", new GoogleStrategy({
-  clientID: "206433335107-7nucg78e97p9rm0l21e5amgtli030406.apps.googleusercontent.com",
-  clientSecret: "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",
+  clientID: process.env.GG_CLIENT_ID,
+  clientSecret: process.env.GG_CLIENT_SECRET,
   callbackURL: "http://localhost:3000/auth/google/shopping-cart",
   userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
 },

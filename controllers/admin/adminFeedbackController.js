@@ -2,8 +2,8 @@ import { query } from 'express';
 import db from '../../config/connectDB.js';
 import moment from "moment";
 import nodemailer from 'nodemailer';
-
-
+import env from "dotenv"
+env.config()
 function AdminFeedbackController() {
     return {
         async index(req, res) {
@@ -50,7 +50,7 @@ function AdminFeedbackController() {
               
                 auth: {
                     user: 'crazebikescompany@gmail.com',
-                    pass: 'oxqdfaaifudssnce'
+                    pass: process.env.EMAIL_PASS
                 }
             });
 
