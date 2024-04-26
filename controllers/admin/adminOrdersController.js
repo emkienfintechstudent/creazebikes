@@ -9,12 +9,7 @@ function AdminOrderController() {
         res.render("admin/orders.ejs",{layout: 'admin/layouts/header_footer',orders:result.rows,moment:moment})
         
     },
-    async update(req, res) {
-      const result = await db.query( `update carts
-      set status_id = $1
-      where id = $2 returning *` ,[req.body.status,req.body.cartId])
-      console.log(result.rows)
-    }
+ 
 }
 }
 

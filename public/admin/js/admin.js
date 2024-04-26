@@ -1,7 +1,5 @@
-// Hàm để cập nhật trạng thái đơn hàng
-function updateOrderStatus(order) {
-    axios.post('/admin/order/status', order)
-        
+function updateStatus(object) {
+    axios.post('/admin/update/status', object)
     
     .then(res => {
             // Xử lý phản hồi từ máy chủ nếu cần
@@ -10,18 +8,6 @@ function updateOrderStatus(order) {
             // Xử lý lỗi nếu có
         });
 }
-
-function updateUserStatus(user) {
-    axios.post('/admin/user/status', user)
-    
-    .then(res => {
-            // Xử lý phản hồi từ máy chủ nếu cần
-        })
-        .catch(err => {
-            // Xử lý lỗi nếu có
-        });
-}
-
 
 // Lặp qua tất cả các phần tử select có class là 'order-status-select'
 document.querySelectorAll('.order-status-select').forEach(select => {
@@ -36,12 +22,13 @@ document.querySelectorAll('.order-status-select').forEach(select => {
         console.log(newStatus);
         // Tạo đối tượng đơn hàng để gửi đi
         const order = {
-            cartId: this.dataset.orderId,
-            status: newStatus
+            id: this.dataset.orderId,
+            status: newStatus,
+            table: 'carts'
         };
         console.log(order)
         // Gọi hàm để cập nhật trạng thái đơn hàng
-        updateOrderStatus(order);
+        updateStatus(order)
     });
 });
 
@@ -55,15 +42,16 @@ document.querySelectorAll('.user-status-select').forEach(select => {
 							}, 1000);
         // Lấy giá trị mới của trạng thái user  từ select
         const newStatus = this.value;
-        console.log(newStatus);
+        // console.log(newStatus);
         // Tạo đối tượng người dùng để gửi đi
         const user = {
-            userId: this.dataset.userId,
-            status: newStatus
+            id: this.dataset.userId,
+            status: newStatus,
+            table: 'users'
         };
         console.log(user)
         // Gọi hàm để cập nhật trạng thái nguời dùng
-        updateUserStatus(user);
+        updateStatus(user)
     });
 });
 

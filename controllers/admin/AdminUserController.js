@@ -10,12 +10,7 @@ function AdminUserController() {
         res.render("admin/users.ejs",{ users : result.rows, layout: 'admin/layouts/header_footer',moment:moment})
         
     },
-    async update(req, res) {
-      const result = await db.query( `update users
-      set status_id = $1
-      where id = $2 returning *` ,[req.body.status,req.body.userId])
-      console.log(result.rows)
-}
+   
     }
   }
 export default AdminUserController;
