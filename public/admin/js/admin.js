@@ -8,53 +8,32 @@ function updateStatus(object) {
             // Xử lý lỗi nếu có
         });
 }
-
-// Lặp qua tất cả các phần tử select có class là 'order-status-select'
-document.querySelectorAll('.order-status-select').forEach(select => {
+// subcategories - status
+document.querySelectorAll('.status-select').forEach(select => {
     // Gắn sự kiện change vào mỗi phần tử select
     select.addEventListener('change', function() {
-        $('.alert-update-cart').css("display", "block");
+        $('.alert-update-status').css("display", "block");
 							setTimeout(function () {
-								$('.alert-update-cart').css("display", "none");
-							}, 1000);
-        // Lấy giá trị mới của trạng thái đơn hàng từ select
-        const newStatus = this.value;
-        console.log(newStatus);
-        // Tạo đối tượng đơn hàng để gửi đi
-        const order = {
-            id: this.dataset.orderId,
-            status: newStatus,
-            table: 'carts'
-        };
-        console.log(order)
-        // Gọi hàm để cập nhật trạng thái đơn hàng
-        updateStatus(order)
-    });
-});
-
-// Lặp qua tất cả các phần tử select có class là 'order-status-select'
-document.querySelectorAll('.user-status-select').forEach(select => {
-    // Gắn sự kiện change vào mỗi phần tử select
-    select.addEventListener('change', function() {
-        $('.alert-update-user').css("display", "block");
-							setTimeout(function () {
-								$('.alert-update-user').css("display", "none");
+								$('.alert-update-status').css("display", "none");
 							}, 1000);
         // Lấy giá trị mới của trạng thái user  từ select
         const newStatus = this.value;
         // console.log(newStatus);
         // Tạo đối tượng người dùng để gửi đi
-        const user = {
-            id: this.dataset.userId,
+        console.log(this.dataset) 
+        console.log(Object.keys(this.dataset)[0]) 
+        console.log(Object.values(this.dataset)[0]) 
+
+        const object = {
+            id: Object.values(this.dataset)[0],
             status: newStatus,
-            table: 'users'
+            table: Object.keys(this.dataset)[0]
         };
-        console.log(user)
+        console.log(object)
         // Gọi hàm để cập nhật trạng thái nguời dùng
-        updateStatus(user)
+        updateStatus(object)
     });
 });
-
 
 function updateAdminRole(admin) {
     axios.post('/admin/admin/role', admin)

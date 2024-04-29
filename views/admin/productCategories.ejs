@@ -1,6 +1,4 @@
-<div class="alert-update-status alert alert-primary" role="alert">
-    Status updated successfully!
-</div>
+
 <body>
     <div>
         <div data-tw-backdrop="" aria-hidden="true" tabindex="-1" id="theme-switcher" class="modal group bg-gradient-to-b from-theme-1/50 via-theme-2/50 to-black/50 transition-[visibility,opacity] w-screen h-screen fixed left-0 top-0 [&:not(.show)]:duration-[0s,0.2s] [&:not(.show)]:delay-[0.2s,0s] [&:not(.show)]:invisible [&:not(.show)]:opacity-0 [&.show]:visible [&.show]:opacity-100 [&.show]:duration-[0s,0.4s]">
@@ -420,7 +418,7 @@
                     <div class="scrollable-ref z-20 h-full w-full overflow-y-auto px-5 pb-5 pt-[90px] [&_.simplebar-content]:p-0 [&_.simplebar-track.simplebar-vertical]:w-[10px] [&_.simplebar-track.simplebar-vertical]:mr-0.5 [&_.simplebar-track.simplebar-vertical_.simplebar-scrollbar]:before:bg-slate-600/30">
                         <div class="relative z-20">
                             <div class="intro-y mt-8 flex flex-col items-center sm:flex-row">
-                                <h2 class="mr-auto text-lg font-medium">Orders</h2>
+                                <h2 class="mr-auto text-lg font-medium">Users</h2>
                            
                             </div>
                     
@@ -430,65 +428,55 @@
                                         <thead>
                                             <tr>
                                                 <th class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                    Order ID
+                                                    ID
                                                 </th>
                                                 <th class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                    Customer name
+                                                    Name
                                                 </th>
                                                 <th class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                    Address
+                                                    Created at/by
                                                 </th>
-                                              
-                                              
                                                 <th class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                   Total 
+                                                    Product category name
+                                                </th>
+                                                <th class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                   Status
                                                 </th> 
-                                                 <th class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                    status
-                                                </th>
+                                                
                                             </tr>
                                         </thead>
                                     <tbody>
-                                        <% orders.forEach(order => {  %>
+                                        <% product_categories.forEach(product_category=> {  %>
                                         <tr data-tw-merge="" class="intro-x">
                                             <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                <a class="whitespace-nowrap underline decoration-dotted" href="#"><%= order.cart_id %></a>
+                                                <%= product_category.id %>
+                                            </td>
+                                            <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                <%= product_category.name %>
                                             </td>
                                             <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                <div class="whitespace-nowrap font-medium"><%= order.customer_name%></div>
-                                                <div class="mt-1 text-xs text-slate-500"><%=order.phone_number%></div>
-                                            </td>
-                                          
-                                            <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                <div class="whitespace-nowrap"><%=order.address%></div>
-                                                <div class="mt-1 text-xs text-slate-500">Created at <%= moment(order.created_at).format('DD/MM/YYYY') %></div>
-                                                
-                                            </td> 
-                                             <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                <div class="pr-16"><%= order.total_price %></div>
-                                            </td> 
-                                            <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                             
-                                                <form >
-                                                    <!-- action="/admin/order/status" method="post" -->
-                                                    <input type="hidden" name="orderId" value="<% order.cart_id %>">
-                                                    <!-- onchange="this.form.submit()" -->
-                                                    <select name="plan" class="status-select" data-carts="<%= order.cart_id %>" > 
-                                                    <option value="3" <%= order.status === 3 ? 'selected' : '' %>> wait for confirmation  </option> 
-                                                    <option value="4" <%= order.status === 4 ? 'selected' : '' %>>Confirm pending delivery </option> 
-                                                    <option value="5" <%= order.status === 5 ? 'selected' : '' %>>Delivering </option> 
-                                                    <option value="6" <%= order.status === 6 ? 'selected' : '' %>>Delivered successfully</option> 
-                                                    <option value="7" <%= order.status === 7 ? 'selected' : '' %>>Wait for refund</option> 
-                                                    <option value="8" <%= order.status === 8 ? 'selected' : '' %>>Refunded</option> 
-                                                    <option value="9" <%= order.status === 9 ? 'selected' : '' %>>cancelled</option> 
-                                                </select></form>
+                                                <div class="whitespace-nowrap font-medium"><%= moment(product_category.created_at).format('MMMM Do YYYY, h:mm:ss a') %></div>
+                                                <div class="mt-1 text-xs text-slate-500"><%=product_category.created_by%></div>
                                             </td>
                                            
+                                            <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                <form >
+                                                    <!-- action="/admin/order/status" method="post" -->
+                                                    <input type="hidden" name="orderId" value="<% product_category.id %>">
+                                                    <!-- onchange="this.form.submit()" -->
+                                                    <select name="plan" class="status-select"  data-product_categories="<%= product_category.id %>"   > 
+                                                    <option value="0" <%= product_category.status_id === 0 ? 'selected' : '' %>> Locked  </option> 
+                                                    <option value="1" <%= product_category.status_id === 1 ? 'selected' : '' %>> Active </option> 
+                                        
+                                                </select></form>
+                                            </td>
+                                            
+                                        
                                             <td data-tw-merge="" class="px-5 w-56 border border-l-0 border-r-0 border-slate-200 bg-white first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r shadow-[20px_3px_20px_#0000000b] dark:border-darkmode-600 dark:bg-darkmode-600 py-0 relative before:block before:w-px before:h-8 before:bg-slate-200 before:absolute before:left-0 before:inset-y-0 before:my-auto before:dark:bg-darkmode-400">
                                                 <div class="flex items-center justify-center">
-                                                    <a class="mr-3 flex items-center whitespace-nowrap" href="javascript:;">
+                                                    <a class="mr-3 flex items-center whitespace-nowrap" href="/admin/productcategories/<%= product_category.id %>">
                                                         <i data-tw-merge="" data-lucide="file-text" class="stroke-[1] mr-1 h-4 w-4"></i>
-                                                        View Details
+                                                        Edit
                                                     </a>
                                                 </div>
                                             </td>
