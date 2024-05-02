@@ -21,7 +21,7 @@ router.get("/admin/users",AdminUserController().index );
 router.get("/admin/profile", getAdminProfile);
 router.get("/admin/feedbacks", AdminFeedbackController().index);
 router.get("/admin/oveview/1", getDashboardOverview1);
-
+router.get("/admin/product/:id", AdminProductController().AdminDetailProduct)
 // POST
 
 router.post("/admin/update/status", StatusController().update)
