@@ -1,48 +1,114 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+ <style>
+   .alert-edit-product {
+    padding: 15px;
+    border: 1px solid #666;
+    background: #fff;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+ </style>
+  <div class="alert-edit-product alert alert-primary" role="alert">
+    Edit product successfully!
+</div>
 <body>
-   
-    <div class="lucent before:content-[''] before:z-[-1] before:h-screen before:w-screen before:bg-lucent before:bg-cover before:top-0 before:fixed after:content-[''] after:z-[-1] after:h-screen after:w-screen after:bg-gradient-to-b after:from-theme-1 after:to-theme-2/50 after:top-0 after:fixed">
-        <div class="h-screen relative loading-page loading-page--before-hide [&.loading-page--before-hide]:before:block [&.loading-page--hide]:before:opacity-0 before:content-[''] before:transition-opacity before:duration-300 before:hidden before:h-screen before:w-screen before:fixed before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:z-[60] [&.loading-page--before-hide]:after:block [&.loading-page--hide]:after:opacity-0 after:content-[''] after:transition-opacity after:duration-300 after:hidden after:h-16 after:w-16 after:animate-pulse after:fixed after:opacity-50 after:inset-0 after:m-auto after:bg-loading-puff after:bg-cover after:z-[61]">
-            <div class="absolute inset-0 xl:inset-5 flex after:absolute after:inset-0 after:rounded-xl after:bg-gradient-to-b after:from-white/10 after:to-white/20 after:backdrop-blur-xl after:content-['']">
-              
-                <div class="content relative transition-[margin,width] duration-100 w-full after:absolute after:inset-0 after:bg-slate-100 after:content-[''] after:xl:rounded-xl after:z-10 content--compact xl:ml-[275px] [&.content--compact]:xl:ml-[91px]">
-                    <div class="scrollable-ref z-20 h-full w-full overflow-y-auto px-5 pb-5 pt-[90px] [&_.simplebar-content]:p-0 [&_.simplebar-track.simplebar-vertical]:w-[10px] [&_.simplebar-track.simplebar-vertical]:mr-0.5 [&_.simplebar-track.simplebar-vertical_.simplebar-scrollbar]:before:bg-slate-600/30">
 
-                                <p style="font-size: 50px;">                                       <a type="button" class="btn btn-primary active" data-bs-toggle="button" aria-pressed="true" href="/admin/feedbacks">Back </a>
-                                  ID: <%=  %></p> 
-                                <br>
-                                <hr>
-                                <table class="table">
-                                
-                                    <tbody>
-                                      <tr>
-                                        <th scope="row">Product name: </th>
-                                        <td><input type="text" name="" id=""><%=  %></td>
-                                       
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">Product subcategory name:</th>
-                                        <td><%=  %></td>
-                                      
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">Product category name:</th>
-                                        <td colspan="2"><%= %></td>
-                                       
-                                      </tr>
-                                      <tr>
-                                        <th scope="row">Content:</th>
-                                        <td colspan="2"><%=  %>
-                                        </td>
-                                       
-                                      </tr>
-                                    
-                                    </tbody>
-                                  </table>
-                               
-                    </div>
-                </div>
-            </div>
+  <div
+    class="lucent before:content-[''] before:z-[-1] before:h-screen before:w-screen before:bg-lucent before:bg-cover before:top-0 before:fixed after:content-[''] after:z-[-1] after:h-screen after:w-screen after:bg-gradient-to-b after:from-theme-1 after:to-theme-2/50 after:top-0 after:fixed">
+    <div
+      class="h-screen relative loading-page loading-page--before-hide [&.loading-page--before-hide]:before:block [&.loading-page--hide]:before:opacity-0 before:content-[''] before:transition-opacity before:duration-300 before:hidden before:h-screen before:w-screen before:fixed before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:z-[60] [&.loading-page--before-hide]:after:block [&.loading-page--hide]:after:opacity-0 after:content-[''] after:transition-opacity after:duration-300 after:hidden after:h-16 after:w-16 after:animate-pulse after:fixed after:opacity-50 after:inset-0 after:m-auto after:bg-loading-puff after:bg-cover after:z-[61]">
+      <div
+        class="absolute inset-0 xl:inset-5 flex after:absolute after:inset-0 after:rounded-xl after:bg-gradient-to-b after:from-white/10 after:to-white/20 after:backdrop-blur-xl after:content-['']">
+
+        <div
+          class="content relative transition-[margin,width] duration-100 w-full after:absolute after:inset-0 after:bg-slate-100 after:content-[''] after:xl:rounded-xl after:z-10 content--compact xl:ml-[275px] [&.content--compact]:xl:ml-[91px]">
+          <div
+            class="scrollable-ref z-20 h-full w-full overflow-y-auto px-5 pb-5 pt-[90px] [&_.simplebar-content]:p-0 [&_.simplebar-track.simplebar-vertical]:w-[10px] [&_.simplebar-track.simplebar-vertical]:mr-0.5 [&_.simplebar-track.simplebar-vertical_.simplebar-scrollbar]:before:bg-slate-600/30">
+
+            <p style="font-size: 50px;"> <a type="button" class="btn btn-primary active" data-bs-toggle="button"
+                aria-pressed="true" href="/admin/products">Back </a>
+              ID: <%= product.id %>
+            </p>
+            <br>
+            <hr>
+            <form class="form-edit-product" >
+
+              <table class="table">
+
+                <tbody>            
+                    <input type="hidden" name="productId" value="<%= product.id %>">
+
+                  <tr>
+                    <th scope="row"> Product name</th>
+                    <td colspan="2"><input name="name" style="width: 100%;" type="text" value="<%= product.name  %>"></td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">Product subcategory name:</th>
+                    <td colspan="2">
+                      <%= product.product_subcategory_name %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Product category name:</th>
+                    <td colspan="2">
+                      <%= product.product_category_name %>
+                  </tr>
+                  <tr>
+                    <th scope="row">Description:</th>
+                    <td colspan="2"><input name="description" style="width: 100%;" type="text" value="<%= product.description  %>"> </td>
+
+                  </tr>
+
+                  <tr>
+                    <th scope="row">Color:</th>
+                    <td colspan="2"><input name="color" style="width: 100%;" type="text" value="<%= product.color %>">
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">Size:</th>
+                    <td colspan="2"><input name="size" style="width: 100%;" type="text" value="<%= product.size %>">
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">Cost:</th>
+                    <td colspan="2"><input name="cost" style="width: 100%;" type="text" value="<%= product.cost %>">
+                    </td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">Price:</th>
+                    <td colspan="2"><input name="price" style="width: 100%;" type="text" value="<%= product.price %>"> </td>
+
+                  </tr>
+                  <tr>
+                    <th scope="row">Created at:</th>
+                    <td colspan="2">
+                      <%= moment(product.created_at).format('DD/MM/YYYY') %>
+                    </td>
+
+                  </tr>
+
+                </tbody>
+
+
+              </table> <button type="submit" class="btn btn-primary active" data-bs-toggle="button"
+                aria-pressed="true">Edit</button>
+            </form>
+
+          </div>
         </div>
+      </div>
     </div>
+  </div>

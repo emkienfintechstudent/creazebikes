@@ -1,81 +1,128 @@
-  <style>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-.demo-preview {
-  padding-top: 20px;
-  padding-bottom: 10px;
-  width: 70%;
-  margin: auto;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-.alert {
-  padding: .7143rem 1.071rem;
-  margin-bottom: 1.429rem;
-  border-radius: 2px;
-  border: 1px solid transparent;
-  color: #FFF
+.container {
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: #fcfcfc;
 }
 
-.alert.alert-square {
-  border-radius: 0
+.card {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 600px;
+  height: 260px;
+  background-color: #ffffff;
+  padding: 10px 30px 40px;
 }
 
-.alert .close {
-  position: relative
+.card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  
 }
 
-.alert.alert-dismissable,
-.alert.alert-dismissible {
-  padding-right: 2.5rem
+.drop_box {
+  margin: 10px 0;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 3px dotted #a3a3a3;
+  border-radius: 5px;
 }
 
-.alert.alert-dismissable .close,
-.alert.alert-dismissible .close {
-  top: -2px;
-  right: -20px;
-  color: inherit
+.drop_box h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #2e2e2e;
 }
 
-.alert.alert-primary {
-  background-color: #2196F3;
-  border-color: #2196F3
+.drop_box p {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #a3a3a3;
 }
 
-.alert.alert-secondary {
-  background-color: #323a45;
-  border-color: #323a45
+.btn {
+  text-decoration: none;
+  background-color: #005af0;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  transition: 0.3s;
 }
 
-.alert.alert-success {
-  background-color: #64DD17;
-  border-color: #64DD17
+.btn:hover{
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #005af0;
+  padding: 10px 20px;
+  border: none;
+  outline: 1px solid #010101;
+}
+.form input {
+  margin: 10px 0;
+  width: 100%;
+  background-color: #e2e2e2;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 4px;
 }
 
-.alert.alert-info {
-  background-color: #29B6F6;
-  border-color: #29B6F6
-}
+</style>
+<div class="container">
+  <div class="card">
+    <h3>Upload Files</h3>
+    <div class="drop_box">
+      <header>
+        <h4>Select File here</h4>
+      </header>
+      <p>Files Supported: PDF, TEXT, DOC , DOCX</p>
+      <input type="file" hidden accept=".doc,.docx,.pdf,.jpg" id="fileID" style="display:none;">
+      <button class="btn">Choose File</button>
+    </div>
 
-.alert.alert-warning {
-  background-color: #FFD600;
-  border-color: #FFD600
-}
-
-.alert.alert-danger {
-  background-color: #ef1c1c;
-  border-color: #EF5350
-}
-  </style>
-  <div class="demo-preview ">
-    <div class="alert alert-primary alert-dismissable fade in"> <button type="button" data-dismiss="alert" aria-label="close" class="close"><span aria-hidden="true">×</span></button><strong>Well done!</strong> You successfully read this important alert message.</div>
-    <div class="alert alert-secondary alert-dismissable fade in">
-      <button type="button" data-dismiss="alert" aria-label="close" class="close"><span aria-hidden="true">×</span></button><strong>Well done!</strong> You successfully read this important alert message.</div>
-    <div class="alert alert-success alert-dismissable fade in">
-      <button type="button" data-dismiss="alert" aria-label="close" class="close"><span aria-hidden="true">×</span></button><strong>Well done!</strong> You successfully read this important alert message.</div>
-    <div class="alert alert-info alert-dismissable fade in">
-      <button type="button" data-dismiss="alert" aria-label="close" class="close"><span aria-hidden="true">×</span></button><strong>Heads up!</strong> This alert needs your attention, but it's not super important.</div>
-    <div class="alert alert-warning alert-dismissable fade in">
-      <button type="button" data-dismiss="alert" aria-label="close" class="close"><span aria-hidden="true">×</span></button><strong>Warning!</strong> Best check yo self, you're not looking too good.</div>
-    <div class="alert alert-danger alert-dismissable fade in">
-      <button type="button" data-dismiss="alert" aria-label="close" class="close"><span aria-hidden="true">×</span></button><strong>Oh snap!</strong> Change a few things up and try submitting again.</div>
   </div>
+</div>
+<script>
+  const dropArea = document.querySelector(".drop_box"),
+  button = dropArea.querySelector("button"),
+  dragText = dropArea.querySelector("header"),
+  input = dropArea.querySelector("input");
+let file;
+var filename;
+
+button.onclick = () => {
+  input.click();
+};
+
+input.addEventListener("change", function (e) {
+  var fileName = e.target.files[0].name;
+  let filedata = `
+    <form action="" method="post">
+    <div class="form">
+    <h4>${fileName}</h4>
+    <input type="email" placeholder="Enter email upload file">
+    <button class="btn">Upload</button>
+    </div>
+    </form>`;
+  dropArea.innerHTML = filedata;
+});
+
+</script>

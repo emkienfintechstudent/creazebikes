@@ -62,3 +62,29 @@ document.querySelectorAll('.user-role-select').forEach(select => {
     })
 })
 
+
+$(document).ready(function() {
+    $('.form-edit-product').submit(function(e) {
+        e.preventDefault(); // Ngăn chặn gửi form mặc định
+        $('.alert-edit-product').css("display", "block");
+        setTimeout(function () {
+            $('.alert-edit-product').css("display", "none");
+        }, 1000);
+        
+        var formData = $(this).serialize(); // Lấy dữ liệu từ form
+        var Data = {};
+        formData.split('&').forEach(function(keyValue) {
+        var pair = keyValue.split('=');
+      Data[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+     });
+        console.log(Data);
+        axios.post(`/admin/product/${Data.productId}/edit`, Data)
+    
+        .then(res => {
+                // Xử lý phản hồi từ máy chủ nếu cần
+            })
+            .catch(err => {
+                // Xử lý lỗi nếu có
+            });
+    });
+});

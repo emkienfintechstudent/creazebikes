@@ -22,11 +22,14 @@ router.get("/admin/profile", getAdminProfile);
 router.get("/admin/feedbacks", AdminFeedbackController().index);
 router.get("/admin/oveview/1", getDashboardOverview1);
 router.get("/admin/product/:id", AdminProductController().AdminDetailProduct)
+router.get("/admin/feedback/:id", AdminFeedbackController().detail)
 // POST
 
 router.post("/admin/update/status", StatusController().update)
 router.post("/admin/admin", AdminAdminController().postAdminAdmin);
 router.post("/admin/admin/role", AdminAdminController().updateAdminRole);
 router.post("/admin/feedback/:id/rep", AdminFeedbackController().rep);
-router.get("/admin/feedback/:id", AdminFeedbackController().detail)
+router.post("/admin/product/:id/edit", AdminProductController().editProduct);
+
+
 export default router;
