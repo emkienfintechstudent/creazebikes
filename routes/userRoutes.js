@@ -25,6 +25,7 @@ router.post("/feedback", FeedbackController().storeFeedback);
 router.post("/login", AuthController().postLogin);
 router.get("/logout", AuthController().logout);
 router.get("/user/order/:id", OrderController().show);
+router.post("/user/account/profile/save", AccountController().update);
 
 export default router;
 
@@ -51,7 +52,7 @@ router.get("/login", AuthController().login);
 // router.get("/auth/google", AuthController().googleAuth);
 // router.get("/auth/google/shopping-cart", AuthController().googleAuthCallback);
 // router.post("/signup", AuthController().signup);
-// router.post("/update-cart", CartController().update);
+router.post("/update-cart", CartController().update);
 // router.post("/user/account/profile/save", AccountController().update);
 // router.get("/user/order/:id", OrderController().show);
 

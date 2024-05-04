@@ -33,7 +33,7 @@
 								  </div>
 								<% } %>
 	<div class="table-responsive">	
-        <form action="/user/account/profile/save" method="post">
+        <form class="form_save_user_profile"  >
 		<table class="table">
 			<thead>
 				<tr>
@@ -120,29 +120,4 @@
 
 </main>
 
-
-<script>
- $(document).ready(function() {
-    $('form').submit(function(e) {
-        // Lưu lại tham chiếu của form
-        var form = this;
-
-        // Ngăn chặn việc gửi form một cách thông thường
-        e.preventDefault();
-
-        // Hiển thị thông báo "Profile updated" bằng SweetAlert
-        Swal.fire({
-            icon: 'success',
-            title: 'Profile updated',
-            showConfirmButton: false,
-            timer: 1500, // Thời gian hiển thị thông báo (milliseconds)
-            onClose: function() {
-                // Sau khi thông báo đóng, sử dụng hàm submit() để gửi form
-                form.submit();
-            }
-        });
-    });
-});
-
-</script>
 
