@@ -14,13 +14,18 @@ function FeedbackController() {
             var get_date_now = new Date();
 
             const date = get_date_now.toISOString().slice(0, 10);
-
+            if(content.length <= 17 ) {
             await db.query(
                 "INSERT INTO feedbacks (content,title,user_id,created_at,email) VALUES ($1, $2,$3,$4,$5)",
                  [content,title,req.user.id,date,email]
              );
-             req.flash('feedback_success', 'send feedback successfully') 
+             
+             req.flash('feedback_success', 'Send feedback successfully') 
              res.redirect("/feedback")
+             }else{
+                req.flash('feedback_failed', 'Send feedback failed, your contents larger than 500 characters') 
+                res.redirect("/feedback")
+             }
     }
 
 }}

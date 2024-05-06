@@ -66,10 +66,13 @@ document.querySelectorAll('.user-role-select').forEach(select => {
 $(document).ready(function() {
     $('.form-edit-product').submit(function(e) {
         e.preventDefault(); // Ngăn chặn gửi form mặc định
-        $('.alert-edit-product').css("display", "block");
-        setTimeout(function () {
-            $('.alert-edit-product').css("display", "none");
-        }, 1000);
+        Swal.fire({
+            icon: 'success',
+            title: 'Product updated',
+            showConfirmButton: false,
+            timer: 1500, // Thời gian hiển thị thông báo (milliseconds)
+
+        });
         
         var formData = $(this).serialize(); // Lấy dữ liệu từ form
         var Data = {};
