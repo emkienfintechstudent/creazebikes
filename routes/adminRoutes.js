@@ -16,7 +16,7 @@ router.get("/admin/productcategories", AdminProductController().productCategorie
 
 router.get("/admin/products/detail", AdminProductController().AdminDetailProduct);
 router.get("/admin/orders", AdminOrderController().index);
-router.get("/admin/admin", AdminAdminController().index);
+router.get("/admin/admins", AdminAdminController().index);
 router.get("/admin/users",AdminUserController().index );
 router.get("/admin/profile", getAdminProfile);
 router.get("/admin/feedbacks", AdminFeedbackController().index);
@@ -26,10 +26,11 @@ router.get("/admin/feedback/:id", AdminFeedbackController().detail)
 // POST
 
 router.post("/admin/update/status", StatusController().update)
-router.post("/admin/admin", AdminAdminController().postAdminAdmin);
 router.post("/admin/admin/role", AdminAdminController().updateAdminRole);
 router.post("/admin/feedback/:id/rep", AdminFeedbackController().rep);
 router.post("/admin/product/:id/edit", AdminProductController().editProduct);
+router.post("/admin/add/user",AdminUserController().addUser);
+router.post("/admin/add/admin",AdminAdminController().addAdmin);
 
 
 export default router;

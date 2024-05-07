@@ -4225,6 +4225,8 @@ select {
     border-bottom-left-radius: .375rem
 }
 
+
+
 .rounded-r-md {
     border-top-right-radius: .375rem;
     border-bottom-right-radius: .375rem
@@ -5967,14 +5969,14 @@ select {
     --tw-bg-opacity: .7
 }
 
-#form1 {
+#form-user {
   padding: 15px;
   border: 1px solid #666;
   background: #fff;
    display: none;
 }
-/* CSS cho modal */
-#form1 {
+/* CSS cho add user */
+#form-user {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -5985,7 +5987,24 @@ select {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
   }
-  
+  #form-admin{
+    padding: 15px;
+    border: 1px solid #666;
+    background: #fff;
+     display: none;
+  }
+  /* CSS cho add admin */
+  #form-admin {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }  
   .overlay {
     position: fixed;
     top: 0;

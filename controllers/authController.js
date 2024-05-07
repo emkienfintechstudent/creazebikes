@@ -51,7 +51,7 @@ function AuthController() {
               console.error("Error hashing password:", err);
             } else {
               const result = await db.query(
-                "INSERT INTO users (username, password,name,created_at,phone_number,status_id) VALUES ($1, $2,$3,$4,$5) RETURNING *",
+                "INSERT INTO users (username, password,name,created_at,phone_number,status_id) VALUES ($1, $2,$3,$4,$5,$6) RETURNING *",
                 [username, hash, name, date, phoneNumber,status]
               );
               const user = result.rows[0];

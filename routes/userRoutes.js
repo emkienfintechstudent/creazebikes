@@ -39,11 +39,6 @@ router.get("/login", AuthController().login);
 // router.get("/feedback", auth, FeedbackController().index);
 // router.get("/shopping-cart", CartController().index);
 // router.get("/user/account/profile", AccountController().index);
-// router.get("/logout", AuthController().logout);
-// router.get("/customer/orders", auth, OrderController().index);
-// router.post("/order", OrderController().store);
-// router.get("/user/account/profile/password", auth, AccountController().getUpdatePassword);
-// router.post("/user/account/profile/save/password", AccountController().postUpdatePassword);
 
 
 // // Post feedback(contact)
@@ -51,7 +46,7 @@ router.get("/login", AuthController().login);
 // router.post("/login", AuthController().postLogin);
 // router.get("/auth/google", AuthController().googleAuth);
 // router.get("/auth/google/shopping-cart", AuthController().googleAuthCallback);
-// router.post("/signup", AuthController().signup);
+router.post("/signup", AuthController().signup);
 router.post("/update-cart", CartController().update);
 // router.post("/user/account/profile/save", AccountController().update);
 // router.get("/user/order/:id", OrderController().show);

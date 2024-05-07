@@ -49,32 +49,8 @@
 
 				<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
           <script type="module" src="/admin/js/admin.js"></script>
+          <script type="module" src="/admin/js/addUser.js"></script>
+          <script type="module" src="/admin/js/addAdmin.js"></script>
 
-          <script>
-              function validateForm() {
-                  var form = document.getElementById("form1");
-                  var inputs = form.querySelectorAll("input, select");
-                  for (var i = 0; i < inputs.length; i++) {
-                      if (!inputs[i].value) {
-                          alert("Vui lòng điền đầy đủ thông tin vào mọi trường!");
-                          return false;
-                      }
-                  }
-                  return true;
-              }
-              
-              $(document).ready(function() {
-                  $("#formButton").click(function() {
-                      $("#form1").fadeIn();
-                      $(".overlay").fadeIn();
-                  });
-          
-          
-                  $("#submit, .overlay").click(function() {
-                      $("#form1").fadeOut();
-                      $(".overlay").fadeOut();
-                  });
-              });
-          </script>
       <!-- Mirrored from rocketman-html.vercel.app/lucent-products.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Mar 2024 03:29:52 GMT -->
       </html>

@@ -6,37 +6,44 @@ function AdminAdminController(){
    return {
     async index(req,res) {
         const getdataAdmin = await dataAdmin()
-        res.render("admin/adminAdmin.ejs", {admins:getdataAdmin,layout: 'admin/layouts/header_footer'})},
+        res.render("admin/admins.ejs", {admins:getdataAdmin,layout: 'admin/layouts/header_footer'})},
         
-        async postAdminAdmin (req,res) {
+        async addAdmin (req,res) {
             console.log(req.body)
-             const password = req.body.password
-              try { 
-                const checkResult = await db.query("SELECT * FROM users WHERE username =$1",[req.body.username],);
-                if(checkResult.rowCount > 0) {
-                  res.redirect("/admin/admin" );
-                }else{
-                  bcrypt.hash(password, saltRounds, async (err, hash) => {
-                    if (err) {
-                      console.error("Error hashing password:", err);
-                    } else {
-                      const result = await db.query(
-                        "INSERT INTO users(username, password,name,phone_number,role_id,status_id,email,address,is_admin) VALUES ($1, $2,$3,$4,$5,1,$6,$7,true) RETURNING *",
-                        [req.body.username,hash,req.body.name,req.body.phoneNumber,parseInt(req.body.role_id),req.body.email,req.body.address]
-                      
-                      );  console.log(result)
-                      const admin = result.rows[0];
-                      req.login(admin, (err) => {
-                        console.log("success");
-                        res.redirect("/admin/admin");
-                      })
-                    }
-                  });
-                }
-              } catch (err) {
-                console.log(err)
-                // res.render("404.ejs");
+            const password = req.body.password;
+            const username = req.body.username
+            const name = req.body.name
+            const phoneNumber = req.body.phone_number
+            const address = req.body.address
+            const gender = req.body.gender
+            const status = 1
+            const birth_date = req.body.birth_date
+            const role_id = req.body.role_id
+            var get_date_now = new Date();
+            const date = get_date_now.toISOString().slice(0, 10);
+            try {
+              const checkResult = await db.query("SELECT * FROM users WHERE username =$1", [username]);
+              if (checkResult.rowCount > 0) {
+                console.log(checkResult.rows[0])
+                res.json({message : "Username already taken"})
+              } else {
+                bcrypt.hash(password, saltRounds, async (err, hash) => {
+                  if (err) {
+                    console.error("Error hashing password:", err);
+                  } else {
+                    const result = await db.query(
+                      "INSERT INTO users (username, password,name,created_at,phone_number,status_id,is_admin,address,gender,birth_date,role_id) VALUES ($1, $2,$3,$4,$5,$6,True,$7,$8,$9,$10) RETURNING *",
+                      [username, hash, name, date, phoneNumber, status,address,gender,birth_date,role_id]
+                    );
+                    const user = result.rows[0];
+                   
+                  }
+                });
               }
+            } catch (err) {
+              console.log(err)
+              // res.render("404.ejs");
+            }
             },
             async updateAdminRole(req,res) {          
                 await db.query(`update users 
