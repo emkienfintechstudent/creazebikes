@@ -3,6 +3,9 @@ import db from '../config/connectDB.js';
 import passport from "passport";
 const saltRounds = 10 //băm bật khẩu 10 vòng
 import { setupProductCategory, keys, getALLProductCategory } from "../utils/products/productCategorySetup.js";
+import nodemailer from 'nodemailer';
+import env from "dotenv"
+env.config()
 function AuthController() {
   return {
     // LOGIN
@@ -36,7 +39,7 @@ function AuthController() {
         return regex.test(username);
     }
       const passwordConfirm = req.body.passwordConfirm
-      
+      const email = req.body.email
       const password = req.body.passwordSignUp;
       const username = req.body.usernameSignUp
       const name = req.body.name
@@ -60,8 +63,8 @@ function AuthController() {
               console.error("Error hashing password:", err);
             } else {
               const result = await db.query(
-                "INSERT INTO users (username, password,name,created_at,phone_number,status_id) VALUES ($1, $2,$3,$4,$5,$6) RETURNING *",
-                [username, hash, name, date, phoneNumber,status]
+                "INSERT INTO users (username, password,name,created_at,phone_number,status_id,email) VALUES ($1, $2,$3,$4,$5,$6,$7) RETURNING *",
+                [username, hash, name, date, phoneNumber,status,email]
               );
               const user = result.rows[0];
               req.login(user, (err) => {
@@ -105,6 +108,77 @@ function AuthController() {
         }
         res.redirect("/");
       });
+
+    },
+    async forgotPassword(req,res){
+      await setupProductCategory()
+  
+      res.render("forgot_password.ejs", {productCategory: keys, productSubCategory: getALLProductCategory,user :req.user,session:req.session,layout: './layouts/headerfooter'})
+    },
+    async newPassword(req,res){
+      const username = req.body.username
+      const email = req.body.email
+      const result= await db.query('select email from users where username = $1', [username])
+      const check_email = result.rows[0].email
+      console.log(check_email)
+      if (check_email != email) {
+        res.json({message : "email do not match"})
+
+      }else { 
+
+   function generateRandomPassword(length) {
+        var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+";
+        var password = "";
+        for (var i = 0; i < length; i++) {
+          var randomIndex = Math.floor(Math.random() * charset.length);
+          password += charset[randomIndex];
+        }
+        return password;
+      }
+      
+      // Usage example:
+      var password =   generateRandomPassword(12); // Generates a random password of length 12
+      console.log(password);
+      res.json({message : "email match" })
+      var transporter = nodemailer.createTransport({
+        service: 'gmail',
+      
+        auth: {
+            user: 'crazebikescompany@gmail.com',
+            pass: process.env.EMAIL_PASS
+        }
+    });
+
+    var mailOptions = {
+        from: 'crazebikescompany@gmail.com',
+        to: req.body.email,
+        subject: 'Crazebikes send your new password',
+        
+        html: `<h1> Your new password: ${password} </h1>  <p> Best regards</p><p>Thank you & Good luck!</p>`
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+
+    });
+    bcrypt.hash(password, saltRounds, async (err, hash) => {
+      if (err) {
+          console.error("Error hashing new password:", err);
+          return res.status(500).send("Internal Server Error");
+      }
+
+      try {
+          const result = await db.query("UPDATE users SET password = $1 WHERE username = $2 returning *", [hash, username]);
+      } catch (err) {
+          console.error("Error updating password in database:", err);
+          return res.status(500).send("Internal Server Error");
+      }
+  });
+    }
     }
   }
 }

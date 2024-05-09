@@ -26,6 +26,8 @@ router.post("/login", AuthController().postLogin);
 router.get("/logout", AuthController().logout);
 router.get("/user/order/:id", OrderController().show);
 router.post("/user/account/profile/save", AccountController().update);
+router.get("/user/login/password", AuthController().forgotPassword);
+router.post("/user/login/password", AuthController().newPassword);
 
 export default router;
 
