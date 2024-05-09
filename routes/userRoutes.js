@@ -30,22 +30,18 @@ router.post("/user/account/profile/save", AccountController().update);
 export default router;
 
 // // User routes
-// router.get("/", HomeController().index);
 // router.get("/api/chart-data", getDataOverview1);
 router.get("/login", AuthController().login);
-// router.get("/home", HomeController().index);
-// router.get("/category/:category/subcategory/:subcategory", ProductController().index);
-// router.get("/category/:category/product/detail/:id", ProductController().detailProduct);
-// router.get("/feedback", auth, FeedbackController().index);
-// router.get("/shopping-cart", CartController().index);
+
+
 // router.get("/user/account/profile", AccountController().index);
 
 
 // // Post feedback(contact)
 // router.post("/feedback", FeedbackController().storeFeedback);
 // router.post("/login", AuthController().postLogin);
-// router.get("/auth/google", AuthController().googleAuth);
-// router.get("/auth/google/shopping-cart", AuthController().googleAuthCallback);
+router.get("/auth/google", AuthController().googleAuth);
+router.get("/auth/google/shopping-cart", AuthController().googleAuthCallback);
 router.post("/signup", AuthController().signup);
 router.post("/update-cart", CartController().update);
 // router.post("/user/account/profile/save", AccountController().update);

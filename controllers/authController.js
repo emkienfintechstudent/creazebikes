@@ -30,6 +30,13 @@ function AuthController() {
 ,
     // SIGNUP
     async signup(req, res) {
+      function isValidUsername(username) {
+        // Biểu thức chính quy để kiểm tra xem tên người dùng có chứa các ký tự đặc biệt không mong muốn
+        const regex = /^[a-zA-Z0-9_]+$/; // Chỉ chấp nhận chữ cái (không dấu), số và dấu gạch dưới (_)
+        return regex.test(username);
+    }
+      const passwordConfirm = req.body.passwordConfirm
+      
       const password = req.body.passwordSignUp;
       const username = req.body.usernameSignUp
       const name = req.body.name
@@ -37,6 +44,8 @@ function AuthController() {
       const status = 1 
       var get_date_now = new Date();
       const date = get_date_now.toISOString().slice(0, 10);
+      if(isValidUsername(username)) {
+      if(passwordConfirm == password) {  
       try {
         const checkResult = await db.query("SELECT * FROM users WHERE username =$1", [username]);
         if (checkResult.rowCount > 0) {
@@ -65,6 +74,13 @@ function AuthController() {
       } catch (err) {
         console.log(err)
         // res.render("404.ejs");
+      } }else{
+        req.flash('signupError', 'Comfirm password incorrect!')
+        res.redirect("/login");
+      }} else{
+        req.flash('signupError', 'Username must contain only letters, numbers, and underscores.');
+        res.redirect("/login");
+        return; // Dừng việc xử lý tiếp tục
       }
     }
     ,

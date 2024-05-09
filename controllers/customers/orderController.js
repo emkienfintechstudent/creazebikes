@@ -18,7 +18,7 @@ function OrderController() {
     // thêm vào bảng cart trước    
     const date_now = new Date().toISOString().slice(0, 10);
     const result = await db.query(
-      "INSERT INTO carts (items,address,phone_number,created_at,status_id) VALUES ($1, $2,$3,$4,$5,$6) RETURNING *",
+      "INSERT INTO carts (items,address,phone_number,created_at,status_id) VALUES ($1, $2,$3,$4,$5) RETURNING *",
       [req.session.cart.items,address,phone,date_now,3]
     );
     const cart_id = result.rows[0].id 

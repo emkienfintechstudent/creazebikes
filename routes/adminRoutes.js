@@ -24,6 +24,7 @@ router.get("/admin/oveview/1", getDashboardOverview1);
 router.get("/admin/product/:id", AdminProductController().AdminDetailProduct)
 router.get("/admin/feedback/:id", AdminFeedbackController().detail)
 // POST
+router.get("/api/chart-data", getDataOverview1);
 
 router.post("/admin/update/status", StatusController().update)
 router.post("/admin/admin/role", AdminAdminController().updateAdminRole);
