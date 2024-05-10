@@ -31,7 +31,6 @@ import { setupProductCategory, keys, getALLProductCategory } from "../../utils/p
             cart.totalQty = cart.totalQty + 1
             cart.totalPrice =  cart.totalPrice + req.body.price
         }
-        console.log(req.session.cart)
 
         return res.json({ totalQty: req.session.cart.totalQty,totalPrice:req.session.cart.totalPrice })
 

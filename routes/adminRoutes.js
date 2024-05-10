@@ -25,7 +25,7 @@ router.get("/admin/product/:id", AdminProductController().AdminDetailProduct)
 router.get("/admin/feedback/:id", AdminFeedbackController().detail)
 // POST
 router.get("/api/chart-data", getDataOverview1);
-
+router.get("/admin/order/:id",AdminOrderController().detail );
 router.post("/admin/update/status", StatusController().update)
 router.post("/admin/admin/role", AdminAdminController().updateAdminRole);
 router.post("/admin/feedback/:id/rep", AdminFeedbackController().rep);

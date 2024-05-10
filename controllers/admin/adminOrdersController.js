@@ -9,6 +9,14 @@ function AdminOrderController() {
         res.render("admin/orders.ejs",{layout: 'admin/layouts/header_footer',orders:result.rows,moment:moment})
         
     },
+    async detail(req, res) {
+        console.log(req.params.id)
+        const result = await db.query('select items,status_id from carts where id = $1',[req.params.id])
+        console.log(result.rows[0].items)
+
+        res.render("admin/order_detail.ejs",{id:req.params.id, status:result.rows[0].status_id ,  items:result.rows[0].items,layout: 'admin/layouts/header_footer',moment:moment})
+        
+    }
  
 }
 }

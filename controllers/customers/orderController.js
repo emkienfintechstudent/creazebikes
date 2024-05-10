@@ -49,7 +49,6 @@ function OrderController() {
     res.redirect('/customer/orders')
    },
   async show(req,res){
-    console.log(req.params.id)
     const result =await db.query(`select items from carts
     where id = $1
     `,[req.params.id])
