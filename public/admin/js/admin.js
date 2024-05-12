@@ -12,10 +12,13 @@ function updateStatus(object) {
 document.querySelectorAll('.status-select').forEach(select => {
     // Gắn sự kiện change vào mỗi phần tử select
     select.addEventListener('change', function() {
-        $('.alert-update-status').css("display", "block");
-							setTimeout(function () {
-								$('.alert-update-status').css("display", "none");
-							}, 1000);
+        Swal.fire({
+            icon: 'success',
+            title: 'Status update successfully',
+            showConfirmButton: false,
+            timer: 1500, // Thời gian hiển thị thông báo (milliseconds)
+
+        });
         // Lấy giá trị mới của trạng thái user  từ select
         const newStatus = this.value;
         // console.log(newStatus);
