@@ -3,13 +3,7 @@ import moment from "moment";
 
 function AdminProductController() {
     return {
-      async productCategories(req,res){
-        const result = await db.query(`select  id,name, status_id, created_at, created_by from product_categories
-        `)
-         res.render("admin/productCategories.ejs", {moment:moment,product_categories:result.rows ,layout: 'admin/layouts/header_footer'})
-
-      }
-      ,
+     
       async productSubCategories(req,res){
         const result = await db.query(`select a.id,a.name,a.created_by,a.created_at,a.status_id,b.name as product_category_name from product_subcategories a join product_categories b on a.product_category_id = b.id`)
          res.render("admin/product_subcategories.ejs", {moment:moment,product_subcategories:result.rows ,layout: 'admin/layouts/header_footer'})

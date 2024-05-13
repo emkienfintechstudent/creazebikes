@@ -1,4 +1,16 @@
-
+<form id="form-product-category"  method="post" onsubmit="return validateForm() ">
+    <div class="col-sm-10" style="display: none;">
+        <input type="text"  class="form-control" id="staticEmail" name="createdBy" value="<%= user.name %>">
+    </div>
+    <div class="mb-3 row">
+        <label  class="col-sm-2 col-form-label">Category Name</label>
+        <div class="col-sm-10">
+            <input type="text"  class="form-control" id="staticEmail" name="productCategoryName" required>
+        </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+<div class="overlay" style="display: none;"></div>
 <body>
     <div>
         <div data-tw-backdrop="" aria-hidden="true" tabindex="-1" id="theme-switcher" class="modal group bg-gradient-to-b from-theme-1/50 via-theme-2/50 to-black/50 transition-[visibility,opacity] w-screen h-screen fixed left-0 top-0 [&:not(.show)]:duration-[0s,0.2s] [&:not(.show)]:delay-[0.2s,0s] [&:not(.show)]:invisible [&:not(.show)]:opacity-0 [&.show]:visible [&.show]:opacity-100 [&.show]:duration-[0s,0.4s]">
@@ -418,8 +430,11 @@
                     <div class="scrollable-ref z-20 h-full w-full overflow-y-auto px-5 pb-5 pt-[90px] [&_.simplebar-content]:p-0 [&_.simplebar-track.simplebar-vertical]:w-[10px] [&_.simplebar-track.simplebar-vertical]:mr-0.5 [&_.simplebar-track.simplebar-vertical_.simplebar-scrollbar]:before:bg-slate-600/30">
                         <div class="relative z-20">
                             <div class="intro-y mt-8 flex flex-col items-center sm:flex-row">
-                                <h2 class="mr-auto text-lg font-medium">Users</h2>
-                           
+                                <h2 class="mr-auto text-lg font-medium">Product categories</h2>
+                                <div class="mt-4 flex w-full flex-wrap gap-y-3 sm:mt-0 sm:w-auto">
+                                    <button id="formButton" data-tw-merge="" class="transition duration-200 border inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary mr-2 shadow-md">
+                                        Add new category</button>
+                                </div>
                             </div>
                     
                             <!-- BEGIN: Data List -->
