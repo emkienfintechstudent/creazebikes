@@ -5,7 +5,7 @@ import AdminAdminController from "../controllers/admin/adminAdminController.js";
 import AdminUserController from "../controllers/admin/adminUserController.js";
 import AdminFeedbackController from "../controllers/admin/adminFeedbackController.js";
 import AdminProductCategoryController from "../controllers/admin/adminProductCategoryController.js";
-
+import AdminProductSubcategoryController from "../controllers/admin/adminProductSubcategoryController.js";
 import { getDashboardOverview1,  getAdminProfile, getDataOverview1 } from "../controllers/adminController.js";
 import StatusController from "../controllers/admin/statusController.js";
 import auth from "../middleware/auth.js";
@@ -13,7 +13,7 @@ import auth from "../middleware/auth.js";
 const router = express.Router();
 // GET
 router.get("/admin/products", AdminProductController().index);
-router.get("/admin/productsubcategories", AdminProductController().productSubCategories);
+router.get("/admin/productsubcategories", AdminProductSubcategoryController().index);
 router.get("/admin/productcategories", AdminProductCategoryController().index);
 
 router.get("/admin/products/detail", AdminProductController().AdminDetailProduct);
@@ -35,6 +35,6 @@ router.post("/admin/product/:id/edit", AdminProductController().editProduct);
 router.post("/admin/add/user",AdminUserController().addUser);
 router.post("/admin/add/admin",AdminAdminController().addAdmin);
 router.post("/admin/add/productcategory",AdminProductCategoryController().addNew);
-
+router.post("/admin/add/productsubcategory",AdminProductSubcategoryController().addNew);
 
 export default router;

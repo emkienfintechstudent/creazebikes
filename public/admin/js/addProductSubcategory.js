@@ -2,17 +2,17 @@
 
 $(document).ready(function () {
     $(".overlay").click(function () {
-        $("#form-product-category").fadeOut();
+        $("#form-product-subcategory").fadeOut();
         $(".overlay").fadeOut();
     });
 });
 
 $(document).ready(function () {
     $("#formButton").click(function () {
-        $("#form-product-category").fadeIn();
+        $("#form-product-subcategory").fadeIn();
         $(".overlay").fadeIn();
     });
-    $('#form-product-category').submit(function (e) {
+    $('#form-product-subcategory').submit(function (e) {
         e.preventDefault(); // Ngăn chặn gửi form mặc định
         var formData = $(this).serialize(); // Get data from the form
         var Data = {};
@@ -28,7 +28,7 @@ $(document).ready(function () {
         });
         console.log(Data);
    
-        axios.post("/admin/add/productcategory", Data).then(res => {
+        axios.post("/admin/add/productsubcategory", Data).then(res => {
                 if (res.data.message === "Category already taken") {
                     Swal.fire({
                         icon: "error",
@@ -40,12 +40,12 @@ $(document).ready(function () {
 
                     Swal.fire({
                         icon: 'success',
-                        title: 'Add Product Category',
+                        title: 'Add Product Subcategory',
                         showConfirmButton: false,
                         timer: 1500, // Thời gian hiển thị thông báo (milliseconds)
         
                     });
-                    $("#form-product-category").fadeOut();
+                    $("#form-product-subcategory").fadeOut();
                     $(".overlay").fadeOut();
                 }
 
