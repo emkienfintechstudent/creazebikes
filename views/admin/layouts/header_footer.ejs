@@ -75,6 +75,37 @@
           <script type="module" src="/admin/js/addAdmin.js"></script>
           <script type="module" src="/admin/js/addProductCategory.js"></script>
           <script type="module" src="/admin/js/addProductSubcategory.js"></script>
+          <script type="module" src="/admin/js/addProduct.js"></script>
 
+          <script>
+            // Example data, replace this with your actual data source
+            const subcategories = {
+                1: [
+                    { id: 1, name: 'Subcategory 1.1' },
+                    { id: 2, name: 'Subcategory 1.2' }
+                ],
+                2: [
+                    { id: 3, name: 'Subcategory 2.1' },
+                    { id: 4, name: 'Subcategory 2.2' }
+                ]
+            };
+    
+            $(document).ready(function() {
+                $('#categorySelect').change(function() {
+                    const categoryId = $(this).val();
+                    const subcategorySelect = $('#subcategorySelect');
+    
+                    // Clear existing options
+                    subcategorySelect.empty();
+    
+                    // Populate subcategories based on the selected category
+                    if (subcategories[categoryId]) {
+                        subcategories[categoryId].forEach(subcategory => {
+                            subcategorySelect.append(new Option(subcategory.name, subcategory.id));
+                        });
+                    }
+                });
+            });
+        </script>
       <!-- Mirrored from rocketman-html.vercel.app/lucent-products.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Mar 2024 03:29:52 GMT -->
       </html>

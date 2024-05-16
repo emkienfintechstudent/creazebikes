@@ -36,5 +36,6 @@ router.post("/admin/add/user",AdminUserController().addUser);
 router.post("/admin/add/admin",AdminAdminController().addAdmin);
 router.post("/admin/add/productcategory",AdminProductCategoryController().addNew);
 router.post("/admin/add/productsubcategory",AdminProductSubcategoryController().addNew);
+router.post("/admin/add/product",AdminProductController().addNew);
 
 export default router;

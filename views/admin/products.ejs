@@ -1,32 +1,73 @@
-<!DOCTYPE html><!--
-Template Name: Rocketman - Admin Dashboard Template
-Author: Left4code
-Website: http://www.left4code.com/
-Contact: muhammadrizki@left4code.com
-Purchase: https://themeforest.net/user/left4code/portfolio
-Renew Support: https://themeforest.net/user/left4code/portfolio
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
-<html xmlns="http://www.w3.org/1999/xhtml" class="opacity-0" lang="en"><!-- BEGIN: Head -->
 
-<!-- Mirrored from rocketman-html.vercel.app/lucent-products.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Mar 2024 03:29:52 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
-<head>
-    <meta charset="utf-8">
-    <meta name="csrf-token" content="GRVf5kgvilQhLe9jnPsUwT66Y3GaMoXiOsEZDrvr">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Rocketman admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Rocketman Admin Template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="LEFT4CODE">
-    <title>Products - Rocketman - Admin Dashboard Template</title>
-    <!-- BEGIN: CSS Assets-->
-    <link rel="stylesheet" href="/admin/css/vendors/tom-select.css">
-    <link rel="stylesheet" href="/admin/css/vendors/tippy.css">
-    <link rel="stylesheet" href="/admin/css/vendors/simplebar.css">
-    <link rel="stylesheet" href="/admin/css/themes/lucent.css">
-    <link rel="stylesheet" href="/admin/css/app.css"> <!-- END: CSS Assets-->
-</head>
-<!-- END: Head -->
+
+<form class="addForm" id="form-product" >
+    <div class="col-sm-10" style="display: none;">
+        <input type="text" class="form-control" id="createdBy" name="createdBy" value="<%= user.name %>">
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="productSubcategoryName" name="name" required>
+        </div>
+    </div>
+    
+    <label class="col-sm-2 col-form-label">Subcategory</label>
+    <div class="col-sm-10">
+        <select class="form-select form-select-lg mb-3" id="categorySelect" name="subcategory">
+            <% productCategory.forEach(category=> { %>
+
+            <optgroup label="<%= category %>">
+                <% if (productSubCategory && productSubCategory[category]) { %>
+                    <% const sub=productSubCategory[category] %>
+                    <% sub.forEach(subcategory=> { %>
+                <option value="<%= subcategory.subcate_name %>"> <%= subcategory.subcate_name %> </option>
+             <% }) %>
+                <% } %>
+              </optgroup>             
+              <% }) %> 
+
+        </select>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Description </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="productSubcategoryName" name="description" required>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Color</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="productSubcategoryName" name="color" required>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Size</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="productSubcategoryName" name="size" required>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Cost</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="productSubcategoryName" name="cost" required>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="productSubcategoryName" name="price" required>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Image</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="productSubcategoryName" name="image" required>
+        </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+<div class="overlay" style="display: none;"></div>
+
 <body>
     <div>
         <div data-tw-backdrop="" aria-hidden="true" tabindex="-1" id="theme-switcher" class="modal group bg-gradient-to-b from-theme-1/50 via-theme-2/50 to-black/50 transition-[visibility,opacity] w-screen h-screen fixed left-0 top-0 [&:not(.show)]:duration-[0s,0.2s] [&:not(.show)]:delay-[0.2s,0s] [&:not(.show)]:invisible [&:not(.show)]:opacity-0 [&.show]:visible [&.show]:opacity-100 [&.show]:duration-[0s,0.4s]">
@@ -510,10 +551,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="intro-y mt-8 flex flex-col items-center sm:flex-row">
                                 <h2 class="mr-auto text-lg font-medium">Products</h2>
                                 <div class="mt-4 flex w-full flex-wrap gap-y-3 sm:mt-0 sm:w-auto">
-                                    <button data-tw-merge="" class="transition duration-200 border inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary mr-2 shadow-md"><i data-tw-merge="" data-lucide="plus" class="stroke-[1] mr-2 h-4 w-4"></i>
-                                        Add New Product</button>
-                                    <button data-tw-merge="" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed box"><i data-tw-merge="" data-lucide="file-text" class="stroke-[1] mr-2 h-4 w-4"></i>
-                                        Download Report</button>
+                                    <button id="formButton" data-tw-merge="" class="transition duration-200 border inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary mr-2 shadow-md">
+                                        Add new product</button>
                                 </div>
                             </div>
                             <!-- BEGIN: Filter -->
@@ -586,7 +625,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <a class="whitespace-nowrap underline decoration-dotted" href="#"><%= product.product_id %></a>
                                             </td>
                                             <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                $<%= product.product_name %>
+                                                <%= product.product_name %>
                                             </td>
                                             <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
                                               <%= product.price %>
@@ -668,26 +707,4 @@ License: You must have a valid license purchased only from themeforest(the above
             </div>
         </div>
     </div>
-    <!-- BEGIN: Vendor JS Assets-->
-    <script src="/admin/js/vendors/dom.js"></script>
-    <script src="/admin/js/vendors/tailwind-merge.js"></script>
-    <script src="/admin/js/vendors/lucide.js"></script>
-    <script src="/admin/js/vendors/tom-select.js"></script>
-    <script src="/admin/js/vendors/tippy.js"></script>
-    <script src="/admin/js/vendors/simplebar.js"></script>
-    <script src="/admin/js/vendors/modal.js"></script>
-    <script src="/admin/js/vendors/dropdown.js"></script>
-    <script src="/admin/js/vendors/popper.js"></script>
-    <script src="/admin/js/vendors/transition.js"></script>
-    <script src="/admin/js/components/base/theme-color.js"></script>
-    <script src="/admin/js/components/base/lucide.js"></script>
-    <script src="/admin/js/components/base/tom-select.js"></script>
-    <script src="/admin/js/components/base/tippy.js"></script>
-    <script src="/admin/js/themes/lucent.js"></script>
-    <script src="/admin/js/components/quick-search.js"></script> <!-- END: Vendor JS Assets-->
-    <!-- BEGIN: Pages, layouts, components JS Assets-->
-    <!-- END: Pages, layouts, components JS Assets-->
-</body>
-
-<!-- Mirrored from rocketman-html.vercel.app/lucent-products.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Mar 2024 03:29:52 GMT -->
-</html>
+   
