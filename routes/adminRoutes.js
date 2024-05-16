@@ -8,6 +8,8 @@ import AdminProductCategoryController from "../controllers/admin/adminProductCat
 import AdminProductSubcategoryController from "../controllers/admin/adminProductSubcategoryController.js";
 import { getDashboardOverview1,  getAdminProfile, getDataOverview1 } from "../controllers/adminController.js";
 import StatusController from "../controllers/admin/statusController.js";
+import AdminMarketingController from "../controllers/admin/adminMarketingController.js"
+import AdminSalesController from "../controllers/admin/adminSalesController.js"
 import auth from "../middleware/auth.js";
 
 const router = express.Router();
@@ -37,5 +39,7 @@ router.post("/admin/add/admin",AdminAdminController().addAdmin);
 router.post("/admin/add/productcategory",AdminProductCategoryController().addNew);
 router.post("/admin/add/productsubcategory",AdminProductSubcategoryController().addNew);
 router.post("/admin/add/product",AdminProductController().addNew);
+router.get("/admin/marketing/charts",AdminMarketingController().chart);
+router.get("/admin/sales/charts", AdminSalesController().chart);
 
 export default router;

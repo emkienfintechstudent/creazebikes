@@ -13,6 +13,7 @@
         <!-- BEGIN: CSS Assets-->
 
         <link rel="stylesheet" href="/admin/css/vendors/litepicker.css">
+        <link rel="stylesheet" href="/admin/css/vendors/highlight.css">
 
         <link rel="stylesheet" href="/admin/css/vendors/tom-select.css">
         <link rel="stylesheet" href="/admin/css/vendors/tippy.css">
@@ -29,53 +30,59 @@
           <!-- END: Pages, layouts, components JS Assets-->
       </body>
        <!-- BEGIN: Vendor JS Assets-->
-          <script src="/admin/js/vendors/dom.js"></script>
-          <script src="/admin/js/vendors/tailwind-merge.js"></script>
-          <script src="/admin/js/vendors/lucide.js"></script>
-          <script src="/admin/js/vendors/tom-select.js"></script>
-          <script src="/admin/js/vendors/tippy.js"></script>
-          <script src="/admin/js/vendors/simplebar.js"></script>
-          <script src="/admin/js/vendors/modal.js"></script>
-          <script src="/admin/js/vendors/dropdown.js"></script>
-          <script src="/admin/js/vendors/popper.js"></script>
-          <script src="/admin/js/vendors/transition.js"></script>
-          <script src="/admin/js/components/base/theme-color.js"></script>
-          <script src="/admin/js/components/base/lucide.js"></script>
-          <script src="/admin/js/components/base/tom-select.js"></script>
-          <script src="/admin/js/components/base/tippy.js"></script>
-          <script src="/admin/js/themes/lucent.js"></script>
-          <script src="/admin/js/components/quick-search.js"></script> <!-- END: Vendor JS Assets-->
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-          <script src="/admin/js/vendors/dayjs.js"></script>
-          <script src="/admin/js/vendors/litepicker.js"></script>
-          <script src="/admin/js/vendors/tippy.js"></script>
-          <script src="/admin/js/vendors/tab.js"></script>
-          <script src="/admin/js/vendors/popper.js"></script>
-          <script src="/admin/js/vendors/dropdown.js"></script>
-          <script src="/admin/js/vendors/simplebar.js"></script>
-          <script src="/admin/js/vendors/chartjs.js"></script>
-          <script src="/admin/js/vendors/transition.js"></script>
-          <script src="/admin/js/vendors/modal.js"></script>
-
-          <script src="/admin/js/utils/colors.js"></script>
-          <script src="/admin/js/utils/helper.js"></script>
-          <script src="/admin/js/components/report-line-chart-1.js"></script>
-          <script src="/admin/js/components/report-bar-chart-1.js"></script>
-          <script src="/admin/js/components/report-line-chart-2.js"></script>
-          <script src="/admin/js/components/report-donut-chart-1.js"></script>
-          <script src="/admin/js/themes/lucent.js"></script>
-          <script src="/admin/js/components/quick-search.js"></script> <!-- END: Vendor JS Assets-->
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
           
-          <script src="/admin/js/jquery/dashboardJquery.js"></script>
-				<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-          <script type="module" src="/admin/js/admin.js"></script>
-          <script type="module" src="/admin/js/addUser.js"></script>
-          <script type="module" src="/admin/js/addAdmin.js"></script>
-          <script type="module" src="/admin/js/addProductCategory.js"></script>
-          <script type="module" src="/admin/js/addProductSubcategory.js"></script>
-          <script type="module" src="/admin/js/addProduct.js"></script>
+       <script src="/admin/js/jquery/dashboardJquery.js"></script>
+             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+             <script src="/admin/js/vendors/dom.js"></script>
+             <script src="/admin/js/vendors/tailwind-merge.js"></script>
+             <script src="/admin/js/vendors/lucide.js"></script>
+             <script src="/admin/js/vendors/tom-select.js"></script>
+             <script src="/admin/js/vendors/tippy.js"></script>
+             <script src="/admin/js/vendors/simplebar.js"></script>
+             <script src="/admin/js/vendors/modal.js"></script>
+             <script src="/admin/js/vendors/dropdown.js"></script>
+             <script src="/admin/js/vendors/popper.js"></script>
+             <script src="/admin/js/vendors/transition.js"></script>
+             <script src="/admin/js/components/base/theme-color.js"></script>
+             <script src="/admin/js/components/base/lucide.js"></script>
+             <script src="/admin/js/components/base/tom-select.js"></script>
+             <script src="/admin/js/components/base/tippy.js"></script>
+             <script src="/admin/js/themes/lucent.js"></script>
+             <script src="/admin/js/components/quick-search.js"></script> <!-- END: Vendor JS Assets-->
+             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+             <script src="/admin/js/vendors/dayjs.js"></script>
+             <script src="/admin/js/vendors/litepicker.js"></script>
+             <script src="/admin/js/vendors/tippy.js"></script>
+             <script src="/admin/js/vendors/tab.js"></script>
+             <script src="/admin/js/vendors/chartjs.js"></script>
+   
+             <script src="/admin/js/utils/colors.js"></script>
+             <script src="/admin/js/utils/helper.js"></script>
+             <script src="/admin/js/components/report-line-chart-1.js"></script>
+             <script src="/admin/js/components/report-bar-chart-1.js"></script>
+             <script src="/admin/js/components/report-line-chart-2.js"></script>
+             <script src="/admin/js/components/report-donut-chart-1.js"></script>
+             <script src="/admin/js/themes/lucent.js"></script>
+           
+             <script type="module" src="/admin/js/admin.js"></script>
+             <script type="module" src="/admin/js/addUser.js"></script>
+             <script type="module" src="/admin/js/addAdmin.js"></script>
+             <script type="module" src="/admin/js/addProductCategory.js"></script>
+             <script type="module" src="/admin/js/addProductSubcategory.js"></script>
+             <script type="module" src="/admin/js/addProduct.js"></script>
+    <script src="/admin/js/vendors/highlight.js"></script>
+    <script src="/admin/js/components/vertical-bar-chart.js"></script>
+    <script src="/admin/js/components/base/highlight.js"></script>
+    <script src="/admin/js/components/base/source.js"></script>
+    <script src="/admin/js/components/base/preview-component.js"></script>
+    <script src="/admin/js/components/horizontal-bar-chart.js"></script>
+    <script src="/admin/js/components/donut-chart.js"></script>
+    <script src="/admin/js/components/stacked-bar-chart.js"></script>
+    <script src="/admin/js/components/line-chart.js"></script>
+    <script src="/admin/js/components/pie-chart.js"></script>
+         
 
           <script>
             // Example data, replace this with your actual data source
