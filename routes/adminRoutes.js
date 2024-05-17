@@ -10,6 +10,7 @@ import { getDashboardOverview1,  getAdminProfile, getDataOverview1 } from "../co
 import StatusController from "../controllers/admin/statusController.js";
 import AdminMarketingController from "../controllers/admin/adminMarketingController.js"
 import AdminSalesController from "../controllers/admin/adminSalesController.js"
+import ChartData from "../controllers/admin/chartData.js";
 import auth from "../middleware/auth.js";
 
 const router = express.Router();
@@ -41,5 +42,5 @@ router.post("/admin/add/productsubcategory",AdminProductSubcategoryController().
 router.post("/admin/add/product",AdminProductController().addNew);
 router.get("/admin/marketing/charts",AdminMarketingController().chart);
 router.get("/admin/sales/charts", AdminSalesController().chart);
-
+router.get("/admin/chart/data/revenueprofit12months",ChartData().revenueProfit12Months)
 export default router;
