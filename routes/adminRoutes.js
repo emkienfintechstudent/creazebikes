@@ -45,4 +45,7 @@ router.get("/admin/sales/charts", AdminSalesController().chart);
 router.get("/admin/chart/data/revenueprofit12months",ChartData().revenueProfit12Months)
 router.get("/admin/chart/data/revenuebycategory",ChartData().revenueByCategory)
 router.get("/admin/chart/data/ordersbycategory",ChartData().ordersByCategory)
+router.get("/admin/chart/data/totalcustomers",ChartData().totalCustomers)
+router.get("/admin/chart/data/revenuepercustomer",ChartData().revenuePerCustomer)
+
 export default router;

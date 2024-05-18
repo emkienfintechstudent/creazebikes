@@ -39,6 +39,29 @@ function ChartData() {
         res.json({ ordersByCategory: ordersByCategory}); 
 
 },
+ async totalCustomers(req,res){
+    const result = await db.query(`SELECT TO_CHAR(a.created_at, 'YYYY-MM') AS year_month, count(distinct user_id) total_customers
+    FROM orders a
+    JOIN products b ON a.product_id = b.id
+    WHERE a.created_at >= NOW() - INTERVAL '12 months'
+    group by TO_CHAR(a.created_at, 'YYYY-MM')
+    order by year_month `)
+    const totalCustomers= result.rows
+    res.json({ totalCustomers:totalCustomers}); 
+ },
+ async revenuePerCustomer(req,res){
+    const result = await db.query(` SELECT TO_CHAR(a.created_at, 'YYYY-MM') AS year_month, round(sum(price*quantity)::decimal/count(distinct user_id),2) revenue_per_customer
+    FROM orders a
+    JOIN products b ON a.product_id = b.id
+    WHERE a.created_at >= NOW() - INTERVAL '12 months'
+    group by TO_CHAR(a.created_at, 'YYYY-MM')
+    order by year_month `)
+    const revenuePerCustomer= result.rows
+    console.log(revenuePerCustomer)
+    res.json({ revenuePerCustomer:revenuePerCustomer}); 
+ }
+
+ 
 }
 }
 export default ChartData;

@@ -1271,31 +1271,20 @@ HTMLOpenTag/divHTMLCloseTag
                                     <!-- BEGIN: Line Chart -->
                                     <div class="preview-component intro-y box mt-5">
                                         <div class="flex flex-col items-center border-b border-slate-200/60 p-5 dark:border-darkmode-400 sm:flex-row">
-                                            <h2 class="mr-auto text-base font-medium">Line Chart</h2>
-                                            <div data-tw-merge="" class="flex items-center mt-3 w-full sm:ml-auto sm:mt-0 sm:w-auto"><label data-tw-merge="" for="show-example-5" class="cursor-pointer ml-2">Show example code</label>
+                                            <h2 class="mr-auto text-base font-medium">Total Customers</h2>
+                                            <div data-tw-merge="" class="flex items-center mt-3 w-full sm:ml-auto sm:mt-0 sm:w-auto"><label data-tw-merge="" for="show-example-5" class="cursor-pointer ml-2">Show Revenue per Customer</label>
                                                 <input data-tw-merge="" type="checkbox" class="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50 w-[38px] h-[24px] p-px rounded-full relative before:w-[20px] before:h-[20px] before:shadow-[1px_1px_3px_rgba(0,0,0,0.25)] before:transition-[margin-left] before:duration-200 before:ease-in-out before:absolute before:inset-y-0 before:my-auto before:rounded-full before:dark:bg-darkmode-600 checked:bg-primary checked:border-primary checked:bg-none before:checked:ml-[14px] before:checked:bg-white ml-3 mr-0" id="show-example-5">
                                             </div>
                                         </div>
                                         <div class="p-5">
                                             <div class="preview relative [&.hide]:overflow-hidden [&.hide]:h-0">
                                                 <div class="w-auto h-[400px]">
-                                                    <canvas class="chart line-chart"></canvas>
+                                                    <canvas class="chart line-chart-total-customers"></canvas>
                                                 </div>
                                             </div>
                                             <div class="source hide relative [&.hide]:overflow-hidden [&.hide]:h-0">
-                                                <div class="highlight">
-                                                    <button data-tw-merge="" class="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 py-1 px-2 copy-code"><i data-tw-merge="" data-lucide="file" class="stroke-[1] copy-code mr-2 h-4 w-4"></i>
-                                                        Copy example code</button>
-                                                    <div class="relative mt-3 overflow-hidden rounded-md">
-                                                        <pre class="relative grid">            <code class="text-xs leading-relaxed [&.hljs]:bg-slate-50 [&.hljs]:px-5 [&.hljs]:py-4 [&.hljs]:dark:text-slate-200 [&.hljs]:dark:bg-darkmode-700 [&.hljs_.hljs-string]:dark:text-slate-200 [&.hljs_.hljs-tag]:dark:text-slate-200 [&.hljs_.hljs-name]:dark:text-emerald-500 [&.hljs_.hljs-attr]:dark:text-sky-500 before:content-['HTML'] before:font-roboto before:font-medium before:px-4 before:py-2 before:block before:absolute before:top-0 before:right-0 before:rounded-bl before:bg-slate-200 before:bg-opacity-70 before:dark:bg-darkmode-400 [&.javascript]:before:content-['JS'] html">
-                HTMLOpenTagdiv class="w-auto h-[400px]"HTMLCloseTag
-    HTMLOpenTagcanvas
-    class="chart line-chart line-chart"
-HTMLCloseTagHTMLOpenTag/canvasHTMLCloseTag
-HTMLOpenTag/divHTMLCloseTag
-            </code>
-        </pre>
-                                                    </div>
+                                                <div class="w-auto h-[400px]">
+                                                    <canvas class="chart line-chart-revenue-per-customer"></canvas>
                                                 </div>
                                             </div>
                                         </div>

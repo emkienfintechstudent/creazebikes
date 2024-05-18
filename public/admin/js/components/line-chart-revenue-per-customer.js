@@ -1,8 +1,17 @@
 (() => {
-    (function () {
+    (async function () {
         "use strict";
-        let charts = $(".line-chart");
+        let charts = $(".line-chart-revenue-per-customer");
+        // Lấy dữ liệu từ endpoint '/api/chart-data'
+        const response = await fetch('/admin/chart/data/revenuepercustomer');
+        const data = await response.json();
+        const year_month = []
+        const  revenue_per_customer= []
+        data.revenuePerCustomer.forEach(element => {
+            year_month.push(element.year_month)
+            revenue_per_customer.push(element.revenue_per_customer)
 
+        });
         if (charts.length) {
             charts.each(function () {
                 let ctx = $(this)[0].getContext("2d");
@@ -10,27 +19,18 @@
                 let chart = new Chart(ctx, {
                     type: "line",
                     data: {
-                        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                        labels: year_month,
                         datasets: [
                             {
-                                label: "Html Template",
-                                data: [0, 200, 250, 200, 500, 450, 850, 1050, 950, 1100, 900, 1200],
+                                label: "Revenue per customer",
+                                data: revenue_per_customer,
                                 borderWidth: 2,
                                 borderColor: getColor("primary"),
                                 backgroundColor: "transparent",
                                 pointBorderColor: "transparent",
                                 tension: 0.4
-                            },
-                            {
-                                label: "VueJs Template",
-                                data: [0, 300, 400, 560, 320, 600, 720, 850, 690, 805, 1200, 1010],
-                                borderWidth: 2,
-                                borderDash: [2, 2],
-                                borderColor: getColor("slate.400"),
-                                backgroundColor: "transparent",
-                                pointBorderColor: "transparent",
-                                tension: 0.4
                             }
+                           
                         ]
                     },
                     options: {
@@ -55,7 +55,7 @@
                                 ticks: {
                                     font: { size: 12 },
                                     color: getColor("slate.500", 0.8),
-                                    callback: function (value) { return "$" + value; }
+                                    callback: function (value) { return "$"  + value; }
                                 },
                                 grid: { color: getColor("slate.300") },
                                 border: {
