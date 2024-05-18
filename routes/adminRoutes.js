@@ -43,4 +43,6 @@ router.post("/admin/add/product",AdminProductController().addNew);
 router.get("/admin/marketing/charts",AdminMarketingController().chart);
 router.get("/admin/sales/charts", AdminSalesController().chart);
 router.get("/admin/chart/data/revenueprofit12months",ChartData().revenueProfit12Months)
+router.get("/admin/chart/data/revenuebycategory",ChartData().revenueByCategory)
+router.get("/admin/chart/data/ordersbycategory",ChartData().ordersByCategory)
 export default router;

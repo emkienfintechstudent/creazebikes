@@ -2313,7 +2313,7 @@ select {
     --color-theme-2: 12 74 110;
     --color-primary: 3 4 94;
     --color-secondary: 226 232 240;
-    --color-success: 13 148 136;
+    --color-success: #28A745; /* Thêm màu mới */
     --color-info: 8 145 178;
     --color-warning: 202 138 4;
     --color-pending: 194 65 12;

@@ -14,9 +14,7 @@
              revenue.push(element.revenue)
 
            });
-           console.log(yearMonth)
-           console.log(profit)
-           console.log(revenue)
+         
         a.length && a.each(function () {
             let r = $(this)[0].getContext("2d"),
                 e = new Chart(r, {

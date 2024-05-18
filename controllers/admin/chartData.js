@@ -1,4 +1,5 @@
 import db from '../../config/connectDB.js';
+import { revenueReport_sql } from '../../services/adminService.js';
 function ChartData() {
     return {
         
@@ -13,7 +14,31 @@ function ChartData() {
         const revenueProfit12MonthsData = result.rows
         res.json({revenueProfit12MonthsData:revenueProfit12MonthsData}); 
 
-    }
+    },
+    async revenueByCategory(req,res){
+            const result = await db.query(`SELECT d.name category, round(sum(price * quantity)::decimal,3) revenue
+            FROM ORDERS A
+            JOIN PRODUCTS B ON A.PRODUCT_ID = B.ID
+            JOIN PRODUCT_SUBCATEGORIES C ON B.PRODUCT_SUBCATEGORY_ID = C.ID
+            join product_categories d on c.product_category_id = d.id
+            group by d.name`)
+            const revenueByCategory = result.rows 
+            console.log(revenueByCategory)
+            res.json({revenueByCategory:revenueByCategory}); 
+
+    },
+    async ordersByCategory(req,res){
+        const result = await db.query(`SELECT d.name category, count(*) as total_orders 
+        FROM ORDERS A
+        JOIN PRODUCTS B ON A.PRODUCT_ID = B.ID
+        JOIN PRODUCT_SUBCATEGORIES C ON B.PRODUCT_SUBCATEGORY_ID = C.ID
+        join product_categories d on c.product_category_id = d.id
+        group by d.name`)
+        const ordersByCategory = result.rows 
+        console.log( ordersByCategory)
+        res.json({ ordersByCategory: ordersByCategory}); 
+
+},
 }
 }
 export default ChartData;
