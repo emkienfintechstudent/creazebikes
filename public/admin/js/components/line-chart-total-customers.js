@@ -7,9 +7,11 @@
         const data = await response.json();
         const year_month = []
         const total_customers= []
+        const target_total_customers  = []
         data.totalCustomers.forEach(element => {
             year_month.push(element.year_month)
           total_customers.push(element.total_customers)
+          target_total_customers.push(element.target_total_customers )
 
         });
         if (charts.length) {
@@ -22,15 +24,24 @@
                         labels: year_month,
                         datasets: [
                             {
-                                label: "Total Customer",
+                                label: "Total Customers",
                                 data: total_customers,
                                 borderWidth: 2,
                                 borderColor: getColor("primary"),
                                 backgroundColor: "transparent",
                                 pointBorderColor: "transparent",
                                 tension: 0.4
+                            },
+                            {
+                                label: "Total Customers Target",
+                                data: target_total_customers,
+                                borderWidth: 2,
+                                borderDash: [2, 2],
+                                borderColor: getColor("slate.400"),
+                                backgroundColor: "transparent",
+                                pointBorderColor: "transparent",
+                                tension: 0.4
                             }
-                           
                         ]
                     },
                     options: {
