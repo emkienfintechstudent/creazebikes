@@ -1,0 +1,19 @@
+#paginationControls-inactiveTable {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.page-link-inactiveTable {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #007bff;
+    flex: 0 0 auto; /* Ensures the elements do not stretch */
+}
+.page-link-inactiveTable.active-inactiveTable {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}

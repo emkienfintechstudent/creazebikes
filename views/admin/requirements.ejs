@@ -11,6 +11,40 @@
             color: gray;
         }
 </style>
+<style>
+  .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        #paginatedTable {
+            margin-right: auto;
+        }
+        #paginationControls {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        .page-link, .page-control {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #007bff;
+            flex: 0 0 auto;
+        }
+        .page-link.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        .page-control.disabled {
+            color: #ddd;
+            pointer-events: none;
+        }
+
+</style>
+
 <body>
 
     <div class="lucent before:content-[''] before:z-[-1] before:h-screen before:w-screen before:bg-lucent before:bg-cover before:top-0 before:fixed after:content-[''] after:z-[-1] after:h-screen after:w-screen after:bg-gradient-to-b after:from-theme-1 after:to-theme-2/50 after:top-0 after:fixed">
@@ -156,6 +190,75 @@
                                    
                                   </tbody>
                                 </table>
+                                <h2> RFM analysis</h2>
+                                <h3>Bảng RFM</h3>
+                                <br>
+                                <div class="container">
+                                <table id="paginatedTable" class="table">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">Name</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">RFM SCORE</th>
+                                      <th scope="col">SEGMENT</th>
+
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                      <% if(locals.rfm_table) { %>
+                                          <% rfm_table.forEach(object=> { %>
+                                              
+                                        
+                                    <tr>
+                                      <th scope="row"><%= object.name %></th>
+                                      <td><%= object.email %></td>
+                                      <td><%= object.rfm_score%></td>
+                                      <td><%= object.segment %></td>
+                                    </tr>
+                                 <%  }); } %>
+                                   
+                                  </tbody>
+                                </table>
+                                <div id="paginationControls">
+                                  <a href="#" class="page-control" id="prevPage">Previous</a>
+                                  <span id="pageLinks"></span>
+                                  <a href="#" class="page-control" id="nextPage">Next</a>
+                              </div>
+                            </div>
+                            <h3>Các khách hàng ở phân khúc Champions, Loyal Customers, Potential Loyalist</h3>
+                            <br>
+                            <div class="container">
+                            <table id="paginatedTable" class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Name</th>
+                                  <th scope="col">Email</th>
+                                  <th scope="col">RFM SCORE</th>
+                                  <th scope="col">SEGMENT</th>
+
+                                </tr>
+                              </thead>
+                              <tbody>
+                                  <% if(locals.rfm_table) { %>
+                                      <% rfm_table.forEach(object=> { %>
+                                          
+                                    
+                                <tr>
+                                  <th scope="row"><%= object.name %></th>
+                                  <td><%= object.email %></td>
+                                  <td><%= object.rfm_score%></td>
+                                  <td><%= object.segment %></td>
+                                </tr>
+                             <%  }); } %>
+                               
+                              </tbody>
+                            </table>
+                            <div id="paginationControls">
+                              <a href="#" class="page-control" id="prevPage">Previous</a>
+                              <span id="pageLinks"></span>
+                              <a href="#" class="page-control" id="nextPage">Next</a>
+                          </div>
+                        </div>
                                 <h3 style="color: black;">                                  
                                     What day of the week do most users register on? 
                                 </h3> 
@@ -191,7 +294,7 @@
                                     <h3> Find the users who have never bought a product</h3>
                                 <hr>                            
                                   <br>
-                                  <table class="table">
+                                  <table id="inactiveTable" class="table">
                                     <thead>
                                       <tr>
                                         <th scope="col">id</th>
@@ -215,7 +318,7 @@
                                      
                                     </tbody>
                                   </table>
-                                  
+                         
                                   <h3> Our Investors want to know</h3>
                                     <h3>  what's the average number of products purchased by each user?</h3>
                                   <hr>
@@ -341,6 +444,30 @@
                             <h3>   To find the youngest and oldest customers for each gender</h3>
                             <hr>                    
                            <br>
+                           <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Min age</th>
+                                <th scope="col">Max age</th>
+
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% if(locals.monthlyAOV) { %>
+                                    <% min_max_age.forEach(object => { %>
+                                        
+                                  
+                              <tr>
+                                <th scope="row"><%= object.gender %></th>
+                                <td><%= object.min_age %></td>
+                                <td><%= object.max_age %> </td>
+                               
+                              </tr>
+                           <%  }); } %>
+                             
+                            </tbody>
+                          </table> 
                     </div>
                 </div>
             </div>

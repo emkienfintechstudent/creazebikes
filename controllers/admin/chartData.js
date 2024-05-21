@@ -58,7 +58,18 @@ select year_month, total_customers, coalesce(lag(total_customers) over(order by 
     const revenuePerCustomer= result.rows
     res.json({ revenuePerCustomer:revenuePerCustomer}); 
  },
- 
+ async ordersByMonth(req,res){
+    const result = await db.query(` with cte as (SELECT TO_CHAR(a.created_at, 'YYYY-MM') AS year_month,count(*)
+    FROM orders a
+    JOIN products b ON a.product_id = b.id
+    WHERE a.created_at >= NOW() - INTERVAL '12 months'
+    GROUP BY TO_CHAR(a.created_at, 'YYYY-MM')
+    order by year_month )
+select year_month, count as orders, round(lag(count)over(order by year_month asc)*1.1) as orders_target from cte `)
+    const ordersByMonth= result.rows
+    console.log(ordersByMonth)
+    res.json({ ordersByMonth:ordersByMonth}); 
+ },
 
  
 }

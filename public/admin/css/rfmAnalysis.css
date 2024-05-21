@@ -1,0 +1,48 @@
+#paginatedTable2 {
+    margin-right: auto;
+}
+#paginationControls2 {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.page-link2, .page-control2 {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #007bff;
+    flex: 0 0 auto;
+}
+.page-link2.active2 {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+.page-control2.disabled2 {
+    color: #ddd;
+    pointer-events: none;
+}
+#paginatedTable3 {
+    margin-right: auto;
+}
+#paginationControls3 {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.page-link3, .page-control3 {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #007bff;
+    flex: 0 0 auto;
+}
+.page-link3.active3 {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+.page-control3.disabled3 {
+    color: #ddd;
+    pointer-events: none;
+}

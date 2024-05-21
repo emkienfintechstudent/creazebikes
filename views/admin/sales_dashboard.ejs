@@ -226,9 +226,7 @@
                 </div>
             </div>
         </div>
-        <div class="fixed bottom-0 right-0 z-50 mb-5 mr-5 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-theme-1 text-white shadow-lg" data-tw-toggle="modal" data-tw-target="#theme-switcher">
-            <i data-tw-merge="" data-lucide="settings" class="stroke-[1] w-5 h-5 animate-spin"></i>
-        </div>
+       
     </div>
     <div class="lucent before:content-[''] before:z-[-1] before:h-screen before:w-screen before:bg-lucent before:bg-cover before:top-0 before:fixed after:content-[''] after:z-[-1] after:h-screen after:w-screen after:bg-gradient-to-b after:from-theme-1 after:to-theme-2/50 after:top-0 after:fixed">
         <div class="h-screen relative loading-page loading-page--before-hide [&.loading-page--before-hide]:before:block [&.loading-page--hide]:before:opacity-0 before:content-[''] before:transition-opacity before:duration-300 before:hidden before:h-screen before:w-screen before:fixed before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:z-[60] [&.loading-page--before-hide]:after:block [&.loading-page--hide]:after:opacity-0 after:content-[''] after:transition-opacity after:duration-300 after:hidden after:h-16 after:w-16 after:animate-pulse after:fixed after:opacity-50 after:inset-0 after:m-auto after:bg-loading-puff after:bg-cover after:z-[61]">
@@ -1129,37 +1127,21 @@
                             <div class="intro-y mt-5 grid grid-cols-12 gap-6">
                                 <div class="col-span-12 lg:col-span-6">
                                     <!-- BEGIN: Vertical Bar Chart -->
+                                    <br>
                                     <div class="preview-component intro-y box">
                                         <div class="flex flex-col items-center border-b border-slate-200/60 p-5 dark:border-darkmode-400 sm:flex-row">
                                             <h2 class="mr-auto text-base font-medium">
-                                                Vertical Bar Chart
+                                                Orders by month
                                             </h2>
-                                            <div data-tw-merge="" class="flex items-center mt-3 w-full sm:ml-auto sm:mt-0 sm:w-auto"><label data-tw-merge="" for="show-example-1" class="cursor-pointer ml-2">Show example code</label>
-                                                <input data-tw-merge="" type="checkbox" class="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50 w-[38px] h-[24px] p-px rounded-full relative before:w-[20px] before:h-[20px] before:shadow-[1px_1px_3px_rgba(0,0,0,0.25)] before:transition-[margin-left] before:duration-200 before:ease-in-out before:absolute before:inset-y-0 before:my-auto before:rounded-full before:dark:bg-darkmode-600 checked:bg-primary checked:border-primary checked:bg-none before:checked:ml-[14px] before:checked:bg-white ml-3 mr-0" id="show-example-1">
-                                            </div>
+                                           
                                         </div>
                                         <div class="p-5">
                                             <div class="preview relative [&.hide]:overflow-hidden [&.hide]:h-0">
                                                 <div class="w-auto h-[400px]">
-                                                    <canvas class="chart vertical-bar-chart"></canvas>
+                                                    <canvas class="chart vertical-bar-chart-orders-by-month"></canvas>
                                                 </div>
                                             </div>
-                                            <div class="source hide relative [&.hide]:overflow-hidden [&.hide]:h-0">
-                                                <div class="highlight">
-                                                    <button data-tw-merge="" class="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 py-1 px-2 copy-code"><i data-tw-merge="" data-lucide="file" class="stroke-[1] copy-code mr-2 h-4 w-4"></i>
-                                                        Copy example code</button>
-                                                    <div class="relative mt-3 overflow-hidden rounded-md">
-                                                        <pre class="relative grid">            <code class="text-xs leading-relaxed [&.hljs]:bg-slate-50 [&.hljs]:px-5 [&.hljs]:py-4 [&.hljs]:dark:text-slate-200 [&.hljs]:dark:bg-darkmode-700 [&.hljs_.hljs-string]:dark:text-slate-200 [&.hljs_.hljs-tag]:dark:text-slate-200 [&.hljs_.hljs-name]:dark:text-emerald-500 [&.hljs_.hljs-attr]:dark:text-sky-500 before:content-['HTML'] before:font-roboto before:font-medium before:px-4 before:py-2 before:block before:absolute before:top-0 before:right-0 before:rounded-bl before:bg-slate-200 before:bg-opacity-70 before:dark:bg-darkmode-400 [&.javascript]:before:content-['JS'] html">
-                HTMLOpenTagdiv class="w-auto h-[400px]"HTMLCloseTag
-    HTMLOpenTagcanvas
-    class="chart vertical-bar-chart vertical-bar-chart"
-HTMLCloseTagHTMLOpenTag/canvasHTMLCloseTag
-HTMLOpenTag/divHTMLCloseTag
-            </code>
-        </pre>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                     <!-- END: Vertical Bar Chart -->
@@ -1167,7 +1149,7 @@ HTMLOpenTag/divHTMLCloseTag
                                     <div class="preview-component intro-y box mt-5">
                                         <div class="flex flex-col items-center border-b border-slate-200/60 p-5 dark:border-darkmode-400 sm:flex-row">
                                             <h2 class="mr-auto text-base font-medium">
-                                                Horizontal Bar Chart
+                                                Revenue, Profit by month
                                             </h2>
                                             <div data-tw-merge="" class="flex items-center mt-3 w-full sm:ml-auto sm:mt-0 sm:w-auto"><label data-tw-merge="" for="show-example-2" class="cursor-pointer ml-2">Show Top 10 Customers</label>
                                                 <input data-tw-merge="" type="checkbox" class="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50 w-[38px] h-[24px] p-px rounded-full relative before:w-[20px] before:h-[20px] before:shadow-[1px_1px_3px_rgba(0,0,0,0.25)] before:transition-[margin-left] before:duration-200 before:ease-in-out before:absolute before:inset-y-0 before:my-auto before:rounded-full before:dark:bg-darkmode-600 checked:bg-primary checked:border-primary checked:bg-none before:checked:ml-[14px] before:checked:bg-white ml-3 mr-0" id="show-example-2">
@@ -1253,39 +1235,7 @@ HTMLOpenTag/divHTMLCloseTag
                                 </div>
                                 <div class="col-span-12 lg:col-span-6">
                                     <!-- BEGIN: Stacked Bar Chart -->
-                                    <div class="preview-component intro-y box">
-                                        <div class="flex flex-col items-center border-b border-slate-200/60 p-5 dark:border-darkmode-400 sm:flex-row">
-                                            <h2 class="mr-auto text-base font-medium">
-                                                Stacked Bar Chart
-                                            </h2>
-                                            <div data-tw-merge="" class="flex items-center mt-3 w-full sm:ml-auto sm:mt-0 sm:w-auto"><label data-tw-merge="" for="show-example-4" class="cursor-pointer ml-2">Show example code</label>
-                                                <input data-tw-merge="" type="checkbox" class="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50 w-[38px] h-[24px] p-px rounded-full relative before:w-[20px] before:h-[20px] before:shadow-[1px_1px_3px_rgba(0,0,0,0.25)] before:transition-[margin-left] before:duration-200 before:ease-in-out before:absolute before:inset-y-0 before:my-auto before:rounded-full before:dark:bg-darkmode-600 checked:bg-primary checked:border-primary checked:bg-none before:checked:ml-[14px] before:checked:bg-white ml-3 mr-0" id="show-example-4">
-                                            </div>
-                                        </div>
-                                        <div class="p-5">
-                                            <div class="preview relative [&.hide]:overflow-hidden [&.hide]:h-0">
-                                                <div class="w-auto h-[400px]">
-                                                    <canvas class="chart stacked-bar-chart"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="source hide relative [&.hide]:overflow-hidden [&.hide]:h-0">
-                                                <div class="highlight">
-                                                    <button data-tw-merge="" class="transition duration-200 border shadow-sm inline-flex items-center justify-center rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 py-1 px-2 copy-code"><i data-tw-merge="" data-lucide="file" class="stroke-[1] copy-code mr-2 h-4 w-4"></i>
-                                                        Copy example code</button>
-                                                    <div class="relative mt-3 overflow-hidden rounded-md">
-                                                        <pre class="relative grid">            <code class="text-xs leading-relaxed [&.hljs]:bg-slate-50 [&.hljs]:px-5 [&.hljs]:py-4 [&.hljs]:dark:text-slate-200 [&.hljs]:dark:bg-darkmode-700 [&.hljs_.hljs-string]:dark:text-slate-200 [&.hljs_.hljs-tag]:dark:text-slate-200 [&.hljs_.hljs-name]:dark:text-emerald-500 [&.hljs_.hljs-attr]:dark:text-sky-500 before:content-['HTML'] before:font-roboto before:font-medium before:px-4 before:py-2 before:block before:absolute before:top-0 before:right-0 before:rounded-bl before:bg-slate-200 before:bg-opacity-70 before:dark:bg-darkmode-400 [&.javascript]:before:content-['JS'] html">
-                HTMLOpenTagdiv class="w-auto h-[400px]"HTMLCloseTag
-    HTMLOpenTagcanvas
-    class="chart stacked-bar-chart stacked-bar-chart"
-HTMLCloseTagHTMLOpenTag/canvasHTMLCloseTag
-HTMLOpenTag/divHTMLCloseTag
-            </code>
-        </pre>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                
                                     <!-- END: Stacked Bar Chart -->
                                     <!-- BEGIN: Line Chart -->
                                     <div class="preview-component intro-y box mt-5">

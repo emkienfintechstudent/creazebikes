@@ -1,0 +1,172 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<style>
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  #paginatedTable {
+    margin-right: auto;
+  }
+
+  #paginationControls {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .page-link,
+  .page-control {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #007bff;
+    flex: 0 0 auto;
+  }
+
+  .page-link.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+  }
+
+  .page-control.disabled {
+    color: #ddd;
+    pointer-events: none;
+  }
+</style>
+
+<body>
+
+  <div
+    class="lucent before:content-[''] before:z-[-1] before:h-screen before:w-screen before:bg-lucent before:bg-cover before:top-0 before:fixed after:content-[''] after:z-[-1] after:h-screen after:w-screen after:bg-gradient-to-b after:from-theme-1 after:to-theme-2/50 after:top-0 after:fixed">
+    <div
+      class="h-screen relative loading-page loading-page--before-hide [&.loading-page--before-hide]:before:block [&.loading-page--hide]:before:opacity-0 before:content-[''] before:transition-opacity before:duration-300 before:hidden before:h-screen before:w-screen before:fixed before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:z-[60] [&.loading-page--before-hide]:after:block [&.loading-page--hide]:after:opacity-0 after:content-[''] after:transition-opacity after:duration-300 after:hidden after:h-16 after:w-16 after:animate-pulse after:fixed after:opacity-50 after:inset-0 after:m-auto after:bg-loading-puff after:bg-cover after:z-[61]">
+      <div
+        class="absolute inset-0 xl:inset-5 flex after:absolute after:inset-0 after:rounded-xl after:bg-gradient-to-b after:from-white/10 after:to-white/20 after:backdrop-blur-xl after:content-['']">
+
+        <div
+          class="content relative transition-[margin,width] duration-100 w-full after:absolute after:inset-0 after:bg-slate-100 after:content-[''] after:xl:rounded-xl after:z-10 content--compact xl:ml-[275px] [&.content--compact]:xl:ml-[91px]">
+          <div
+            class="scrollable-ref z-20 h-full w-full overflow-y-auto px-5 pb-5 pt-[90px] [&_.simplebar-content]:p-0 [&_.simplebar-track.simplebar-vertical]:w-[10px] [&_.simplebar-track.simplebar-vertical]:mr-0.5 [&_.simplebar-track.simplebar-vertical_.simplebar-scrollbar]:before:bg-slate-600/30">
+            <h2> RFM analysis</h2>
+            <h3>Bảng RFM</h3>
+            <br>
+            <div class="container">
+              <table id="paginatedTable" class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">RFM SCORE</th>
+                    <th scope="col">SEGMENT</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if(locals.rfm_table) { %>
+                    <% rfm_table.forEach(object=> { %>
+
+
+                      <tr>
+                        <th scope="row">
+                          <%= object.name %>
+                        </th>
+                        <td>
+                          <%= object.email %>
+                        </td>
+                        <td>
+                          <%= object.rfm_score%>
+                        </td>
+                        <td>
+                          <%= object.segment %>
+                        </td>
+                      </tr>
+                      <% }); } %>
+
+                </tbody>
+              </table>
+              <div id="paginationControls">
+                <a href="#" class="page-control" id="prevPage">Previous</a>
+                <span id="pageLinks"></span>
+                <a href="#" class="page-control" id="nextPage">Next</a>
+              </div>
+            </div>
+            <h3>Các khách hàng ở phân khúc Champions, Loyal Customers, Potential Loyalist</h3>
+            <br>
+            <div class="container">
+              <table id="paginatedTable2" class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">RFM SCORE</th>
+                    <th scope="col">SEGMENT</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if(locals.best_customers) { %>
+                    <% best_customers.forEach(object=> { %>
+
+
+                      <tr>
+                        <th scope="row">
+                          <%= object.name %>
+                        </th>
+                        <td>
+                          <%= object.email %>
+                        </td>
+                        <td>
+                          <%= object.rfm_score%>
+                        </td>
+                        <td>
+                          <%= object.segment %>
+                        </td>
+                      </tr>
+                      <% }); } %>
+
+                </tbody>
+              </table>
+              <div id="paginationControls2">
+                <a href="#" class="page-control2" id="prevPage2">Previous</a>
+                <span id="pageLinks"></span>
+                <a href="#" class="page-control2" id="nextPage2">Next</a>
+              </div>
+            </div>
+            <h3>Số lượng khách hàng ở mỗi phân khúc</h3>
+            <br>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Segment</th>
+                  <th scope="col">Count</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <% if(locals.segment_count) { %>
+                  <% segment_count.forEach(object=> { %>
+
+
+                    <tr>
+                      <th scope="row">
+                        <%= object.segment%>
+                      </th>
+                      <td>
+                        <%= object.count %>
+                      </td>
+                    
+                    </tr>
+                    <% }); } %>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
