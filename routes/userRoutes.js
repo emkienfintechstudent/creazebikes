@@ -7,7 +7,7 @@ import FeedbackController from "../controllers/customers/feedbackController.js";
 import AccountController from "../controllers/customers/accountController.js";
 import AuthController from "../controllers/authController.js";
 import auth from "../middleware/auth.js";
-
+import BlogController from "../controllers/customers/blogController.js";
 const router = express.Router();
 
 router.get("/", HomeController().index);
@@ -28,6 +28,7 @@ router.get("/user/order/:id", OrderController().show);
 router.post("/user/account/profile/save", AccountController().update);
 router.get("/user/login/password", AuthController().forgotPassword);
 router.post("/user/login/password", AuthController().newPassword);
+router.get("/blog", BlogController().index);
 
 export default router;
 

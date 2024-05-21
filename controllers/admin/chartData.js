@@ -23,7 +23,6 @@ function ChartData() {
             join product_categories d on c.product_category_id = d.id
             group by d.name`)
             const revenueByCategory = result.rows 
-            console.log(revenueByCategory)
             res.json({revenueByCategory:revenueByCategory}); 
 
     },
@@ -35,7 +34,6 @@ function ChartData() {
         join product_categories d on c.product_category_id = d.id
         group by d.name`)
         const ordersByCategory = result.rows 
-        console.log( ordersByCategory)
         res.json({ ordersByCategory: ordersByCategory}); 
 
 },
@@ -48,7 +46,6 @@ function ChartData() {
     order by year_month)
 select year_month, total_customers, coalesce(lag(total_customers) over(order by year_month asc),0)*1.1 target_total_customers from cte `)
     const totalCustomers= result.rows
-    console.log(totalCustomers)
     res.json({ totalCustomers:totalCustomers}); 
  },
  async revenuePerCustomer(req,res){
@@ -59,9 +56,9 @@ select year_month, total_customers, coalesce(lag(total_customers) over(order by 
     group by TO_CHAR(a.created_at, 'YYYY-MM')
     order by year_month `)
     const revenuePerCustomer= result.rows
-    console.log(revenuePerCustomer)
     res.json({ revenuePerCustomer:revenuePerCustomer}); 
- }
+ },
+ 
 
  
 }
