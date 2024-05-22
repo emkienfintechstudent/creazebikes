@@ -53,218 +53,10 @@
               
                 <div class="content relative transition-[margin,width] duration-100 w-full after:absolute after:inset-0 after:bg-slate-100 after:content-[''] after:xl:rounded-xl after:z-10 content--compact xl:ml-[275px] [&.content--compact]:xl:ml-[91px]">
                     <div class="scrollable-ref z-20 h-full w-full overflow-y-auto px-5 pb-5 pt-[90px] [&_.simplebar-content]:p-0 [&_.simplebar-track.simplebar-vertical]:w-[10px] [&_.simplebar-track.simplebar-vertical]:mr-0.5 [&_.simplebar-track.simplebar-vertical_.simplebar-scrollbar]:before:bg-slate-600/30">
-                         <h3 style="color: black;">                                  
-                          Tôi muốn yêu cầu lập một biểu đồ Cohort để theo dõi số lượng người dùng theo tháng kể từ lần mua đầu tiên của họ từ đó suy ra được:  </h3>
-                          <h3 style="color: black;">                                  
-                            => Làm thế nào để giữ chân khách hàng tốt hơn ? </h3>
-                            <h3 style="color: black;">    => Khi nào là thời điểm tốt nhất để tương tác lại với người dùng?</h3>
-                              <h3 style="color: black;">    => khi nào là thời điểm tốt nhất để tiếp thị lại ?</h3>
-                                <h3 style="color: black;">      => cho thấy sự cải thiện về sản phẩm của mình theo thời gian thế nào ?</h3>
-                                <br>
-                                <h3 style="color: black;">  Customer cohort</h3>
-                                <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">Start Month</th>
-                                      <th scope="col">m1</th>
-                                      <th scope="col">m2</th>
-                                      <th scope="col">m3</th>
-                                      <th scope="col">m4</th>
-                                      <th scope="col">m5</th>
-                                      <th scope="col">m6</th>
-                                      <th scope="col">m7</th>
-                                      <th scope="col">m8</th>
-                                      <th scope="col">m9</th>
-                                      <th scope="col">m10</th>
-                                      <th scope="col">m11</th>
-                                      <th scope="col">m12</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                      <% if(locals.customerCohort) { %>
-                                          <% customerCohort.forEach(object => { %>
-                                              
-                                        
-                                    <tr>
-                                      <th scope="row"><%= object.cohort_month %></th>
-                                      <td><%= object.m1 %></td>
-                                      <td><%= object.m2 %></td>
-                                      <td><%= object.m3 %></td>
-                                      <td><%= object.m4 %></td>
-                                      <td><%= object.m5 %></td>
-                                      <td><%= object.m6 %></td>
-                                      <td><%= object.m7 %></td>
-                                      <td><%= object.m8 %></td>
-                                      <td><%= object.m9 %></td>
-                                      <td><%= object.m10 %></td>
-                                      <td><%= object.m11 %></td>
-                                      <td><%= object.m12 %></td>
-                                    </tr>
-                                 <%  }); } %>
-                                   
-                                  </tbody>
-                                </table>
-                                <h3 style="color: black;">  RETENTION COHORT</h3>
-                                <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">Start Month</th>
-                                      <th scope="col">m1</th>
-                                      <th scope="col">m2</th>
-                                      <th scope="col">m3</th>
-                                      <th scope="col">m4</th>
-                                      <th scope="col">m5</th>
-                                      <th scope="col">m6</th>
-                                      <th scope="col">m7</th>
-                                      <th scope="col">m8</th>
-                                      <th scope="col">m9</th>
-                                      <th scope="col">m10</th>
-                                      <th scope="col">m11</th>
-                                      <th scope="col">m12</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                      <% if(locals.retentionCohort) { %>
-                                          <% retentionCohort.forEach(object => { %>
-                                              
-                                        
-                                    <tr>
-                                      <th scope="row"><%= object.cohort_month %></th>
-                                      <td><%= object.m1 %></td>
-                                      <td><%= object.m2 %></td>
-                                      <td><%= object.m3 %></td>
-                                      <td><%= object.m4 %></td>
-                                      <td><%= object.m5 %></td>
-                                      <td><%= object.m6 %></td>
-                                      <td><%= object.m7 %></td>
-                                      <td><%= object.m8 %></td>
-                                      <td><%= object.m9 %></td>
-                                      <td><%= object.m10 %></td>
-                                      <td><%= object.m11 %></td>
-                                      <td><%= object.m12 %></td>
-                                    </tr>
-                                 <%  }); } %>
-                                   
-                                  </tbody>
-                                </table>
-                                <h3 style="color: black;">  CHURN COHORT</h3>
-                                <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">Start Month</th>
-                                      <th scope="col">m1</th>
-                                      <th scope="col">m2</th>
-                                      <th scope="col">m3</th>
-                                      <th scope="col">m4</th>
-                                      <th scope="col">m5</th>
-                                      <th scope="col">m6</th>
-                                      <th scope="col">m7</th>
-                                      <th scope="col">m8</th>
-                                      <th scope="col">m9</th>
-                                      <th scope="col">m10</th>
-                                      <th scope="col">m11</th>
-                                      <th scope="col">m12</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                      <% if(locals.churnCohort) { %>
-                                          <%churnCohort.forEach(object => { %>
-                                              
-                                        
-                                    <tr>
-                                      <th scope="row"><%= object.cohort_month %></th>
-                                      <td><%= object.m1 %></td>
-                                      <td><%= object.m2 %></td>
-                                      <td><%= object.m3 %></td>
-                                      <td><%= object.m4 %></td>
-                                      <td><%= object.m5 %></td>
-                                      <td><%= object.m6 %></td>
-                                      <td><%= object.m7 %></td>
-                                      <td><%= object.m8 %></td>
-                                      <td><%= object.m9 %></td>
-                                      <td><%= object.m10 %></td>
-                                      <td><%= object.m11 %></td>
-                                      <td><%= object.m12 %></td>
-                                    </tr>
-                                 <%  }); } %>
-                                   
-                                  </tbody>
-                                </table>
-                                <h2> RFM analysis</h2>
-                                <h3>Bảng RFM</h3>
-                                <br>
-                                <div class="container">
-                                <table id="paginatedTable" class="table">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">Name</th>
-                                      <th scope="col">Email</th>
-                                      <th scope="col">RFM SCORE</th>
-                                      <th scope="col">SEGMENT</th>
-
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                      <% if(locals.rfm_table) { %>
-                                          <% rfm_table.forEach(object=> { %>
-                                              
-                                        
-                                    <tr>
-                                      <th scope="row"><%= object.name %></th>
-                                      <td><%= object.email %></td>
-                                      <td><%= object.rfm_score%></td>
-                                      <td><%= object.segment %></td>
-                                    </tr>
-                                 <%  }); } %>
-                                   
-                                  </tbody>
-                                </table>
-                                <div id="paginationControls">
-                                  <a href="#" class="page-control" id="prevPage">Previous</a>
-                                  <span id="pageLinks"></span>
-                                  <a href="#" class="page-control" id="nextPage">Next</a>
-                              </div>
-                            </div>
-                            <h3>Các khách hàng ở phân khúc Champions, Loyal Customers, Potential Loyalist</h3>
-                            <br>
-                            <div class="container">
-                            <table id="paginatedTable" class="table">
-                              <thead>
-                                <tr>
-                                  <th scope="col">Name</th>
-                                  <th scope="col">Email</th>
-                                  <th scope="col">RFM SCORE</th>
-                                  <th scope="col">SEGMENT</th>
-
-                                </tr>
-                              </thead>
-                              <tbody>
-                                  <% if(locals.rfm_table) { %>
-                                      <% rfm_table.forEach(object=> { %>
-                                          
-                                    
-                                <tr>
-                                  <th scope="row"><%= object.name %></th>
-                                  <td><%= object.email %></td>
-                                  <td><%= object.rfm_score%></td>
-                                  <td><%= object.segment %></td>
-                                </tr>
-                             <%  }); } %>
-                               
-                              </tbody>
-                            </table>
-                            <div id="paginationControls">
-                              <a href="#" class="page-control" id="prevPage">Previous</a>
-                              <span id="pageLinks"></span>
-                              <a href="#" class="page-control" id="nextPage">Next</a>
-                          </div>
-                        </div>
+                          <h2>Các yêu cầu của phòng marketing và phòng kinh doanh</h2>
                                 <h3 style="color: black;">                                  
-                                    What day of the week do most users register on? 
+                                    Ngày nào trong tuần có số lượng người dùng đăng kí tài khoản nhiều nhất 
                                 </h3> 
-                                <h3>
-                                    we need to figure out when to schedule an ad campaign
-                                </h3>
                                 <hr>
                                 <table class="table">
                                     <thead>
@@ -289,9 +81,7 @@
                                     </tbody>
                                   </table>
                                 <br>
-                                <h3> We want to target our inactive users with an email campaign </h3>
-
-                                    <h3> Find the users who have never bought a product</h3>
+                                <h3> Tìm những người dùng không bao giờ mua hàng </h3>
                                 <hr>                            
                                   <br>
                                   <table id="inactiveTable" class="table">
@@ -319,8 +109,8 @@
                                     </tbody>
                                   </table>
                          
-                                  <h3> Our Investors want to know</h3>
-                                    <h3>  what's the average number of products purchased by each user?</h3>
+                                  <h3> Nhà đầu tư muốn biết</h3>
+                                    <h3>  Trung bình mỗi đơn mua bao nhiêu sản phẩm?</h3>
                                   <hr>
                     
                                  <br>
@@ -346,7 +136,7 @@
                                    
                                   </tbody>
                                 </table>
-                                    <h3>   The top 5 most profitable products of this month</h3>
+                                    <h3>Tìm top 5 sản phẩm có lợi nhuận cao nhất</h3>
                                   <hr>
                                 
                                  <br>
@@ -374,7 +164,7 @@
                                    
                                   </tbody>
                                 </table>
-                                <h3>   To calculate the Average Order Value (AOV) and the number of customers each month</h3>
+                                <h3>   Tìm giá trị đơn hàng trung bình (AOV) và số lượng khách hàng mỗi tháng</h3>
                                 <hr>                    
                                <br>
                                <table class="table">
@@ -402,46 +192,9 @@
                                 </tbody>
                               </table> 
                               <br>
-                              <div class="container">
-                                
-                                <div class="insights">
-                                    <h2 class="text-center">Insights</h2>
-                                    <div class="insight-title">
-                                        <h3>1. Biến Động Số Lượng Khách Hàng</h3>
-                                    </div>
-                                    <p class="insight-content">
-                                        Số lượng khách hàng có sự dao động lớn trong suốt năm. Số lượng khách hàng cao nhất là vào tháng 4 năm 2024 với 415 khách hàng. 
-                                        Số lượng khách hàng thấp nhất là vào tháng 5 năm 2023 với chỉ 1 khách hàng, có thể đây là một trường hợp bất thường hoặc lỗi nhập dữ liệu.
-                                    </p>
-                        
-                                    <div class="insight-title">
-                                        <h3>2. Xu Hướng Giá Trị Đơn Hàng Trung Bình (AOV)</h3>
-                                    </div>
-                                    <p class="insight-content">
-                                        AOV thay đổi đáng kể qua các tháng, với một số tháng có giá trị cao hơn hẳn. Tháng 5 năm 2023 có AOV cao nhất là 1406.98, 
-                                        nhưng tháng này chỉ có 1 khách hàng, cho thấy đây có thể là một ngoại lệ. Các giá trị AOV ổn định hơn nằm trong khoảng từ $100 đến $277, 
-                                        với tháng 3 và tháng 4 năm 2024 có sự tăng lên gần $200.
-                                    </p>
-                        
-                                    <div class="insight-title">
-                                        <h3>3. Mối Quan Hệ Giữa Số Lượng Khách Hàng và AOV</h3>
-                                    </div>
-                                    <p class="insight-content">
-                                        Thông thường, những tháng có số lượng khách hàng cao hơn thường có AOV ổn định và thấp hơn. 
-                                        Ví dụ, tháng 6 năm 2023 với 345 khách hàng có AOV là $197.43, trong khi tháng 7 năm 2023 với 215 khách hàng có AOV cao hơn là $277.33. 
-                                        Dữ liệu cho thấy khi nhiều khách hàng mua sắm, AOV có xu hướng giảm, có lẽ do phạm vi kích cỡ đơn hàng rộng hơn.
-                                    </p>
-                        
-                                    <div class="insight-title">
-                                        <h3>4. Xu Hướng Tăng Trưởng và Mùa Vụ</h3>
-                                    </div>
-                                    <p class="insight-content">
-                                        Có sự tăng trưởng đáng kể trong số lượng khách hàng từ nửa cuối năm 2023 đến năm 2024, cho thấy xu hướng theo mùa hoặc các chiến dịch tiếp thị hiệu quả. 
-                                        Những tháng như tháng 12 và tháng 1 có sự giảm nhẹ và phục hồi, có thể do ảnh hưởng của mùa lễ hội.
-                                    </p>
-                                </div>
-                            </div>
-                            <h3>   To find the youngest and oldest customers for each gender</h3>
+                            
+                      
+                            <h3>Tìm độ tuổi trẻ nhất và già nhất mỗi giới tính</h3>
                             <hr>                    
                            <br>
                            <table class="table">
