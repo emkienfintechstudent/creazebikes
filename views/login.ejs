@@ -25,7 +25,6 @@
 
 	<div class="social-sign-in outer-top-xs">
 		<a href="/auth/google" class="facebook-sign-in"><i class="fa fa-google"></i> Sign In with Google</a>
-		<a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
 	</div>
 	
 	<form class="register-form outer-top-xs" role="form" method="POST" action="/login">
@@ -37,11 +36,9 @@
 		    <label class="info-title" for="exampleInputPassword1">Password <span>*</span></label>
 		    <input type="password" class="form-control unicase-form-control text-input" id="exampleInputPassword1" name="password">
 		</div>
-		<div class="radio outer-xs">
-		  	<label>
-		    	<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" name ="rememberMe">Remember me!
-		  	</label>
-		  	<a href="#" class="forgot-password pull-right">Forgot your Password?</a>
+		<div class="radio outer-xs" style="height: 10px;">
+		  	
+		  	<a href="/user/login/password" class="forgot-password pull-right">Forgot your Password?</a>
 			
 		</div>
 	  	<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
@@ -194,9 +191,6 @@
 </div><!-- /.logo-slider -->
 <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->	</div><!-- /.container -->
 </div><!-- /.body-content -->
-<!-- ============================================================= FOOTER ============================================================= -->
-<%- include("partials/footer.ejs") %>
-<!-- ============================================================= FOOTER : END============================================================= -->
 
 
 	<script>

@@ -9,7 +9,7 @@ function AdminUserController() {
       const result = await db.query(`select id,name,birth_date,gender,username,phone_number,address,created_at,status_id from users
         where is_admin is false  and created_at is not null
         order by created_at desc
-        limit 10`)
+        limit 300`)
       res.render("admin/users.ejs", { users: result.rows, layout: 'admin/layouts/header_footer', moment: moment })
 
     },

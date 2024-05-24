@@ -8,6 +8,7 @@ function AccountController() {
     return {
         async index(req, res) {
             await setupProductCategory()
+          
             res.render("user_account.ejs", { productCategory: keys, productSubCategory: getALLProductCategory, user: req.user, session: req.session, layout: './layouts/headerfooter', moment: moment })
         },
         async update(req, res) {

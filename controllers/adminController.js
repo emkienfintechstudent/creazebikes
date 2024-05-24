@@ -19,7 +19,12 @@ const getDashboardOverview1 =  async (req,res) => {
   const generalReport = await dataForGeneralReport()
   if (req.isAuthenticated()) {
       console.log(req.user)
-      res.render("admin/dashboard_overview_1.ejs",{ layout: 'admin/layouts/header_footer',Labels: donutLabels, Data: donutData, sumOfCustomers:sumOfCustomers, topTenCustomers:topTenCustomers,totalProfit:totalProfit,generalReport:generalReport}) 
+      if(req.user.is_admin){
+        res.render("admin/dashboard_overview_1.ejs",{ layout: 'admin/layouts/header_footer',Labels: donutLabels, Data: donutData, sumOfCustomers:sumOfCustomers, topTenCustomers:topTenCustomers,totalProfit:totalProfit,generalReport:generalReport}) 
+
+      }else {
+        res.redirect('/')
+      }
     }else {
       res.redirect("/login")
   }  

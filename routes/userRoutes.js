@@ -9,7 +9,7 @@ import AuthController from "../controllers/authController.js";
 import auth from "../middleware/auth.js";
 import BlogController from "../controllers/customers/blogController.js";
 const router = express.Router();
-
+import Test from "../controllers/customers/test.js";
 router.get("/", HomeController().index);
 router.get("/home", HomeController().index);
 router.get("/category/:category/subcategory/:subcategory", ProductController().index);
@@ -69,3 +69,7 @@ router.post("/update-cart", CartController().update);
 // router.get("/admin/feedback/:id", AdminFeedbackController().detail);
 // // Dashboard routes
 // router.get("/admin/oveview/1", getDashboardOverview1);
+
+router.get('/test', (req, res) => {
+    Test(req, res);
+});
