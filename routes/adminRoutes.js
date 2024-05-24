@@ -22,6 +22,8 @@ const router = express.Router();
 router.get("/admin/products", AdminProductController().index);
 router.get("/admin/productsubcategories", AdminProductSubcategoryController().index);
 router.get("/admin/productcategories", AdminProductCategoryController().index);
+router.get("/admin/productcategory/:id", AdminProductCategoryController().detail);
+router.get("/admin/productsubcategory/:id",AdminProductSubcategoryController().detail);
 
 router.get("/admin/products/detail", AdminProductController().AdminDetailProduct);
 router.get("/admin/orders", AdminOrderController().index);
@@ -55,5 +57,8 @@ router.get("/admin/requirements",Requirements().index)
 router.get("/admin/rfmanalysis",RfmAnalysis().index)
 router.get("/admin/cohortanalysis",CohortAnalysis().index)
 router.get("/admin/chart/data/ordersbymonth",ChartData().ordersByMonth)
+router.get("/admin/user/:id",AdminUserController().detail)
+router.get("/admin/admin/:id",AdminUserController().detail)
+router.post("/admin/product/updateproductsubcategory",AdminProductController().updateSubcategoryForProduct)
 
 export default router;

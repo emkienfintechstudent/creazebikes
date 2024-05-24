@@ -29,6 +29,9 @@ function AdminProductCategoryController() {
             res.json({message : "Success"})
 
         }
+      },
+      async detail (req,res){
+
       }
     }
 }

@@ -51,6 +51,13 @@ function AdminUserController() {
         console.log(err)
         // res.render("404.ejs");
       }
+    },
+    async detail(req, res) {
+      const result = await db.query(`select * from users where id = $1`, [req.params.id])
+      const userInfo = result.rows[0]
+      console.log(userInfo)
+      res.render("admin/user_detail", {userInfo:userInfo, layout: 'admin/layouts/header_footer', moment: moment })
+
     }
 
   }

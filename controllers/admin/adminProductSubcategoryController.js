@@ -30,8 +30,10 @@ function AdminProductSubcategoryController() {
             res.json({message : "Success"})
 
         }
-      }
+      },
+      async detail (req,res){
 
+      }
     }
 }
 export default AdminProductSubcategoryController;

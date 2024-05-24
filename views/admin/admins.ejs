@@ -562,8 +562,13 @@
                                             <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
                                                 <%= admin.address %>
                                             </td>
-                                            <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                <button>edit</button>
+                                            <td data-tw-merge="" class="px-5 w-56 border border-l-0 border-r-0 border-slate-200 bg-white first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r shadow-[20px_3px_20px_#0000000b] dark:border-darkmode-600 dark:bg-darkmode-600 py-0 relative before:block before:w-px before:h-8 before:bg-slate-200 before:absolute before:left-0 before:inset-y-0 before:my-auto before:dark:bg-darkmode-400">
+                                                <div class="flex items-center justify-center">
+                                                    <a class="mr-3 flex items-center whitespace-nowrap" href="/admin/admin/<%= admin.id %>" >
+                                                        <i data-tw-merge="" data-lucide="file-text" class="stroke-[1] mr-1 h-4 w-4"></i>
+                                                        View Details
+                                                    </a>
+                                                </div>
                                             </td>
                                           
                                         </tr>

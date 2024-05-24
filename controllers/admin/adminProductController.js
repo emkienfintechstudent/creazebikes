@@ -18,13 +18,14 @@ function AdminProductController() {
        },
 
       async AdminDetailProduct(req, res,){
+        await setupProductCategory();
+
         const result = await db.query (`select a.*,b.name as product_subcategory_name,  c.name as product_category_name from products a join product_subcategories b on a.product_subcategory_id = b.id 
 join product_categories c on b.product_category_id = c.id
 where a.id = ${req.params.id} `)
-        res.render("admin/product_detail.ejs", {layout: 'admin/layouts/header_footer', product:result.rows[0],moment:moment })
+        res.render("admin/product_detail.ejs", {productCategory: keys,productSubCategory: getALLProductCategory,layout: 'admin/layouts/header_footer', product:result.rows[0],moment:moment })
       },
       async editProduct(req,res){
- 
         await db.query(`update products 
         set name = $1, description = $2,color= $3, size = $4, cost =$5,price = $6
         where id = ${req.params.id}`,[req.body.name,req.body.description,req.body.color,req.body.size,req.body.cost,req.body.price])
@@ -51,7 +52,17 @@ where a.id = ${req.params.id} `)
           res.json({message : "Success"})
 
       }
-      }
+      },
+      async updateSubcategoryForProduct(req,res){ 
+      console.log(req.body)
+      const result = await db.query(`select id from product_subcategories where name = $1`, [req.body.Subcategory])
+       const product_subcategory_id =  result.rows[0].id
+       console.log(product_subcategory_id)
+      const result1 = await db.query(`update products 
+      set product_subcategory_id = $1 where id = $2`,[product_subcategory_id, req.body.productId])
+      console.log(result1.rows)
+    }
+     
     }
 }
 export default AdminProductController;

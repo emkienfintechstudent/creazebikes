@@ -49,62 +49,77 @@
 
                   <tr>
                     <th scope="row"> Product name</th>
-                    <td colspan="2"><input name="name" style="width: 100%;" type="text" value="<%= product.name  %>"></td>
+                    <td colspan="2"><input class=" form-select-lg mb-3" name="name" style="width: 100%;" type="text" value="<%= product.name  %>"></td>
 
                   </tr>
                   <tr>
                     <th scope="row">Product subcategory name:</th>
                     <td colspan="2">
-                      <%= product.product_subcategory_name %>
+                      <select class="form-select form-select-lg mb-3" id="subCategorySelect" name="subcategory" data-product_id="<%= product.id %>"> 
+                        <% productCategory.forEach(category=> { %>
+            
+                        <optgroup label="<%= category %>">
+                            <% if (productSubCategory && productSubCategory[category]) { %>
+                                <% const sub=productSubCategory[category] %>
+                                <% sub.forEach(subcategory=> { %>
+                            <option value="<%= subcategory.subcate_name %>"> <%= subcategory.subcate_name %> </option>
+                         <% }) %>
+                            <% } %>
+                          </optgroup>             
+                          <% }) %> 
+            
+                    </select>
                     </td>
                   </tr>
                   <tr>
                     <th scope="row">Product category name:</th>
                     <td colspan="2">
-                      <%= product.product_category_name %>
+                       <p class=" form-select-lg mb-3"><%= product.product_category_name %></p>
                   </tr>
                   <tr>
                     <th scope="row">Description:</th>
-                    <td colspan="2"><input name="description" style="width: 100%;" type="text" value="<%= product.description  %>"> </td>
+                    <td colspan="2"><input class=" form-select-lg mb-3" name="description" style="width: 100%;" type="text" value="<%= product.description  %>"> </td>
 
                   </tr>
 
                   <tr>
                     <th scope="row">Color:</th>
-                    <td colspan="2"><input name="color" style="width: 100%;" type="text" value="<%= product.color %>">
+                    <td colspan="2"><input class=" form-select-lg mb-3"  name="color" style="width: 100%;" type="text" value="<%= product.color %>">
                     </td>
 
                   </tr>
                   <tr>
                     <th scope="row">Size:</th>
-                    <td colspan="2"><input name="size" style="width: 100%;" type="text" value="<%= product.size %>">
+                    <td colspan="2"><input class=" form-select-lg mb-3"  name="size" style="width: 100%;" type="text" value="<%= product.size %>">
                     </td>
 
                   </tr>
                   <tr>
                     <th scope="row">Cost:</th>
-                    <td colspan="2"><input name="cost" style="width: 100%;" type="text" value="<%= product.cost %>">
+                    <td colspan="2"><input class=" form-select-lg mb-3"  name="cost" style="width: 100%;" type="text" value="<%= product.cost %>">
                     </td>
 
                   </tr>
                   <tr>
                     <th scope="row">Price:</th>
-                    <td colspan="2"><input name="price" style="width: 100%;" type="text" value="<%= product.price %>"> </td>
+                    <td colspan="2"><input class=" form-select-lg mb-3"  name="price" style="width: 100%;" type="text" value="<%= product.price %>"> </td>
 
                   </tr>
                   <tr>
                     <th scope="row">Created at:</th>
                     <td colspan="2">
-                      <%= moment(product.created_at).format('DD/MM/YYYY') %>
+                      <p class=" form-select-lg mb-3" >
+                        <%= moment(product.created_at).format('DD/MM/YYYY') %>
+                      </p>
                     </td>
-
+                  
                   </tr>
 
                 </tbody>
 
 
               </table> <button type="submit" class="btn btn-primary active" data-bs-toggle="button"
-                aria-pressed="true">Edit</button>
+                aria-pressed="true">Save</button>
             </form>
 
           </div>

@@ -1,3 +1,4 @@
+
 function updateStatus(object) {
     axios.post('/admin/update/status', object)
     
@@ -50,10 +51,14 @@ function updateAdminRole(admin) {
 }
 document.querySelectorAll('.user-role-select').forEach(select => {
     select.addEventListener('change', function() {
-        $('.alert-update-role-admin').css("display", "block");
-        setTimeout(function () {
-            $('.alert-update-role-admin').css("display", "none");
-        }, 1000);
+        
+        Swal.fire({
+            icon: 'success',
+            title: 'Role update successfully',
+            showConfirmButton: false,
+            timer: 1500, // Thời gian hiển thị thông báo (milliseconds)
+
+        });
         const newRole = this.value
         console.log(this.dataset)
         console.log(newRole)
@@ -85,6 +90,30 @@ $(document).ready(function() {
      });
         console.log(Data);
         axios.post(`/admin/product/${Data.productId}/edit`, Data)
+    
+        .then(res => {
+                // Xử lý phản hồi từ máy chủ nếu cần
+            })
+            .catch(err => {
+                // Xử lý lỗi nếu có
+            });
+    });
+});
+
+
+
+document.querySelectorAll('#subCategorySelect').forEach(select => {
+    // Gắn sự kiện change vào mỗi phần tử select
+    select.addEventListener('change', function() {
+    
+        console.log(this.value)
+        console.log(this.dataset)
+        const newSubcategory = this.value;
+        const product = {
+            productId : this.dataset.product_id,
+            Subcategory: newSubcategory
+         }
+        axios.post(`/admin/product/updateproductsubcategory`, product)
     
         .then(res => {
                 // Xử lý phản hồi từ máy chủ nếu cần
