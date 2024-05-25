@@ -1,5 +1,25 @@
 
+<style>
+       #paginationControls {
+    text-align: right; /* Align pagination controls to the right */
+    margin-top: 10px;
+}
 
+.page-link {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.page-link.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007
+}
+</style>
 <form class="addForm" id="form-product" >
     <div class="col-sm-10" style="display: none;">
         <input type="text" class="form-control" id="createdBy" name="createdBy" value="<%= user.name %>">
@@ -615,7 +635,7 @@
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="productTableBody">
                                      <% if(locals.products){products.forEach(product =>  { %>
                     
                                
@@ -659,52 +679,55 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div id="paginationControls" class="text-center mt-4"></div>
+
                             <!-- END: Data List -->
-                            <!-- BEGIN: Pagination -->
-                            <div class="intro-y mb-12 mt-5 flex flex-wrap items-center sm:flex-row sm:flex-nowrap">
-                                <nav class="w-full sm:mr-auto sm:w-auto">
-                                    <ul class="flex w-full mr-0 sm:mr-auto sm:w-auto">
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevrons-left" class="stroke-[1] h-4 w-4"></i></a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevron-left" class="stroke-[1] h-4 w-4"></i></a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">...</a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">1</a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3 !box dark:bg-darkmode-400">2</a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">3</a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">...</a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevron-right" class="stroke-[1] h-4 w-4"></i></a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevrons-right" class="stroke-[1] h-4 w-4"></i></a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                                <select data-tw-merge="" class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out text-sm border-slate-200 shadow-sm rounded-md py-2 px-3 pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1 !box mt-3 w-20 sm:mt-0">
-                                    <option>10</option>
-                                    <option>25</option>
-                                    <option>35</option>
-                                    <option>50</option>
-                                </select>
-                            </div>
-                            <!-- END: Pagination -->
+                        
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-   
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const rowsPerPage = 10;
+    const tableBody = document.getElementById('productTableBody');
+    const paginationControls = document.getElementById('paginationControls');
+    const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+    const numPages = Math.ceil(rows.length / rowsPerPage);
+    let currentPage = 1;
+
+    function displayPage(page) {
+        const start = (page - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+
+        rows.forEach((row, index) => {
+            row.style.display = (index >= start && index < end) ? '' : 'none';
+        });
+
+        updatePaginationControls();
+    }
+
+    function updatePaginationControls() {
+        paginationControls.innerHTML = '';
+
+        for (let i = 1; i <= numPages; i++) {
+            const pageLink = document.createElement('a');
+            pageLink.href = '#';
+            pageLink.textContent = i;
+            pageLink.className = `page-link ${i === currentPage ? 'active' : ''}`;
+            pageLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPage = i;
+                displayPage(currentPage);
+            });
+
+            paginationControls.appendChild(pageLink);
+        }
+    }
+
+    displayPage(currentPage);
+});
+   </script>

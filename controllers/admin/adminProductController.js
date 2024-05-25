@@ -10,10 +10,10 @@ function AdminProductController() {
 
         const result1 = await db.query('select id,name from product_categories')
         const categories = result1.rows
-        const result = await db.query (`select a.id as product_id,a.image as image, a.name as product_name, d.name as product_catgegory_name,a.price, a.status_id,sum(quantity) quantity, sum(price) revenue, sum(price) - sum(cost) profit,sum(cost) as cost  from products a join orders b on a.id=b.product_id
+        const result = await db.query (`select a.id as product_id,a.image as image, a.name as product_name, d.name as product_catgegory_name,a.price, a.status_id,sum(quantity) quantity  from products a join orders b on a.id=b.product_id
   join product_subcategories c on a.product_subcategory_id = c.id join product_categories d
   on c.product_category_id = d.id
-  group by a.id,a.image , a.name, d.name ,a.price, a.status_id limit 10 `)
+  group by a.id,a.image , a.name, d.name ,a.price, a.status_id  `)
   res.render("admin/products.ejs", {productCategory: keys,productSubCategory: getALLProductCategory,user:req.user, categories : categories,products:result.rows,layout: 'admin/layouts/header_footer'})
        },
 
@@ -23,6 +23,7 @@ function AdminProductController() {
         const result = await db.query (`select a.*,b.name as product_subcategory_name,  c.name as product_category_name from products a join product_subcategories b on a.product_subcategory_id = b.id 
 join product_categories c on b.product_category_id = c.id
 where a.id = ${req.params.id} `)
+console.log(result.rows)
         res.render("admin/product_detail.ejs", {productCategory: keys,productSubCategory: getALLProductCategory,layout: 'admin/layouts/header_footer', product:result.rows[0],moment:moment })
       },
       async editProduct(req,res){
@@ -59,7 +60,7 @@ where a.id = ${req.params.id} `)
        const product_subcategory_id =  result.rows[0].id
        console.log(product_subcategory_id)
       const result1 = await db.query(`update products 
-      set product_subcategory_id = $1 where id = $2`,[product_subcategory_id, req.body.productId])
+      set product_subcategory_id = $1 where id = $2 returning *`,[product_subcategory_id, req.body.productId] )
       console.log(result1.rows)
     }
      

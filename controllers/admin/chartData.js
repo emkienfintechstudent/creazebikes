@@ -67,7 +67,6 @@ select year_month, total_customers, coalesce(lag(total_customers) over(order by 
     order by year_month )
 select year_month, count as orders, round(lag(count)over(order by year_month asc)*1.1) as orders_target from cte `)
     const ordersByMonth= result.rows
-    console.log(ordersByMonth)
     res.json({ ordersByMonth:ordersByMonth}); 
  },
 

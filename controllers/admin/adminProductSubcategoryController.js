@@ -31,9 +31,27 @@ function AdminProductSubcategoryController() {
 
         }
       },
-      async detail (req,res){
+      async detail(req, res) {
+        const result = await db.query(`select name from product_categories`)
+        const categories = result.rows
+        const result1 = await db.query(`select a.id, b.name as product_category_name, a.name as product_subcategory_name, a.created_at, a.created_by, a.status_id from product_subcategories a join product_categories b on a.product_category_id = b.id where a.id = $1`, [req.params.id])
+        const product_subcategory = result1.rows[0]
+        res.render("admin/product_subcategory_detail.ejs", {categories : categories,product_subcategory:product_subcategory, user:req.user,moment:moment,product_subcategories:result.rows ,layout: 'admin/layouts/header_footer'})
 
-      }
+      },
+      async updateCategoryForSubcategory(req, res) {
+        const result = await db.query(`select id from product_categories where name = $1`, [req.body.category])
+        const product_category_id =  result.rows[0].id
+       const result1 = await db.query(`update product_subcategories 
+       set product_category_id = $1 where id = $2 returning *`,[product_category_id , req.body.productSubcategoryId] )
+       console.log(result1.rows)
+      },
+      async editProductSubcategory(req,res){
+        await db.query(`update product_subcategories
+        set name = $1
+        where id = ${req.params.id}`,[req.body.name])
+        
+      },
     }
 }
 export default AdminProductSubcategoryController;

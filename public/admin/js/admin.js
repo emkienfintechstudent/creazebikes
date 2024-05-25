@@ -123,3 +123,24 @@ document.querySelectorAll('#subCategorySelect').forEach(select => {
             });
     });
 });
+
+document.querySelectorAll('#categorySelect').forEach(select => {
+    // Gắn sự kiện change vào mỗi phần tử select
+    select.addEventListener('change', function() {
+    
+     
+        const newCategory = this.value;
+        const product_subcategory = {
+            productSubcategoryId : this.dataset.product_subcategory_id,
+            category:  newCategory
+         }
+        axios.post(`/admin/product/updatecategory`, product_subcategory)
+    
+        .then(res => {
+                // Xử lý phản hồi từ máy chủ nếu cần
+            })
+            .catch(err => {
+                // Xử lý lỗi nếu có
+            });
+    });
+});

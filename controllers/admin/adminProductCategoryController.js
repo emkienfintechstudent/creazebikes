@@ -31,8 +31,16 @@ function AdminProductCategoryController() {
         }
       },
       async detail (req,res){
-
-      }
+        const result1 = await db.query(`select * from product_categories where id = $1`, [req.params.id])
+        const product_category = result1.rows[0]
+        res.render("admin/product_category_detail.ejs", {product_category:product_category, user:req.user,moment:moment ,layout: 'admin/layouts/header_footer'})
+      },
+      async editProductCategory(req,res){
+        await db.query(`update product_categories
+        set name = $1
+        where id = ${req.params.id}`,[req.body.name])
+        
+      },
     }
 }
 export default AdminProductCategoryController;
