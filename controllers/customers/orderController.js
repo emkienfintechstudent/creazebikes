@@ -3,6 +3,7 @@ import db from "../../config/connectDB.js"
 import moment from "moment";
 import crypto from 'crypto';
 import https from 'https';
+import axios from "axios";
 function OrderController() {
   return {
    async index(req,res){
@@ -17,11 +18,55 @@ function OrderController() {
    async store(req,res){
     console.log(req.body)
     if(req.body.momo == "") {
+      const response = await axios.get('https://api.exchangerate-api.com/v4/latest/USD');
+      const exchangeRates = response.data.rates;
+      const usdToVnd = exchangeRates['VND'];
+
+      const address = req.body.address
+      const phone=req.body.phone_number
+      // thêm vào bảng cart trước    
+      const date_now = new Date().toISOString().slice(0, 10);
+      const result = await db.query(
+        "INSERT INTO carts (items,address,phone_number,created_at,status_id) VALUES ($1, $2,$3,$4,$5) RETURNING *",
+        [req.session.cart.items,address,phone,date_now,3]
+      );
+      const cart_id = result.rows[0].id 
+      const items = req.session.cart.items
+      let totalQuantity= 0
+      let totalPrice = 0 
+      // thêm vào bảng order
+      for(let product of Object.values(items)) {
+        totalQuantity +=  product.qty 
+        totalPrice += product.item.price
+        const result_id = await db.query(
+          `select id from orders order by id desc limit 1 `
+        );
+        const order_id = result_id.rows[0].id +1 
+        const result = await db.query(
+          "INSERT INTO orders  (id,created_at, product_id,user_id,quantity,cart_id) VALUES ($1, $2,$3,$4,$5,$6) RETURNING *",
+          [order_id,date_now, product.item.id,req.user.id , product.qty, cart_id]
+        );
+      };
+       const payment_id = 'MOMO' + new Date().getTime()
+      const total1 = totalPrice * usdToVnd
+      await db.query(
+        `update carts
+        set total_quantity = $1, total_price = $2, status_id = 13, payment_id  = $3
+        where id = $4 `,
+        [totalQuantity,total1,payment_id,cart_id]
+      );
+      delete req.session.cart
+
+
+
+
+
+
      // https://developers.momo.vn/#/docs/en/aiov2/?id=payment-method
     // parameters
     var accessKey = 'F8BBA842ECF85';
     var secretKey = 'K951B6PE1waDMi640xX08PD3vg6EkVlz';
-    var orderInfo = req.session.cart.items;
+    var orderInfo = "Momo";
     var partnerCode = 'MOMO';
     var redirectUrl = 'http://localhost:3000/payment/ipn';
     var ipnUrl = 'http://localhost:3000/payment/ipn';

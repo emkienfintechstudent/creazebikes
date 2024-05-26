@@ -17,7 +17,13 @@ router.get("/feedback", auth, FeedbackController().index);
 router.get("/shopping-cart", CartController().index);
 router.get("/user/account/profile", AccountController().index);
 router.get("/customer/orders", auth, OrderController().index);
+
+
 router.post("/order", OrderController().store);
+
+
+
+
 router.get("/user/account/profile/password", auth, AccountController().getUpdatePassword);
 router.post("/user/account/profile/save/password", AccountController().postUpdatePassword);
 router.post("/feedback", FeedbackController().storeFeedback);

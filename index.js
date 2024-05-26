@@ -22,10 +22,11 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+
     cookie: {
       maxAge: 1000 * 60 * 60 * 24,
       sameSite: true,
-      secure: false // ENABLE ONLY ON HTTPS
+      secure: false// ENABLE ONLY ON HTTPS
     }
   }
   )

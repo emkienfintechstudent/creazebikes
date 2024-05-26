@@ -35,6 +35,7 @@ console.log(result.rows)
       async addNew(req,res){
         console.log(req.body)
         var get_date_now = new Date();
+    
         const date = get_date_now.toISOString().slice(0, 10);
         const lastId = await db.query(`select id from products order by id desc limit 1`)
         const id = parseInt(lastId.rows[0].id) +1 
@@ -45,6 +46,7 @@ console.log(result.rows)
           console.log(checkProductName.rows[0])
           res.json({message : "Product already taken"})
       }else{
+          
           console.log(id)
           const result = await db.query(`insert into products(id,product_subcategory_id,name,description,color,size,cost,price,image,created_at,status_id) 
           values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) returning *
