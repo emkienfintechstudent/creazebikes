@@ -1,3 +1,5 @@
+
+<% if(locals.user) {    %>
 <div class="side-menu__content z-20 relative w-[275px] border-slate-200/80 duration-300 transition-[width] group-[.side-menu--collapsed]:xl:w-[91px] group-[.side-menu--collapsed.side-menu--on-hover]:xl:shadow-[6px_0_12px_-4px_#0000000f] group-[.side-menu--collapsed.side-menu--on-hover]:xl:w-[275px] h-full flex flex-col before:content-[''] before:absolute before:inset-0 before:xl:rounded-xl before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:xl:from-transparent before:xl:to-transparent group-[.side-menu--on-hover:not(.side-menu--collapsed)]:before:bg-none group-[.side-menu--on-hover]:before:from-theme-1/80 group-[.side-menu--on-hover]:before:to-theme-2/80 before:backdrop-blur-xl">
     <div class="relative z-10 hidden h-[65px] w-[275px] flex-none items-center overflow-hidden px-5 duration-300 xl:flex group-[.side-menu--collapsed.side-menu--on-hover]:xl:w-[275px] group-[.side-menu--collapsed]:xl:w-[91px]">
         <a class="flex items-center transition-[margin] duration-300 group-[.side-menu--collapsed.side-menu--on-hover]:xl:ml-0 group-[.side-menu--collapsed]:xl:ml-4" href="#">
@@ -13,19 +15,23 @@
         </a>
     </div>
     <div class="scrollable-ref w-full h-full z-20 px-5 overflow-y-auto overflow-x-hidden pb-3 [-webkit-mask-image:-webkit-linear-gradient(top,rgba(0,0,0,0),black_30px)] [&:-webkit-scrollbar]:w-0 [&:-webkit-scrollbar]:bg-transparent [&_.simplebar-content]:p-0 [&_.simplebar-track.simplebar-vertical]:w-[10px] [&_.simplebar-track.simplebar-vertical]:mr-0.5 [&_.simplebar-track.simplebar-vertical_.simplebar-scrollbar]:before:bg-slate-400/30">
+        
         <ul class="scrollable">
             <!-- BEGIN: First Child -->
             <li class="side-menu__divider">
                 START MENU
             </li>
+            <% if(user.role_id == 1 ){   %>
             <li>
-                <a href="javascript:;" class="side-menu__link ">
-                    <i data-tw-merge="" data-lucide="home" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+                <a href="javascript:;" class="side-menu__link side-menu__link--active side-menu__link--active-dropdown">
                     <div class="side-menu__link__title">Dashboard</div>
                     <i data-tw-merge="" data-lucide="chevron-down" class="stroke-[1] w-5 h-5 side-menu__link__chevron"></i>
                 </a>
                 <!-- BEGIN: Second Child -->
-                <ul  class="block">
+
+
+              
+
                     <li>
                         <a href="/admin/oveview/1" class="side-menu__link ">
                             <div class="side-menu__link__title">
@@ -63,19 +69,27 @@
                         <!-- END: Third Child -->
                     </li>
                   
-                </ul>
+                    <li>
+                        <a href="/admin/requirements" class="side-menu__link ">
+                            <div class="side-menu__link__title">
+                                Requirements
+                            </div>
+                        </a>
+                        <!-- BEGIN: Third Child -->
+                        <!-- END: Third Child -->
+                    </li>
                 <!-- END: Second Child -->
             </li>
-         
+         <% }%>
             
             <li>
                 <a href="javascript:;" class="side-menu__link side-menu__link--active side-menu__link--active-dropdown">
-                    <i data-tw-merge="" data-lucide="credit-card" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
                     <div class="side-menu__link__title">E-commerce</div>
                     <i data-tw-merge="" data-lucide="chevron-down" class="stroke-[1] w-5 h-5 side-menu__link__chevron"></i>
                 </a>
                 <!-- BEGIN: Second Child -->
-                <ul class="block">
+           
+
                     <li>
                     
                         <!-- BEGIN: Third Child -->
@@ -91,6 +105,7 @@
                         <!-- BEGIN: Third Child -->
                         <!-- END: Third Child -->
                     </li>
+
                     <li>
                         <a href="/admin/feedbacks" class="side-menu__link ">
                             <div class="side-menu__link__title">
@@ -100,19 +115,18 @@
                         <!-- BEGIN: Third Child -->
                         <!-- END: Third Child -->
                     </li>
-                </ul>
-                <!-- END: Second Child -->
+              
             </li>
+            <% if(user.role_id == 1 ){   %>
             <li>
                 <a href="javascript:;" class="side-menu__link side-menu__link--active side-menu__link--active-dropdown">
-                    <i data-tw-merge="" data-lucide="credit-card" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
                     <div class="side-menu__link__title">Person</div>
                     <i data-tw-merge="" data-lucide="chevron-down" class="stroke-[1] w-5 h-5 side-menu__link__chevron"></i>
                 </a>
                 <!-- BEGIN: Second Child -->
-                <ul class="block">
+            
                     <li>
-                        <a href="/admin/admins" class="side-menu__link side-menu__link--active ">
+                        <a href="/admin/admins" class="side-menu__link  ">
                             <div class="side-menu__link__title">
                                 Admins
                             </div>
@@ -131,19 +145,18 @@
                         <!-- END: Third Child -->
                     </li>
 
-                </ul>
                 <!-- END: Second Child -->
             </li>
+            <% } %>
             <li>
                 <a href="javascript:;" class="side-menu__link side-menu__link--active side-menu__link--active-dropdown">
-                    <i data-tw-merge="" data-lucide="credit-card" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
                     <div class="side-menu__link__title">Products management</div>
                     <i data-tw-merge="" data-lucide="chevron-down" class="stroke-[1] w-5 h-5 side-menu__link__chevron"></i>
                 </a>
                 <!-- BEGIN: Second Child -->
-                <ul class="block">
+               
                     <li>
-                        <a href="/admin/productcategories" class="side-menu__link side-menu__link--active ">
+                        <a href="/admin/productcategories" class="side-menu__link ">
                             <div class="side-menu__link__title">
                                 Product categories
                             </div>
@@ -169,8 +182,7 @@
                         </a>
                         <!-- BEGIN: Third Child -->
                         <!-- END: Third Child -->
-                    </li>
-                </ul>
+            
                 <!-- END: Second Child -->
             </li>
            
@@ -179,3 +191,4 @@
         </ul>
     </div>
 </div>
+<% } %>

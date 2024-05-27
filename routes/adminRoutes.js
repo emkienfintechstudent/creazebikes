@@ -1,51 +1,34 @@
 import express from "express";
-import AdminOrderController from "../controllers/admin/adminOrdersController.js";
-import AdminAdminController from "../controllers/admin/adminAdminController.js";
-import AdminUserController from "../controllers/admin/adminUserController.js";
-import AdminFeedbackController from "../controllers/admin/adminFeedbackController.js";
 
-import { getDashboardOverview1,  getAdminProfile, getDataOverview1 } from "../controllers/adminController.js";
+import { getDashboardOverview1, getDataOverview1 } from "../controllers/adminController.js";
 import StatusController from "../controllers/admin/statusController.js";
-import AdminMarketingController from "../controllers/admin/adminMarketingController.js"
 import AdminSalesController from "../controllers/admin/adminSalesController.js"
 import ChartData from "../controllers/admin/chartData.js";
 import Requirements from "../controllers/admin/requirements.js";
 import RfmAnalysis from "../controllers/admin/rfmAnalysisController.js";
 import CohortAnalysis from "../controllers/admin/cohortAnalysisController.js";
-
+import admin from "../middleware/admin.js"
 
 const router = express.Router();
 
 
-router.get("/admin/orders", AdminOrderController().index);
-router.get("/admin/admins", AdminAdminController().index);
-router.get("/admin/users",AdminUserController().index );
-router.get("/admin/profile", getAdminProfile);
-router.get("/admin/feedbacks", AdminFeedbackController().index);
-router.get("/admin/oveview/1", getDashboardOverview1);
+router.get("/admin/oveview/1",admin, getDashboardOverview1);
 
-router.get("/admin/feedback/:id", AdminFeedbackController().detail)
 // POST
 router.get("/api/chart-data", getDataOverview1);
-router.get("/admin/order/:id",AdminOrderController().detail );
 router.post("/admin/update/status", StatusController().update)
-router.post("/admin/admin/role", AdminAdminController().updateAdminRole);
-router.post("/admin/feedback/:id/rep", AdminFeedbackController().rep);
-router.post("/admin/add/user",AdminUserController().addUser);
-router.post("/admin/add/admin",AdminAdminController().addAdmin);
 
-router.get("/admin/marketing/charts",AdminMarketingController().chart);
-router.get("/admin/sales/charts", AdminSalesController().chart);
+
+router.get("/admin/sales/charts",admin, AdminSalesController().chart);
 router.get("/admin/chart/data/revenueprofit12months",ChartData().revenueProfit12Months)
 router.get("/admin/chart/data/revenuebycategory",ChartData().revenueByCategory)
 router.get("/admin/chart/data/ordersbycategory",ChartData().ordersByCategory)
 router.get("/admin/chart/data/totalcustomers",ChartData().totalCustomers)
 router.get("/admin/chart/data/revenuepercustomer",ChartData().revenuePerCustomer)
-router.get("/admin/requirements",Requirements().index)
-router.get("/admin/rfmanalysis",RfmAnalysis().index)
-router.get("/admin/cohortanalysis",CohortAnalysis().index)
+router.get("/admin/requirements",admin,Requirements().index)
+router.get("/admin/rfmanalysis",admin,RfmAnalysis().index)
+router.get("/admin/cohortanalysis",admin,CohortAnalysis().index)
 router.get("/admin/chart/data/ordersbymonth",ChartData().ordersByMonth)
-router.get("/admin/user/:id",AdminUserController().detail)
-router.get("/admin/admin/:id",AdminUserController().detail)
+
 
 export default router;

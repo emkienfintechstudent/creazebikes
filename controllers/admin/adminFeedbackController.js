@@ -21,7 +21,7 @@ function AdminFeedbackController() {
         join status c on a.status_id = c.id
         limit 10`)
         
-            res.render("admin/feedbacks.ejs", { feedbacks: result.rows, layout: 'admin/layouts/header_footer', moment: moment })
+            res.render("admin/feedbacks.ejs", { user: req.user,feedbacks: result.rows, layout: 'admin/layouts/header_footer', moment: moment })
 
         },
         async detail(req,res){

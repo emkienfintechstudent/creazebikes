@@ -43,6 +43,8 @@
 					<th class="cart-product-name item">Date</th>
 					<th class="cart-product-name item">Phone Number</th>
 					<th class="cart-product-name item">Status</th>
+					<th class="cart-product-name item">Payment method</th>
+
 					<th class="cart-product-name item"></th>
 
 				</tr>
@@ -71,6 +73,8 @@
 					<td class="cart-product-sub-total"><span class="cart-sub-total-price"> <%= moment(order.created_at).format('DD/MM/YYYY') %></span></td>
 					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><%= order.phone_number %> </span></td>
 					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><%= order.status %> </span></td>
+					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><%= order.payment_method %> </span></td>
+
 					<td class="cart-product-sub-total"><span class="cart-sub-total-price"><button><a href="/user/order/<%= order.cart_id %>">Detail</a> </button> </span></td>
 
 				</tr>

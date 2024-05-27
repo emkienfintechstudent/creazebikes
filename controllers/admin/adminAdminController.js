@@ -5,8 +5,13 @@ const saltRounds = 10 //băm bật khẩu 10 vòng
 function AdminAdminController(){
    return {
     async index(req,res) {
+      if(req.user.role_id == 1) {  
         const getdataAdmin = await dataAdmin()
-        res.render("admin/admins.ejs", {admins:getdataAdmin,layout: 'admin/layouts/header_footer'})},
+        console.log(req.user)
+        res.render("admin/admins.ejs", {user: req.user, admins:getdataAdmin,layout: 'admin/layouts/header_footer'})
+      }else{
+        res.redirect("/admin/oveview/1")
+      }},
         
         async addAdmin (req,res) {
             console.log(req.body)

@@ -17,17 +17,8 @@ const getDashboardOverview1 =  async (req,res) => {
   const totalProfit = await dataTotalProfit()
   // general report
   const generalReport = await dataForGeneralReport()
-  if (req.isAuthenticated()) {
-      console.log(req.user)
-      if(req.user.is_admin){
-        res.render("admin/dashboard_overview_1.ejs",{ layout: 'admin/layouts/header_footer',Labels: donutLabels, Data: donutData, sumOfCustomers:sumOfCustomers, topTenCustomers:topTenCustomers,totalProfit:totalProfit,generalReport:generalReport}) 
-
-      }else {
-        res.redirect('/')
-      }
-    }else {
-      res.redirect("/login")
-  }  
+  res.render("admin/dashboard_overview_1.ejs",{ user: req.user,layout: 'admin/layouts/header_footer',Labels: donutLabels, Data: donutData, sumOfCustomers:sumOfCustomers, topTenCustomers:topTenCustomers,totalProfit:totalProfit,generalReport:generalReport}) 
+ 
 }
 const getDataOverview1 =  async (req,res) => {
   // report-donut-chart 
@@ -44,9 +35,4 @@ const getDataOverview1 =  async (req,res) => {
 }
 
 
-
-
-const getAdminProfile = async (req,res) => { 
-  res.render("admin/profile.ejs")
-}
-export  {getAdminProfile,  getDashboardOverview1,getDataOverview1}
+export  { getDashboardOverview1,getDataOverview1}

@@ -1,4 +1,25 @@
 
+<style>
+    #paginationControls {
+ text-align: right; /* Align pagination controls to the right */
+ margin-top: 10px;
+}
+
+.page-link {
+ margin: 0 5px;
+ padding: 5px 10px;
+ border: 1px solid #ddd;
+ text-decoration: none;
+ color: #007bff;
+ cursor: pointer;
+}
+
+.page-link.active {
+ background-color: #007bff;
+ color: white;
+ border-color: #007
+}
+</style>
 <body>
     <div>
         <div data-tw-backdrop="" aria-hidden="true" tabindex="-1" id="theme-switcher" class="modal group bg-gradient-to-b from-theme-1/50 via-theme-2/50 to-black/50 transition-[visibility,opacity] w-screen h-screen fixed left-0 top-0 [&:not(.show)]:duration-[0s,0.2s] [&:not(.show)]:delay-[0.2s,0s] [&:not(.show)]:invisible [&:not(.show)]:opacity-0 [&.show]:visible [&.show]:opacity-100 [&.show]:duration-[0s,0.4s]">
@@ -226,9 +247,7 @@
                 </div>
             </div>
         </div>
-        <div class="fixed bottom-0 right-0 z-50 mb-5 mr-5 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-theme-1 text-white shadow-lg" data-tw-toggle="modal" data-tw-target="#theme-switcher">
-            <i data-tw-merge="" data-lucide="settings" class="stroke-[1] w-5 h-5 animate-spin"></i>
-        </div>
+    
     </div>
     <div class="lucent before:content-[''] before:z-[-1] before:h-screen before:w-screen before:bg-lucent before:bg-cover before:top-0 before:fixed after:content-[''] after:z-[-1] after:h-screen after:w-screen after:bg-gradient-to-b after:from-theme-1 after:to-theme-2/50 after:top-0 after:fixed">
         <div class="h-screen relative loading-page loading-page--before-hide [&.loading-page--before-hide]:before:block [&.loading-page--hide]:before:opacity-0 before:content-[''] before:transition-opacity before:duration-300 before:hidden before:h-screen before:w-screen before:fixed before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:z-[60] [&.loading-page--before-hide]:after:block [&.loading-page--hide]:after:opacity-0 after:content-[''] after:transition-opacity after:duration-300 after:hidden after:h-16 after:w-16 after:animate-pulse after:fixed after:opacity-50 after:inset-0 after:m-auto after:bg-loading-puff after:bg-cover after:z-[61]">
@@ -256,160 +275,7 @@
                                 <%-include("../partials/breadcrumb.ejs") %>
                                 <!-- END: Breadcrumb -->
                                 <!-- BEGIN: Search -->
-                                <div class="relative hidden flex-1 justify-center xl:flex" data-tw-toggle="modal" data-tw-target="#quick-search">
-                                    <div class="flex w-[350px] cursor-pointer items-center rounded-[0.5rem] border bg-slate-50 px-3.5 py-2 text-slate-400 transition-colors hover:bg-slate-100">
-                                        <i data-tw-merge="" data-lucide="search" class="stroke-[1] h-[18px] w-[18px]"></i>
-                                        <div class="ml-2.5 mr-auto">Quick search...</div>
-                                        <div>⌘K</div>
-                                    </div>
-                                </div>
-                                <div id="quick-search" aria-hidden="true" tabindex="-1" class="modal group bg-gradient-to-b from-theme-1/50 via-theme-2/50 to-black/50 transition-[visibility,opacity] w-screen h-screen fixed left-0 top-0 overflow-y-hidden z-[60] [&:not(.show)]:duration-[0s,0.2s] [&:not(.show)]:delay-[0.2s,0s] [&:not(.show)]:invisible [&:not(.show)]:opacity-0 [&.show]:visible [&.show]:opacity-100 [&.show]:duration-[0s,0.1s]">
-                                    <div class="box mx-auto my-2 w-[95%] scale-95 transition-transform group-[.show]:scale-100 sm:mt-40 sm:w-[600px] lg:w-[700px]">
-                                        <div class="relative border-b border-slate-200/60">
-                                            <i class="absolute inset-y-0 my-auto ml-4 h-5 w-5 text-slate-500" data-lucide="search"></i>
-                                            <input data-tw-merge="" type="text" placeholder="Quick Search..." class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 rounded-md placeholder:text-slate-400/90 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border file:mr-4 file:py-2 file:px-4 file:rounded-l-md file:border-0 file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent group-[.input-group]:first:rounded-l group-[.input-group]:last:rounded-r group-[.input-group]:z-10 border-0 px-12 py-5 shadow-none focus:ring-0">
-                                            <div class="absolute inset-y-0 right-0 my-auto mr-4 flex h-6 items-center rounded-md bg-slate-200 px-2 text-xs text-slate-500">
-                                                ESC</div>
-                                        </div>
-                                        <div class="p-5">
-                                            <div class="mb-3 font-medium">Applications</div>
-                                            <div class="mb-5">
-                                                <a class="mt-3 flex items-center first:mt-0" href="#">
-                                                    <div class="flex h-7 w-7 items-center justify-center rounded-full bg-success/20 text-success dark:bg-success/10">
-                                                        <i class="h-3.5 w-3.5" data-lucide="inbox"></i>
-                                                    </div>
-                                                    <div class="ml-3 truncate">Compose New Mail</div>
-                                                    <div class="ml-auto flex w-48 items-center justify-end truncate text-xs text-slate-500">
-                                                        <i class="mr-2 h-3.5 w-3.5" data-lucide="link"></i> Quick Access
-                                                    </div>
-                                                </a>
-                                                <a class="mt-3 flex items-center first:mt-0" href="#">
-                                                    <div class="flex h-7 w-7 items-center justify-center rounded-full bg-pending/10 text-pending">
-                                                        <i class="h-3.5 w-3.5" data-lucide="users"></i>
-                                                    </div>
-                                                    <div class="ml-3 truncate">Contacts</div>
-                                                    <div class="ml-auto flex w-48 items-center justify-end truncate text-xs text-slate-500">
-                                                        <i class="mr-2 h-3.5 w-3.5" data-lucide="link"></i> Quick Access
-                                                    </div>
-                                                </a>
-                                                <a class="mt-3 flex items-center first:mt-0" href="#">
-                                                    <div class="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-primary/80 dark:bg-primary/20">
-                                                        <i class="h-3.5 w-3.5" data-lucide="credit-card"></i>
-                                                    </div>
-                                                    <div class="ml-3 truncate">Product Reports</div>
-                                                    <div class="ml-auto flex w-48 items-center justify-end truncate text-xs text-slate-500">
-                                                        <i class="mr-2 h-3.5 w-3.5" data-lucide="link"></i> Quick Access
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="mb-3 font-medium">Contacts</div>
-                                            <div class="mb-5">
-                                                <a class="mt-3 flex items-center first:mt-0" href="#">
-                                                    <div class="image-fit h-7 w-7">
-                                                        <img class="rounded-full" src="dist/images/fakers/profile-4.jpg" alt="Rocketman - Admin Dashboard Template">
-                                                    </div>
-                                                    <div class="ml-3 w-36 truncate">Hugh Jackman</div>
-                                                    <div class="ml-auto w-36 truncate text-right text-xs text-slate-500">
-                                                        hughjackman@left4code.com</div>
-                                                </a>
-                                                <a class="mt-3 flex items-center first:mt-0" href="#">
-                                                    <div class="image-fit h-7 w-7">
-                                                        <img class="rounded-full" src="dist/images/fakers/profile-7.jpg" alt="Rocketman - Admin Dashboard Template">
-                                                    </div>
-                                                    <div class="ml-3 w-36 truncate">Johnny Depp</div>
-                                                    <div class="ml-auto w-36 truncate text-right text-xs text-slate-500">
-                                                        johnnydepp@left4code.com</div>
-                                                </a>
-                                                <a class="mt-3 flex items-center first:mt-0" href="#">
-                                                    <div class="image-fit h-7 w-7">
-                                                        <img class="rounded-full" src="dist/images/fakers/profile-15.jpg" alt="Rocketman - Admin Dashboard Template">
-                                                    </div>
-                                                    <div class="ml-3 w-36 truncate">Johnny Depp</div>
-                                                    <div class="ml-auto w-36 truncate text-right text-xs text-slate-500">
-                                                        johnnydepp@left4code.com</div>
-                                                </a>
-                                                <a class="mt-3 flex items-center first:mt-0" href="#">
-                                                    <div class="image-fit h-7 w-7">
-                                                        <img class="rounded-full" src="dist/images/fakers/profile-14.jpg" alt="Rocketman - Admin Dashboard Template">
-                                                    </div>
-                                                    <div class="ml-3 w-36 truncate">Robert De Niro</div>
-                                                    <div class="ml-auto w-36 truncate text-right text-xs text-slate-500">
-                                                        robertdeniro@left4code.com</div>
-                                                </a>
-                                            </div>
-                                            <div class="mb-3 font-medium">Products</div>
-                                            <div>
-                                                <a class="mt-3 flex items-center first:mt-0" href="#">
-                                                    <div class="image-fit h-7 w-7">
-                                                        <img class="rounded-full" src="dist/images/fakers/preview-2.jpg" alt="Rocketman - Admin Dashboard Template">
-                                                    </div>
-                                                    <div class="ml-3 w-36 truncate">Sony Master Series A9G</div>
-                                                    <div class="ml-auto w-36 truncate text-right text-xs text-slate-500">
-                                                        Electronic</div>
-                                                </a>
-                                                <a class="mt-3 flex items-center first:mt-0" href="#">
-                                                    <div class="image-fit h-7 w-7">
-                                                        <img class="rounded-full" src="dist/images/fakers/preview-4.jpg" alt="Rocketman - Admin Dashboard Template">
-                                                    </div>
-                                                    <div class="ml-3 w-36 truncate">Samsung Q90 QLED TV</div>
-                                                    <div class="ml-auto w-36 truncate text-right text-xs text-slate-500">
-                                                        Electronic</div>
-                                                </a>
-                                                <a class="mt-3 flex items-center first:mt-0" href="#">
-                                                    <div class="image-fit h-7 w-7">
-                                                        <img class="rounded-full" src="dist/images/fakers/preview-11.jpg" alt="Rocketman - Admin Dashboard Template">
-                                                    </div>
-                                                    <div class="ml-3 w-36 truncate">Nike Air Max 270</div>
-                                                    <div class="ml-auto w-36 truncate text-right text-xs text-slate-500">
-                                                        Sport & Outdoor</div>
-                                                </a>
-                                                <a class="mt-3 flex items-center first:mt-0" href="#">
-                                                    <div class="image-fit h-7 w-7">
-                                                        <img class="rounded-full" src="dist/images/fakers/preview-7.jpg" alt="Rocketman - Admin Dashboard Template">
-                                                    </div>
-                                                    <div class="ml-3 w-36 truncate">Nike Air Max 270</div>
-                                                    <div class="ml-auto w-36 truncate text-right text-xs text-slate-500">
-                                                        Sport & Outdoor</div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END: Search -->
-                                <!-- BEGIN: Notification & User Menu -->
-                                <div class="flex flex-1 items-center">
-                                    <div class="ml-auto flex items-center gap-1">
-                                        <a class="rounded-full p-2 hover:bg-slate-100" href="javascript:;">
-                                            <i data-tw-merge="" data-lucide="inbox" class="stroke-[1] h-[18px] w-[18px]"></i>
-                                        </a>
-                                        <a class="request-full-screen rounded-full p-2 hover:bg-slate-100" href="javascript:;">
-                                            <i data-tw-merge="" data-lucide="expand" class="stroke-[1] h-[18px] w-[18px]"></i>
-                                        </a>
-                                        
-                                    </div>
-                                    <div data-tw-merge="" data-tw-placement="bottom-end" class="dropdown relative ml-5"><button data-tw-toggle="dropdown" aria-expanded="false" class="cursor-pointer image-fit h-[36px] w-[36px] overflow-hidden rounded-full border-[3px] border-slate-200/70"><img src="dist/images/fakers/profile-2.jpg" alt="Rocketman - Admin Dashboard Template">
-                                        </button>
-                                        <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
-                                            <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 mt-1 w-56">
-                                                <a href="lucent-profile.html" class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i data-tw-merge="" data-lucide="users" class="stroke-[1] mr-2 h-4 w-4"></i>
-                                                    Profile</a>
-                                                <div class="h-px my-2 -mx-2 bg-slate-200/60 dark:bg-darkmode-400">
-                                                </div>
-                                                <a href="lucent-calendar.html" class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i data-tw-merge="" data-lucide="calendar-check2" class="stroke-[1] mr-2 h-4 w-4"></i>
-                                                    Calendar</a>
-                                                <a href="lucent-compose.html" class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i data-tw-merge="" data-lucide="mail-search" class="stroke-[1] mr-2 h-4 w-4"></i>
-                                                    Email Inbox</a>
-                                                <a href="lucent-products.html" class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i data-tw-merge="" data-lucide="lock" class="stroke-[1] mr-2 h-4 w-4"></i>
-                                                    Products</a>
-                                                <div class="h-px my-2 -mx-2 bg-slate-200/60 dark:bg-darkmode-400">
-                                                </div>
-                                                <a href="lucent-login.html" class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item"><i data-tw-merge="" data-lucide="power" class="stroke-[1] mr-2 h-4 w-4"></i>
-                                                    Logout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- END: Notification & User Menu -->
+                              
                             </div>
                         </div>
                     </div>
@@ -444,13 +310,16 @@
                                                  <th class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
                                                     status
                                                 </th>
+                                                <th class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                    Payment method
+                                                </th>
                                             </tr>
                                         </thead>
-                                    <tbody>
+                                        <tbody id="productTableBody">
                                         <% orders.forEach(order => {  %>
                                         <tr data-tw-merge="" class="intro-x">
                                             <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
-                                                <a class="whitespace-nowrap underline decoration-dotted" href="#"><%= order.cart_id %></a>
+                                                <%= order.cart_id %>
                                             </td>
                                             <td data-tw-merge="" class="px-5 py-3 border border-l-0 border-r-0 border-slate-200 bg-white text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
                                                 <div class="whitespace-nowrap font-medium"><%= order.customer_name%></div>
@@ -481,7 +350,9 @@
                                                     <option value="9" <%= order.status === 9 ? 'selected' : '' %>>cancelled</option> 
                                                 </select></form>
                                             </td>
-                                           
+                                            <td data-tw-merge="" class="px-5 py-3 w-40 border border-l-0 border-r-0 border-slate-200 bg-white !py-8 text-center shadow-[20px_3px_20px_#0000000b] first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r dark:border-darkmode-600 dark:bg-darkmode-600">
+                                                <%= order.payment_method %>
+                                            </td>
                                             <td data-tw-merge="" class="px-5 w-56 border border-l-0 border-r-0 border-slate-200 bg-white first:rounded-l-[0.6rem] first:border-l last:rounded-r-[0.6rem] last:border-r shadow-[20px_3px_20px_#0000000b] dark:border-darkmode-600 dark:bg-darkmode-600 py-0 relative before:block before:w-px before:h-8 before:bg-slate-200 before:absolute before:left-0 before:inset-y-0 before:my-auto before:dark:bg-darkmode-400">
                                                 <div class="flex items-center justify-center">
                                                     <a class="mr-3 flex items-center whitespace-nowrap" href="/admin/order/<%= order.cart_id %>" >
@@ -495,51 +366,55 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div id="paginationControls" class="text-center mt-4"></div>
+
                             <!-- END: Data List -->
-                            <!-- BEGIN: Pagination -->
-                            <div class="intro-y mb-12 mt-5 flex flex-wrap items-center sm:flex-row sm:flex-nowrap">
-                                <nav class="w-full sm:mr-auto sm:w-auto">
-                                    <ul class="flex w-full mr-0 sm:mr-auto sm:w-auto">
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevrons-left" class="stroke-[1] h-4 w-4"></i></a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevron-left" class="stroke-[1] h-4 w-4"></i></a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">...</a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">1</a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3 !box dark:bg-darkmode-400">2</a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">3</a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3">...</a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevron-right" class="stroke-[1] h-4 w-4"></i></a>
-                                        </li>
-                                        <li class="flex-1 sm:flex-initial">
-                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevrons-right" class="stroke-[1] h-4 w-4"></i></a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                                <select data-tw-merge="" class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out text-sm border-slate-200 shadow-sm rounded-md py-2 px-3 pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1 !box mt-3 w-20 sm:mt-0">
-                                    <option>10</option>
-                                    <option>25</option>
-                                    <option>35</option>
-                                    <option>50</option>
-                                </select>
-                            </div>
-                            <!-- END: Pagination -->
+                       
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+      const rowsPerPage = 10;
+      const tableBody = document.getElementById('productTableBody');
+      const paginationControls = document.getElementById('paginationControls');
+      const rows = Array.from(tableBody.querySelectorAll('tr'));
+  
+      const numPages = Math.ceil(rows.length / rowsPerPage);
+      let currentPage = 1;
+  
+      function displayPage(page) {
+          const start = (page - 1) * rowsPerPage;
+          const end = start + rowsPerPage;
+  
+          rows.forEach((row, index) => {
+              row.style.display = (index >= start && index < end) ? '' : 'none';
+          });
+  
+          updatePaginationControls();
+      }
+  
+      function updatePaginationControls() {
+          paginationControls.innerHTML = '';
+  
+          for (let i = 1; i <= numPages; i++) {
+              const pageLink = document.createElement('a');
+              pageLink.href = '#';
+              pageLink.textContent = i;
+              pageLink.className = `page-link ${i === currentPage ? 'active' : ''}`;
+              pageLink.addEventListener('click', (e) => {
+                  e.preventDefault();
+                  currentPage = i;
+                  displayPage(currentPage);
+              });
+  
+              paginationControls.appendChild(pageLink);
+          }
+      }
+  
+      displayPage(currentPage);
+  });
+     </script>

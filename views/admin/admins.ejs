@@ -33,10 +33,9 @@
         <label for="staticEmail" class="col-sm-2 col-form-label">Role</label>
         <div class="col-sm-10">
             <select class="form-select form-select-lg mb-3" aria-label="Large select example" name="role_id">
-                <option value="1">All manager</option>
-                <option value="2">Products manager</option>
-                <option value="3">Users manager</option>
-                <option value="4">Orders manager</option>
+                <option value="1">Admin</option>
+                <option value="2">Staff</option>
+               
               </select>
         </div>
     </div>
@@ -289,9 +288,7 @@
                 </div>
             </div>
         </div>
-        <div class="fixed bottom-0 right-0 z-50 mb-5 mr-5 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-theme-1 text-white shadow-lg" data-tw-toggle="modal" data-tw-target="#theme-switcher">
-            <i data-tw-merge="" data-lucide="settings" class="stroke-[1] w-5 h-5 animate-spin"></i>
-        </div>
+    
     </div>
     <div class="lucent before:content-[''] before:z-[-1] before:h-screen before:w-screen before:bg-lucent before:bg-cover before:top-0 before:fixed after:content-[''] after:z-[-1] after:h-screen after:w-screen after:bg-gradient-to-b after:from-theme-1 after:to-theme-2/50 after:top-0 after:fixed">
         <div class="h-screen relative loading-page loading-page--before-hide [&.loading-page--before-hide]:before:block [&.loading-page--hide]:before:opacity-0 before:content-[''] before:transition-opacity before:duration-300 before:hidden before:h-screen before:w-screen before:fixed before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:z-[60] [&.loading-page--before-hide]:after:block [&.loading-page--hide]:after:opacity-0 after:content-[''] after:transition-opacity after:duration-300 after:hidden after:h-16 after:w-16 after:animate-pulse after:fixed after:opacity-50 after:inset-0 after:m-auto after:bg-loading-puff after:bg-cover after:z-[61]">
@@ -539,10 +536,9 @@
                                                     <input type="hidden" value="<% admin.id %>">
                                                     <!-- onchange="this.form.submit()" -->
                                                     <select  class="user-role-select"  data-admin-id="<%= admin.id %>"   > 
-                                                    <option value="1" <%= admin.role_id === 1 ? 'selected' : '' %>> All manager  </option> 
-                                                    <option value="2" <%= admin.role_id === 2 ? 'selected' : '' %>> Products manager  </option>
-                                                    <option value="3" <%= admin.role_id === 3 ? 'selected' : '' %>> Users manager   </option> 
-                                                    <option value="4" <%= admin.role_id === 4 ? 'selected' : '' %>> Orders manager     </option> 
+                                                    <option value="1" <%= admin.role_id === 1 ? 'selected' : '' %>> Admin </option> 
+                                                    <option value="2" <%= admin.role_id === 2 ? 'selected' : '' %>> Staff  </option>
+                    
                                                 </select></form>
 
                                             </td>

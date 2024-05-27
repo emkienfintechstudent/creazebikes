@@ -4,6 +4,7 @@ function ProductController() {
   return {
    async index(req,res){
     await setupProductCategory()
+    console.log(req.user)
     const result1 = await db.query(`SELECT distinct a.size FROM products as a join product_subcategories as b 
     on a.product_subcategory_id = b.id join product_categories as c 
     on b.product_category_id = c.id

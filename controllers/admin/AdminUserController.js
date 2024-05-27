@@ -6,11 +6,16 @@ import bcrypt from "bcrypt";
 function AdminUserController() {
   return {
     async index(req, res) {
-      const result = await db.query(`select id,name,birth_date,gender,username,phone_number,address,created_at,status_id from users
+      if(req.user.role_id == 1) {  
+        const result = await db.query(`select id,name,birth_date,gender,username,phone_number,address,created_at,status_id from users
         where is_admin is false  and created_at is not null
         order by created_at desc
         limit 300`)
-      res.render("admin/users.ejs", { users: result.rows, layout: 'admin/layouts/header_footer', moment: moment })
+      res.render("admin/users.ejs", {user: req.user, users: result.rows, layout: 'admin/layouts/header_footer', moment: moment })
+      }else{
+        res.redirect("/admin/oveview/1")
+      }
+    
 
     },
     async addUser(req, res) {

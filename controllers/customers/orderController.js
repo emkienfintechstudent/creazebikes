@@ -17,10 +17,10 @@ await db.query(`
 DELETE FROM carts
 WHERE status_id = 13;
 `)
-    const result = await db.query(`select a.id as cart_id,a.address,a.phone_number, a.created_at,c.name as status from carts a join orders b on a.id = b.cart_id
+    const result = await db.query(`select a.id as cart_id,a.address,a.phone_number, a.created_at,c.name as status, payment_method from carts a join orders b on a.id = b.cart_id
     join status c on a.status_id = c.id
     where user_id = $1 
-    group by a.id ,a.address,a.phone_number,a.created_at,c.name
+    group by a.id ,a.address,a.phone_number,a.created_at,c.name, payment_method 
     order by a.id desc`, [req.user.id])
     const orders = result.rows
     res.render("order.ejs",{orders : orders,productCategory: keys, productSubCategory: getALLProductCategory,user :req.user,session:req.session,layout: './layouts/headerfooter',moment:moment} )
@@ -61,7 +61,7 @@ WHERE status_id = 13;
       const total1 = totalPrice * usdToVnd
       await db.query(
         `update carts
-        set total_quantity = $1, total_price = $2, status_id = 13, payment_id  = $3
+        set total_quantity = $1, total_price = $2, status_id = 13, payment_id  = $3,payment_method = 'MOMO - PAID'
         where id = $4 `,
         [totalQuantity,totalPrice,payment_id,cart_id]
       );
@@ -78,8 +78,9 @@ WHERE status_id = 13;
     var secretKey = 'K951B6PE1waDMi640xX08PD3vg6EkVlz';
     var orderInfo = "Momo";
     var partnerCode = 'MOMO';
-    var redirectUrl = 'https://4d32-58-187-229-114.ngrok-free.app/customer/orders';
-    var ipnUrl = 'https://4d32-58-187-229-114.ngrok-free.app/payment/ipn';
+    var redirectUrl = 'https://3d19-42-115-239-210.ngrok-free.app/customer/orders';
+    
+    var ipnUrl = 'https://3d19-42-115-239-210.ngrok-free.app/payment/ipn';
     var requestType = "payWithMethod";
     var amount =   Math.round(total1);
     console.log(amount)
@@ -200,7 +201,7 @@ WHERE status_id = 13;
       };
       await db.query(
         `update carts
-        set total_quantity = $1, total_price = $2 
+        set total_quantity = $1, total_price = $2 , payment_method = 'COD'
         where id = $3`,
         [totalQuantity,totalPrice,cart_id]
       );

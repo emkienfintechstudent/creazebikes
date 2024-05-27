@@ -14,7 +14,7 @@ function AdminSalesController() {
 			order by revenue desc, total_orders desc
             limit 10`)
             const top10Customers = result.rows
-            res.render("admin/sales_dashboard.ejs", {layout: 'admin/layouts/header_footer',top10Customers:top10Customers })
+            res.render("admin/sales_dashboard.ejs", {user:req.user,layout: 'admin/layouts/header_footer',top10Customers:top10Customers })
             
         }
     }
