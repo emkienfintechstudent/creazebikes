@@ -1,4 +1,24 @@
+<style>
+	#paginationControls {
+ text-align: right; /* Align pagination controls to the right */
+ margin-top: 10px;
+}
 
+.page-link {
+ margin: 0 5px;
+ padding: 5px 10px;
+ border: 1px solid #ddd;
+ text-decoration: none;
+ color: #007bff;
+ cursor: pointer;
+}
+
+.page-link.active {
+ background-color: #007bff;
+ color: white;
+ border-color: #007
+}
+</style>
 
 
 <div class="body-content outer-top-xs">
@@ -39,7 +59,7 @@
 					</td>
 				</tr>
 			</tfoot>
-			<tbody>
+			<tbody id="productTableBody">
 			<% if(locals.orders.length) {%>
 			<%orders.forEach(order=>  { %>
 				
@@ -62,8 +82,52 @@
 			</tbody><!-- /tbody -->
 		</table><!-- /table -->
 	</div>
+	<div id="paginationControls" class="text-center mt-4"></div>
+
 
 
 </div><!-- /.body-content -->
 
 
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+  const rowsPerPage = 10;
+  const tableBody = document.getElementById('productTableBody');
+  const paginationControls = document.getElementById('paginationControls');
+  const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+  const numPages = Math.ceil(rows.length / rowsPerPage);
+  let currentPage = 1;
+
+  function displayPage(page) {
+	  const start = (page - 1) * rowsPerPage;
+	  const end = start + rowsPerPage;
+
+	  rows.forEach((row, index) => {
+		  row.style.display = (index >= start && index < end) ? '' : 'none';
+	  });
+
+	  updatePaginationControls();
+  }
+
+  function updatePaginationControls() {
+	  paginationControls.innerHTML = '';
+
+	  for (let i = 1; i <= numPages; i++) {
+		  const pageLink = document.createElement('a');
+		  pageLink.href = '#';
+		  pageLink.textContent = i;
+		  pageLink.className = `page-link ${i === currentPage ? 'active' : ''}`;
+		  pageLink.addEventListener('click', (e) => {
+			  e.preventDefault();
+			  currentPage = i;
+			  displayPage(currentPage);
+		  });
+
+		  paginationControls.appendChild(pageLink);
+	  }
+  }
+
+  displayPage(currentPage);
+});
+ </script>

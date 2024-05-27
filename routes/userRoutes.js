@@ -66,7 +66,7 @@ router.post("/update-cart", CartController().update);
 // router.get("/admin/profile", getAdminProfile);
 // router.get("/admin/feedbacks", AdminFeedbackController().index);
 // router.post("/admin/update/status", StatusController().update)
-// router.post("/user/search/products", ProductController().searchProduct);
+router.post("/user/search/products", ProductController().searchProduct);
 // router.post("/admin/admin", AdminAdminController().postAdminAdmin);
 // router.post("/admin/admin/role", AdminAdminController().updateAdminRole);
 // router.post("/admin/feedback/:id/rep", AdminFeedbackController().rep);

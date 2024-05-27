@@ -8,10 +8,20 @@ function OrderController() {
   return {
    async index(req,res){
     await setupProductCategory()
+    
+    await db.query(`
+    DELETE FROM orders
+    WHERE status_id = 13;
+`)
+await db.query(`
+DELETE FROM carts
+WHERE status_id = 13;
+`)
     const result = await db.query(`select a.id as cart_id,a.address,a.phone_number, a.created_at,c.name as status from carts a join orders b on a.id = b.cart_id
     join status c on a.status_id = c.id
     where user_id = $1 
-    group by a.id ,a.address,a.phone_number,a.created_at,c.name`, [req.user.id])
+    group by a.id ,a.address,a.phone_number,a.created_at,c.name
+    order by a.id desc`, [req.user.id])
     const orders = result.rows
     res.render("order.ejs",{orders : orders,productCategory: keys, productSubCategory: getALLProductCategory,user :req.user,session:req.session,layout: './layouts/headerfooter',moment:moment} )
    },
@@ -43,7 +53,7 @@ function OrderController() {
         );
         const order_id = result_id.rows[0].id +1 
         const result = await db.query(
-          "INSERT INTO orders  (id,created_at, product_id,user_id,quantity,cart_id) VALUES ($1, $2,$3,$4,$5,$6) RETURNING *",
+          "INSERT INTO orders  (id,created_at, product_id,user_id,quantity,cart_id,status_id) VALUES ($1, $2,$3,$4,$5,$6,13) RETURNING *",
           [order_id,date_now, product.item.id,req.user.id , product.qty, cart_id]
         );
       };
@@ -53,9 +63,9 @@ function OrderController() {
         `update carts
         set total_quantity = $1, total_price = $2, status_id = 13, payment_id  = $3
         where id = $4 `,
-        [totalQuantity,total1,payment_id,cart_id]
+        [totalQuantity,totalPrice,payment_id,cart_id]
       );
-      delete req.session.cart
+ 
 
 
 
@@ -68,11 +78,12 @@ function OrderController() {
     var secretKey = 'K951B6PE1waDMi640xX08PD3vg6EkVlz';
     var orderInfo = "Momo";
     var partnerCode = 'MOMO';
-    var redirectUrl = 'http://localhost:3000/payment/ipn';
-    var ipnUrl = 'http://localhost:3000/payment/ipn';
+    var redirectUrl = 'https://4d32-58-187-229-114.ngrok-free.app/customer/orders';
+    var ipnUrl = 'https://4d32-58-187-229-114.ngrok-free.app/payment/ipn';
     var requestType = "payWithMethod";
-    var amount = '50000';
-    var orderId = partnerCode + new Date().getTime();
+    var amount =   Math.round(total1);
+    console.log(amount)
+    var orderId =  payment_id;
     var requestId = orderId;
     var extraData = '';
     var orderGroupId = '';

@@ -1,5 +1,4 @@
-﻿
-<div class="breadcrumb">
+﻿<div class="breadcrumb">
   <div class="container">
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
@@ -71,6 +70,10 @@
               <!-- ============================================== SIDEBAR CATEGORY : END ============================================== -->
 
               <!-- ============================================== PRICE SILDER============================================== -->
+            <form action="/products/sort" method="post">
+              <input style="display: none;" name="category" value="<%=categorySort %>">
+              <input style="display: none;" name="subcategory" value="<%=subcategorySort %>">
+
               <div class="sidebar-widget wow fadeInUp">
                 <div class="widget-header">
                   <h4 class="widget-title">Price Slider</h4>
@@ -78,54 +81,40 @@
                 <div class="sidebar-widget-body m-t-10">
                   <div class="price-range-holder"> <span class="min-max"> <span class="pull-left">$2.00</span> <span
                         class="pull-right">$3600.00</span> </span>
-                    <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
-                    <input type="text" class="price-slider" value="">
+                    <input type="text"  id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">
+                    <input type="text" name="min_max" class="price-slider" value="">
                   </div>
                   <!-- /.price-range-holder -->
-                  <a href="#" class="lnk btn btn-primary">Show Now</a>
+                  <p>Size: </p>
+                  <select class="form-select" name="size" aria-label="Default select example">
+                    <option selected  value="all">ALL</option>
+                    <% if(locals.sizes){   %>
+                      <% sizes.forEach(size => {    %>
+                    <option value="<%=size.size  %>"  ><%= size.size %></option>
+                    <% })} %>
+                  </select>
+                  <p>Color:  </p>
+                  <select class="form-select"  name="color"  aria-label="Default select example">
+                    <option selected value="all"> All</option>
+                    <% if(locals.colors){   %>
+                      <% colors.forEach(color => {    %>
+                    <option value="<%=color.color  %>" ><%= color.color %></option>
+                    <% })} %>
+                  </select>
+                  <br>
+                  <br>
+                  <button type="submit" class="btn btn-primary">Sort</button>
                 </div>
                 <!-- /.sidebar-widget-body -->
               </div>
+            </form>
               <!-- /.sidebar-widget -->
               <!-- ============================================== PRICE SILDER : END ============================================== -->
               <!-- ============================================== MANUFACTURES============================================== -->
-              <div class="sidebar-widget wow fadeInUp">
-                <div class="widget-header">
-                  <h4 class="widget-title">Manufactures</h4>
-                </div>
-                <div class="sidebar-widget-body">
-                  <ul class="list">
-                    <li><a href="#">Forever 18</a></li>
-                    <li><a href="#">Nike</a></li>
-                    <li><a href="#">Dolce & Gabbana</a></li>
-                    <li><a href="#">Alluare</a></li>
-                    <li><a href="#">Chanel</a></li>
-                    <li><a href="#">Other Brand</a></li>
-                  </ul>
-                  <!--<a href="#" class="lnk btn btn-primary">Show Now</a>-->
-                </div>
-                <!-- /.sidebar-widget-body -->
-              </div>
-              <!-- /.sidebar-widget -->
+           
               <!-- ============================================== MANUFACTURES: END ============================================== -->
               <!-- ============================================== COLOR============================================== -->
-              <div class="sidebar-widget wow fadeInUp">
-                <div class="widget-header">
-                  <h4 class="widget-title">Colors</h4>
-                </div>
-                <div class="sidebar-widget-body">
-                  <ul class="list">
-                    <li><a href="#">Red</a></li>
-                    <li><a href="#">Blue</a></li>
-                    <li><a href="#">Yellow</a></li>
-                    <li><a href="#">Pink</a></li>
-                    <li><a href="#">Brown</a></li>
-                    <li><a href="#">Teal</a></li>
-                  </ul>
-                </div>
-                <!-- /.sidebar-widget-body -->
-              </div>
-              <!-- /.sidebar-widget -->
+          
               <!-- ============================================== COLOR: END ============================================== -->
               <br>
               <img style="height: 700px; width: 260px;" src="\image\Logo\780x2400\1.png" alt="">
@@ -264,19 +253,7 @@
                                   posuere arcu diam, id accumsan eros pharetra ac. Nulla enim risus, facilisis bibendum
                                   gravida eget.</div>
                                 <div class="cart clearfix animate-effect">
-                                  <div class="action">
-                                    <ul class="list-unstyled">
-                                      <li class="add-cart-button btn-group">
-                                        <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i
-                                            class="fa fa-shopping-cart"></i> </button>
-                                        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                      </li>
-                                      <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html"
-                                          title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                      <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i
-                                            class="fa fa-signal"></i> </a> </li>
-                                    </ul>
-                                  </div>
+                                
                                   <!-- /.action -->
                                 </div>
                                 <!-- /.cart -->
@@ -303,25 +280,7 @@
               <!-- /.tab-pane #list-container -->
             </div>
             <!-- /.tab-content -->
-            <div class="clearfix filters-container">
-              <div class="text-right">
-                <div class="pagination-container">
-                  <ul class="list-inline list-unstyled">
-                    <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                    <li><a href="#">1</a></li>
-                    <li class="active"><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li class="next"><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                  </ul>
-                  <!-- /.list-inline -->
-                </div>
-                <!-- /.pagination-container -->
-              </div>
-              <!-- /.text-right -->
-
-            </div>
-            <!-- /.filters-container -->
+          
 
           </div>
           <!-- /.search-result-container -->
@@ -331,55 +290,7 @@
       </div>
       <!-- /.row -->
       <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-      <div id="brands-carousel" class="logo-slider wow fadeInUp">
-        <div class="logo-slider-inner">
-          <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-            <div class="item m-t-15"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand1.png"
-                  src="assets\images\blank.gif" alt=""> </a> </div>
-            <!--/.item-->
-
-            <div class="item m-t-10"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand2.png"
-                  src="assets\images\blank.gif" alt=""> </a> </div>
-            <!--/.item-->
-
-            <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand3.png"
-                  src="assets\images\blank.gif" alt=""> </a> </div>
-            <!--/.item-->
-
-            <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand4.png"
-                  src="assets\images\blank.gif" alt=""> </a> </div>
-            <!--/.item-->
-
-            <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand5.png"
-                  src="assets\images\blank.gif" alt=""> </a> </div>
-            <!--/.item-->
-
-            <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand6.png"
-                  src="assets\images\blank.gif" alt=""> </a> </div>
-            <!--/.item-->
-
-            <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand2.png"
-                  src="assets\images\blank.gif" alt=""> </a> </div>
-            <!--/.item-->
-
-            <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand4.png"
-                  src="assets\images\blank.gif" alt=""> </a> </div>
-            <!--/.item-->
-
-            <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand1.png"
-                  src="assets\images\blank.gif" alt=""> </a> </div>
-            <!--/.item-->
-
-            <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand5.png"
-                  src="assets\images\blank.gif" alt=""> </a> </div>
-            <!--/.item-->
-          </div>
-          <!-- /.owl-carousel #logo-slider -->
-        </div>
-        <!-- /.logo-slider-inner -->
-
-      </div>
-      <!-- /.logo-slider -->
+  
       <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
     </div>
     <!-- /.container -->
